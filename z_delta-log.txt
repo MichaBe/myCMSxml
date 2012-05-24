@@ -209,3 +209,10 @@ Formatierung der Funktionen im DB-Connector (Vor allem den SQL-Code)
 Löschen der alten Kategorieordner C0001, C0002, hidden, footer
 Anlegen eines Ordners old_datas -> Alte Dateien, die vielleicht noch algorithmen beinhalten, die benötigt werden
 Verschieben einiger Dateien in dieses Verzeichnis
+
+
+[24.05.2012]
+Einrichten von git (Version 1.7.10)
+Einrichten des Errorhandlings (erstellen der error404.php)
+Aufruf aus index.php (Falsche Kategorie gewählt) funktioniert
+Aufruf aus snippet.php (Falschen Beitrag gewählt) funktioniert
