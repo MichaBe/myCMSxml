@@ -1,5 +1,5 @@
 <?php
-	include("cms/backend/dbconnector.php");
+	include("cms/backend/s_dbconnector.php");
 	$myConnector = new simple_dbconnector();
 	$Konfiguration = $myConnector->getKonfiguration();
 	$allKategories = $myConnector->getAllKategorien();
