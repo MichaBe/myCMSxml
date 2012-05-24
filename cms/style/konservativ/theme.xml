@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<theme>
+	<name>konservativ</name>
+	<author>
+		<name>Micha Beierl</name>
+		<webpage>http://www.mycmsxml.org</webpage>
+	</author>
+	<released>1333879200</released>
+	<lastmod>1333879200</lastmod>
+	<freetext>Standardstylesheet für myCMS.xml 2012</freetext>
+	<designation>
+		<type>Font</type>
+		<name>Arvo</name>
+		<holder>Anton Koovit</holder>
+		<webpage><![CDATA[https://profiles.google.com/110835161102775862873/about]]></webpage>
+	</designation>
+	<designation>
+		<type>Headerbild</type>
+		<name>Füllfederhalter 2</name>
+		<holder>wrw</holder>
+		<webpage><![CDATA[https://www.pixelio.de/index.php?ACTION=profile&user_id=172197]]></webpage>
+	</designation>
+</theme>

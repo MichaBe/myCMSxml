@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<myCMS>
+	<aboutCMS>
+		<version>0.1</version>
+		<language>deutsch</language>
+	</aboutCMS>
+	<config>
+		<title>Mein CMS</title>
+		<cshelp>YES</cshelp>
+		<theme>konservativ</theme>
+		<description>Der erste myCMSxml-Blog. Hier wird das Content Management System myCMSxml weiterentwickelt.</description>
+	</config>
+</myCMS>

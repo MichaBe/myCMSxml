@@ -1,0 +1,53 @@
+body {
+	background-color: #191919;
+	color: #303030;
+}
+
+#logout {
+	padding: 0px;
+	margin: 0px;
+	padding-top: 10px;
+	padding-right: 20px;
+	float: right;
+}
+
+a {
+	color: #5E5E5E;
+}
+a:hover {
+	color: #8A8A8A;
+	text-decoration: none;
+}
+.message {
+	color: #BDBDBD;
+	border: 1px solid #BDBDBD;
+	border-radius: 5px;
+	padding: 5px;
+	margin: 0px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+.inhalt {
+	margin: 0px;
+	padding: 0px;
+	margin-left: 10%;
+	margin-right: 10%;
+	width: auto;
+	margin-top: 10px;
+}
+
+.snippet {
+	padding: 3px;
+	margin: 0px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	float: left;
+	width: 400px;
+	height: 100px;
+	border: 1px solid #5E5E5E;
+	border-radius: 10px;
+}
+.snippet a {
+	padding: 0px;
+	margin: 0px;
+}

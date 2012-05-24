@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<snippet>
+	<state>released</state>
+	<released>631148400</released>
+	<lastmod>631148400</lastmod>
+	<cID>footer</cID>
+	<sID>S9999</sID>
+	<tags>erstes,snippet,beispiel,fähigkeiten</tags>
+	<author>Micha Beierl</author>
+	<headline>myCMSxml</headline>
+	<description>Die Anmeldeseite für myCMSxml</description>
+	<text>
+		<![CDATA[
+			<p align="center">
+				<form action="cms/management/login.php" method="post">
+				<table>
+					<tr>
+						<td>Benutzername:</td>
+						<td><input type="text" name="username"/></td>
+					</tr>
+					<tr>
+						<td>Passwort:</td>
+						<td><input type="password" name="passwort"/></td>
+					</tr>
+				</table>
+				<input type="submit" value="Anmelden"/>
+				</form>
+			</p>
+		]]>
+	</text>
+</snippet>
