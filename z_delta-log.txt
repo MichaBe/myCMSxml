@@ -217,3 +217,4 @@ Einrichten des Errorhandlings (erstellen der error404.php)
 Aufruf aus index.php (Falsche Kategorie gewählt) funktioniert
 Aufruf aus snippet.php (Falschen Beitrag gewählt) funktioniert
 umbenennen der datei dbconnector.php in s_dbconnector.php, da noch ein erweiterter Datenbankkonnektor erstellt wird
+Beginn des Advanced DB-Connectors

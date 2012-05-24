@@ -15,7 +15,7 @@ CREATE TABLE Berechtigung (
 CREATE TABLE Benutzer (
 	UID SMALLINT NOT NULL AUTO_INCREMENT,
 	Uname CHAR(25),
-	Upassw CHAR(30),
+	Upassw CHAR(32),
 	PRIMARY KEY(UID)
 );
 			
