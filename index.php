@@ -28,14 +28,14 @@
 			echo '<title>'.$Konfiguration[0]['PageTitle'].' - '.$curKategorie[0]['Cname'].'</title>';
 			echo '<meta name="keywords" content="'.$curKategorie[0]['Ckeywords'].'" />';
 			echo '<meta name="description" content="'.$curKategorie[0]['Cshorttext'].'" />';
-			echo '<link rel="stylesheet" type="text/css" href="/cms/style/'.$Konfiguration[0]['StyleName'].'/theme.css" />';
+			echo '<link rel="stylesheet" type="text/css" href="/cms/style/'.$Konfiguration[0]['Kstyle'].'/theme.css" />';
 		?>
 	</head>
 	<body>
 		<div class="wrapper">
 			<div class="header">
 				<?php
-					echo $Konfiguration[0]['PageTitle'];
+					echo $Konfiguration[0]['Ktitle'];
 				?>
 			</div>
 			<div class="categories">

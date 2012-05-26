@@ -11,17 +11,17 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<?php
-			echo '<title>'.$Konfiguration[0]['PageTitle'].' - '.$currentSnippet[0]['Sheadline'].'</title>';
+			echo '<title>'.$Konfiguration[0]['Ktitle'].' - '.$currentSnippet[0]['Sheadline'].'</title>';
 			echo '<meta name="keywords" content="'.$currentSnippet[0]['Skeywords'].'" />';
 			echo '<meta name="description" content="'.$currentSnippet[0]['Sshorttext'].'" />';
-			echo '<link rel="stylesheet" type="text/css" href="/cms/style/'.$Konfiguration[0]['StyleName'].'/theme.css" />';
+			echo '<link rel="stylesheet" type="text/css" href="/cms/style/'.$Konfiguration[0]['Kstyle'].'/theme.css" />';
 		?>
 	</head>
 	<body>
 		<div class="wrapper">
 			<div class="header">
 				<?php
-					echo $Konfiguration[0]['PageTitle'];
+					echo $Konfiguration[0]['Ktitle'];
 				?>
 			</div>
 			<div class="categories">
