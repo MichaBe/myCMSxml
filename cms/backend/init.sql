@@ -111,5 +111,6 @@ INSERT INTO Rolle VALUES(5, 'Benutzer');
 INSERT INTO Rolle VALUES(6, 'Allgemein');
 
 INSERT INTO Konfiguration VALUES(1, 'konservativ', 'myCMS.xml', NULL, 'deutsch');
+
 INSERT INTO Beitrag VALUES(NULL, 1, 1, 'myCMSxml', NULL, '<p align="center"><form action="cms/management/login.php" method="post"><table><tr><td>Benutzername:</td><td><input type="text" name="username"/></td></tr><tr><td>Passwort:</td><td><input type="password" name="passwort"/></td></tr></table><input type="submit" value="Anmelden"/></form></p>', CURDATE(), CURDATE(), NULL);
 INSERT INTO Beitrag VALUES(404, 1, 2, 'Error 404', 'Die gesuchte Seite konnte leider nicht gefunden werden', '<h1>Die von Ihnen gesuchte Seite konnte leider nicht gefunden werden</h1>Wir bitten, dies zu entschuldigen.', CURDATE(), CURDATE(), NULL);
