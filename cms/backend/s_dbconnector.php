@@ -129,7 +129,7 @@
 		public function getKonfiguration() {
 			$query = "SELECT * 
 				FROM Konfiguration 
-				WHERE ConfigID = 1";
+				WHERE KID = 1";
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;
 			$returnarray = array();

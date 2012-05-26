@@ -62,12 +62,12 @@ CREATE TABLE Hilfekategorie (
 );
 
 CREATE TABLE Konfiguration (
-	ConfigID INT NOT NULL AUTO_INCREMENT,
-	StyleName CHAR(20),
-	PageTitle CHAR(20),
-	CMSversion CHAR(10),
-	CMSlanguage CHAR(20),
-	PRIMARY KEY(ConfigID)
+	KID INT NOT NULL AUTO_INCREMENT,
+	Kstyle CHAR(20),
+	Ktitle CHAR(20),
+	Kversion CHAR(10),
+	Klanguage CHAR(20),
+	PRIMARY KEY(KID)
 );
 			
 			

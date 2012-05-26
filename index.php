@@ -25,7 +25,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<?php
-			echo '<title>'.$Konfiguration[0]['PageTitle'].' - '.$curKategorie[0]['Cname'].'</title>';
+			echo '<title>'.$Konfiguration[0]['Ktitle'].' - '.$curKategorie[0]['Cname'].'</title>';
 			echo '<meta name="keywords" content="'.$curKategorie[0]['Ckeywords'].'" />';
 			echo '<meta name="description" content="'.$curKategorie[0]['Cshorttext'].'" />';
 			echo '<link rel="stylesheet" type="text/css" href="/cms/style/'.$Konfiguration[0]['Kstyle'].'/theme.css" />';
