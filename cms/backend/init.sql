@@ -67,6 +67,7 @@ CREATE TABLE Konfiguration (
 	Ktitle CHAR(20),
 	Kversion CHAR(10),
 	Klanguage CHAR(20),
+	Knosnippet TEXT,
 	PRIMARY KEY(KID)
 );
 			
@@ -110,7 +111,7 @@ INSERT INTO Rolle VALUES(4, 'Kategorie');
 INSERT INTO Rolle VALUES(5, 'Benutzer');
 INSERT INTO Rolle VALUES(6, 'Allgemein');
 
-INSERT INTO Konfiguration VALUES(1, 'konservativ', 'myCMS.xml', NULL, 'deutsch');
+INSERT INTO Konfiguration VALUES(1, 'konservativ', 'myCMS.xml', NULL, 'deutsch', 'Hier wurde noch kein Beitrag ver&#246;ffentlicht');
 
 INSERT INTO Beitrag VALUES(NULL, 1, 1, 'myCMSxml', NULL, '<p align="center"><form action="cms/management/login.php" method="post"><table><tr><td>Benutzername:</td><td><input type="text" name="username"/></td></tr><tr><td>Passwort:</td><td><input type="password" name="passwort"/></td></tr></table><input type="submit" value="Anmelden"/></form></p>', CURDATE(), CURDATE(), NULL);
-INSERT INTO Beitrag VALUES(404, 1, 2, 'Error 404', 'Die gesuchte Seite konnte leider nicht gefunden werden', '<h1>Die von Ihnen gesuchte Seite konnte leider nicht gefunden werden</h1>Wir bitten, dies zu entschuldigen.', CURDATE(), CURDATE(), NULL);
+INSERT INTO Beitrag VALUES(404, 1, 2, 'Error 404', NULL, '<h1>Die von Ihnen gesuchte Seite konnte leider nicht gefunden werden</h1>Wir bitten, dies zu entschuldigen.', CURDATE(), CURDATE(), NULL);

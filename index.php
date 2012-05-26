@@ -51,6 +51,9 @@
 				<?php
 					$Beitraege = $myConnector->getShortBeitraege($curKategorie[0]['CID']);
 					
+					if(count($Beitraege) < 1) {
+						echo '<h2>'.$Konfiguration[0]['Knosnippet'].'</h2>';
+					}
 					foreach ($Beitraege as $curBeitrag) {
 						echo '<div class="snippet" id="'.$curBeitrag['SID'].'">';
 						echo '<h2>'.$curBeitrag['Sheadline'].'</h2>';
