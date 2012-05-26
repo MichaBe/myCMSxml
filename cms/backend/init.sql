@@ -1,72 +1,72 @@
 CREATE TABLE Rolle (
-	RID SMALLINT NOT NULL AUTO_INCREMENT,
-	Rtopic CHAR(25) NOT NULL,
+	RID INT NOT NULL AUTO_INCREMENT,
+	Rtopic CHAR(20) NOT NULL,
 	PRIMARY KEY(RID)
 );
 			
 CREATE TABLE Berechtigung (
-	XID SMALLINT NOT NULL AUTO_INCREMENT,
-	UID SMALLINT,
-	RID SMALLINT,
-	Xvalue CHAR(25),
+	XID INT NOT NULL AUTO_INCREMENT,
+	UID INT,
+	RID INT,
+	Xvalue CHAR(5),
 	PRIMARY KEY(XID)
 );
 			
 CREATE TABLE Benutzer (
-	UID SMALLINT NOT NULL AUTO_INCREMENT,
-	Uname CHAR(25),
-	Upassw CHAR(32),
+	UID INT NOT NULL AUTO_INCREMENT,
+	Uname CHAR(20),
+	Upassw CHAR(40),
 	PRIMARY KEY(UID)
 );
 			
 CREATE TABLE Beitrag (
 	SID INT NOT NULL AUTO_INCREMENT,
-	UID SMALLINT,
-	CID SMALLINT,
-	Sheadline CHAR(40),
+	UID INT,
+	CID INT,
+	Sheadline CHAR(30),
 	Sshorttext TEXT,
 	Stext TEXT,
 	Slastmod DATE,
 	Sreleased DATE,
-	Skeywords CHAR(50),
+	Skeywords CHAR(60),
 	PRIMARY KEY(SID)
 );
 			
 CREATE TABLE Kategorie (
-	CID SMALLINT NOT NULL AUTO_INCREMENT,
+	CID INT NOT NULL AUTO_INCREMENT,
 	Cshorttext TEXT,
-	Cname CHAR(25),
-	Ckeywords CHAR(50),
+	Cname CHAR(20),
+	Ckeywords CHAR(60),
 	PRIMARY KEY(CID)
 );
 			
 CREATE TABLE Ereignis (
 	EID INT NOT NULL AUTO_INCREMENT,
-	Etime DATE,
-	Etext CHAR(60),
+	Etime DATETIME,
+	Etext TEXT,
 	PRIMARY KEY(EID)
 );
 			
 CREATE TABLE Hilfebeitrag (
-	HSID SMALLINT NOT NULL AUTO_INCREMENT,
-	HCID SMALLINT,
-	HSheadline CHAR(40),
+	HSID INT NOT NULL AUTO_INCREMENT,
+	HCID INT,
+	HSheadline CHAR(30),
 	HStext TEXT,
 	PRIMARY KEY(HSID)
 );
 			
 CREATE TABLE Hilfekategorie (
-	HCID SMALLINT NOT NULL AUTO_INCREMENT,
-	HCname CHAR(25),
+	HCID INT NOT NULL AUTO_INCREMENT,
+	HCname CHAR(20),
 	PRIMARY KEY(HCID)
 );
 
 CREATE TABLE Konfiguration (
-	ConfigID SMALLINT NOT NULL AUTO_INCREMENT,
-	StyleName CHAR(15),
-	PageTitle CHAR(15),
+	ConfigID INT NOT NULL AUTO_INCREMENT,
+	StyleName CHAR(20),
+	PageTitle CHAR(20),
 	CMSversion CHAR(10),
-	CMSlanguage CHAR(15),
+	CMSlanguage CHAR(20),
 	PRIMARY KEY(ConfigID)
 );
 			
@@ -95,7 +95,8 @@ ALTER TABLE Hilfebeitrag
 	ADD CONSTRAINT HSHCID
 		FOREIGN KEY (HCID)
 		REFERENCES Hilfekategorie(HCID);
-			
+
+INSERT INTO Benutzer VALUES(1, 'Administrator', '8a974b0407e3f2f3bd9e1aa995563a7c');			
 			
 INSERT INTO Kategorie VALUES(1, NULL, 'FOOTER', NULL);
 INSERT INTO Kategorie VALUES(2, NULL, 'HIDDEN', NULL);
@@ -107,6 +108,8 @@ INSERT INTO Rolle VALUES(2, 'Ereignis');
 INSERT INTO Rolle VALUES(3, 'Beitrag');
 INSERT INTO Rolle VALUES(4, 'Kategorie');
 INSERT INTO Rolle VALUES(5, 'Benutzer');
-INSERT INTO Rolle VALUES(6, 'Allgemeine Einstellungen');
+INSERT INTO Rolle VALUES(6, 'Allgemein');
 
-INSERT INTO Konfiguration VALUES(1, "konservativ", "myCMS.xml", NULL, "deutsch");
+INSERT INTO Konfiguration VALUES(1, 'konservativ', 'myCMS.xml', NULL, 'deutsch');
+INSERT INTO Beitrag VALUES(NULL, 1, 1, 'myCMSxml', NULL, '<p align="center"><form action="cms/management/login.php" method="post"><table><tr><td>Benutzername:</td><td><input type="text" name="username"/></td></tr><tr><td>Passwort:</td><td><input type="password" name="passwort"/></td></tr></table><input type="submit" value="Anmelden"/></form></p>', CURDATE(), CURDATE(), NULL);
+INSERT INTO Beitrag VALUES(404, 1, 2, 'Error 404', 'Die gesuchte Seite konnte leider nicht gefunden werden', '<h1>Die von Ihnen gesuchte Seite konnte leider nicht gefunden werden</h1>Wir bitten, dies zu entschuldigen.', CURDATE(), CURDATE(), NULL);
