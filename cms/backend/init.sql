@@ -1,6 +1,6 @@
 CREATE TABLE Rolle (
 	RID INT NOT NULL AUTO_INCREMENT,
-	Rtopic CHAR(20) NOT NULL,
+	Rtopic CHAR(40) NOT NULL,
 	PRIMARY KEY(RID)
 );
 			
@@ -104,12 +104,13 @@ INSERT INTO Kategorie VALUES(2, NULL, 'HIDDEN', NULL);
 INSERT INTO Kategorie VALUES(3, NULL, 'DRAFT', NULL);
 INSERT INTO Kategorie VALUES(4, NULL, 'Startseite', NULL);
 
-INSERT INTO Rolle VALUES(1, 'Hilfe');
-INSERT INTO Rolle VALUES(2, 'Ereignis');
-INSERT INTO Rolle VALUES(3, 'Beitrag');
-INSERT INTO Rolle VALUES(4, 'Kategorie');
-INSERT INTO Rolle VALUES(5, 'Benutzer');
-INSERT INTO Rolle VALUES(6, 'Allgemein');
+INSERT INTO Rolle VALUES(1, 'Am System anmelden');
+INSERT INTO Rolle VALUES(2, 'Beitr&#228;ge verwalten');
+INSERT INTO Rolle VALUES(3, 'Kategorien verwalten');
+INSERT INTO Rolle VALUES(4, 'Benutzer und Berechtigungen verwalten');
+INSERT INTO Rolle VALUES(5, 'Allgemeine Konfiguration &#228;ndern');
+INSERT INTO Rolle VALUES(6, 'Ereignislog einsehen');
+INSERT INTO Rolle VALUES(7, 'Hilfe aufrufen');
 
 INSERT INTO Konfiguration VALUES(1, 'konservativ', 'myCMS.xml', NULL, 'deutsch', 'Hier wurde noch kein Beitrag ver&#246;ffentlicht');
 
