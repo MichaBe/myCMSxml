@@ -219,8 +219,17 @@
 			}
 		}
 		
-		public function addKategorie($Kategorie) {
-			
+		public function addOneKategorie($Kategorie) {
+			$query = sprintf("INSERT INTO Kategorie
+				VALUES(NULL, '%s', '%s', '%s')", $Kategorie['Cshorttext'], $Kategorie['Cname'], $Kategorie['Ckeywords']);
+			mysql_query($query, $this->connection_ID);
 		}
+		public function delOneKategorie($CID) {
+			$query = sprintf("DELETE FROM Kategorie
+				WHERE CID = %d", $CID);
+			mysql_query($query, $this->connection_ID);
+		}
+		
+		
 	}
 ?>
