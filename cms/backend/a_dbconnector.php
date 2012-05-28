@@ -18,7 +18,6 @@
 				return FALSE;
 			}
 		}
-		
 		public function __desctruct() {
 			mysql_close($this->connection_ID);
 		}
@@ -140,7 +139,7 @@
 		public function getAllEreignisse() {
 			$query = "SELECT * 
 				FROM Ereignis
-				ORDER BY Etime DESC";
+				ORDER BY Etime DESC, EID DESC";
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;
 			$returnarray = array();
@@ -210,9 +209,11 @@
 		}
 		public function delOneBenutzer($UID) {
 			$query[0] = sprintf("DELETE FROM Berechtigung
-				WHERE UID = %d", $UID);
+				WHERE UID = %d
+				AND UID != 1", $UID);
 			$query[1] = sprintf("DELETE FROM Benutzer
-				WHERE UID = %d", $UID);
+				WHERE UID = %d
+				AND UID != 1", $UID);
 			
 			foreach($query as $curQuery) {
 				mysql_query($curQuery, $this->connection_ID);
@@ -226,7 +227,11 @@
 		}
 		public function delOneKategorie($CID) {
 			$query = sprintf("DELETE FROM Kategorie
-				WHERE CID = %d", $CID);
+				WHERE CID = %d
+				AND CID != 1
+				AND CID != 2
+				AND CID != 3
+				AND CID != 4", $CID);
 			mysql_query($query, $this->connection_ID);
 		}
 		
@@ -248,7 +253,9 @@
 		}
 		public function delOneBeitrag($SID) {
 			$query = sprintf("DELETE FROM Beitrag
-				WHERE SID = %d", $SID);
+				WHERE SID = %d
+				AND SID != 1
+				AND SID != 404", $SID);
 			mysql_query($query, $this->connection_ID);
 		}
 		
