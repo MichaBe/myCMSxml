@@ -50,5 +50,58 @@
 			}
 			return $returnarray;
 		}
+		
+		public function getAllKategorien() {
+			$query = "SELECT CID, Cname, Ckeywords 
+				FROM Kategorie";
+			$result = mysql_query($query, $this->connection_ID);
+			$i = 0;
+			$returnarray = array();
+			while($row = mysql_fetch_assoc($result)){
+				$returnarray[$i] = $row;
+				$i++;
+			}
+			return $returnarray;
+		}
+		public function getChoosableKategorien() {
+			$query = "SELECT CID, Cname 
+				FROM Kategorie
+				WHERE CID != 4";
+			$result = mysql_query($query, $this->connection_ID);
+			$i = 0;
+			$returnarray = array();
+			while($row = mysql_fetch_assoc($result)){
+				$returnarray[$i] = $row;
+				$i++;
+			}
+			return $returnarray;
+		}
+		public function getOneKategorie($CID) {
+			$query = "SELECT CID, Cshorttext, Cname, Ckeywords
+				FROM Kategorie";
+			$result = mysql_query($query, $this->connection_ID);
+			$i = 0;
+			$returnarray = array();
+			while($row = mysql_fetch_assoc($result)){
+				$returnarray[$i] = $row;
+				$i++;
+			}
+			return $returnarray;
+		}
+		
+		public function getAllBeitraege() {
+			$query = "SELECT SID, Uname, Cname, Sheadline, Slastmod, Sreleased
+				FROM Benutzer, Beitrag, Kategorie
+				WHERE Benutzer.UID = Beitrag.UID
+				AND Kategorie.CID = Beitrag.CID";
+			$result = mysql_query($query, $this->connection_ID);
+			$i = 0;
+			$returnarray = array();
+			while($row = mysql_fetch_assoc($result)){
+				$returnarray[$i] = $row;
+				$i++;
+			}
+			return $returnarray;
+		}
 	}
 ?>
