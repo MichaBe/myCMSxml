@@ -189,8 +189,38 @@
 					AND UID = %d", $Berechtigung[$i]['Xvalue'], $Berechtigung[$i]['RID'], $UID);
 			}
 			foreach($query as $curQuery) {
-				mysql_query($query, $this->connection_ID);
+				mysql_query($curQuery, $this->connection_ID);
 			}
+		}
+		public function addOneBenutzer($Uname, $upassw, $Berechtigungen) {
+			$query = sprintf("INSERT INTO Benutzer 
+				VALUES(NULL, '%s', '%s')", $Uname, $upassw);
+			mysql_query($query, $this->connection_ID);
+			$UID = mysql_insert_id($this->connection_ID);
+			
+			$query = array();
+			for($i = 0; $i < count($Berechtigungen); $i++) {
+				$query[$i] = sprintf("INSERT INTO Berechtigung
+					VALUES(NULL, %d, %d, %d)", $UID, $Berechtigung[$i]['RID'], $Berechtigung[$i]['Xvalue']);
+			}
+			foreach($query as $curQuery) {
+				mysql_query($curQuery, $this->connection_ID);
+			}
+			return $UID;
+		}
+		public function delOneBenutzer($UID) {
+			$query[0] = sprintf("DELETE FROM Berechtigung
+				WHERE UID = %d", $UID);
+			$query[1] = sprintf("DELETE FROM Benutzer
+				WHERE UID = %d", $UID);
+			
+			foreach($query as $curQuery) {
+				mysql_query($curQuery, $this->connection_ID);
+			}
+		}
+		
+		public function addKategorie($Kategorie) {
+			
 		}
 	}
 ?>
