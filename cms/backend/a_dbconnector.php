@@ -4,7 +4,7 @@
 	$globalConfig = include('/cms/backend/config.php');
 	
 	class advanced_dbconnector {
-		private $connectionID;
+		private $connection_ID;
 		private $globalConfig;
 		
 		public function __construct() {
@@ -37,7 +37,7 @@
 			return $returnarray;
 		}
 		public function getOneBenutzer($UID) {
-			$query = sprintf("SELECT Benutzer.UID, Uname, XID, Xvalue, Rtopic
+			$query = sprintf("SELECT XID, Xvalue, Rtopic
 				FROM Rolle, Berechtigung, Benutzer
 				WHERE Benutzer.UID = Berechtigung.UID
 				AND ROLLE.RID = Berechtigung.RID
@@ -151,7 +151,7 @@
 			return $returnarray;
 		}
 		
-		public function getAllHelpKategorien() {
+		public function getAllHilfeKategorien() {
 			$query = "SELECT HCID, HCname
 				FROM Hilfekategorie
 				ORDER BY HCname";
@@ -164,7 +164,7 @@
 			}
 			return $returnarray;
 		}
-		public function getHelpBeitraege($HCID) {
+		public function getHilfeBeitraege($HCID) {
 			$query = sprintf("SELECT HSID, HSheadline, HStext
 				FROM Hilfebeitrag
 				WHERE HCID = %d
@@ -180,5 +180,17 @@
 		}
 		
 		
+		public function changeOneBenutzer($UID, $Berechtigungen) {
+			$query = array();
+			for($i = 0; $i < count($Berechtigungen); $i++) {
+				$query[$i] = sprintf("UPDATE Berechtigung
+					SET Xvalue = %d
+					WHERE RID = %d
+					AND UID = %d", $Berechtigung[$i]['Xvalue'], $Berechtigung[$i]['RID'], $UID);
+			}
+			foreach($query as $curQuery) {
+				mysql_query($query, $this->connection_ID);
+			}
+		}
 	}
 ?>
