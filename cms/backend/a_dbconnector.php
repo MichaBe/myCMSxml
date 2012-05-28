@@ -23,6 +23,32 @@
 			mysql_close($this->connection_ID);
 		}
 		
-		
+		public function getAllBenutzer() {
+			$query = "SELECT UID, Uname 
+				FROM Benutzer";
+			$result = mysql_query($query, $this->connection_ID);
+			$i = 0;
+			$returnarray = array();
+			while($row = mysql_fetch_assoc($result)){
+				$returnarray[$i] = $row;
+				$i++;
+			}
+			return $returnarray;
+		}
+		public function getOneBenutzer($UID) {
+			$query = sprintf("SELECT Benutzer.UID, Uname, XID, Xvalue, Rtopic
+				FROM Rolle, Berechtigung, Benutzer
+				WHERE Benutzer.UID = Berechtigung.UID
+				AND ROLLE.RID = Berechtigung.RID
+				AND Benutzer.UID = %d", $UID);
+			$result = mysql_query($query, $this->connection_ID);
+			$i = 0;
+			$returnarray = array();
+			while($row = mysql_fetch_assoc($result)){
+				$returnarray[$i] = $row;
+				$i++;
+			}
+			return $returnarray;
+		}
 	}
 ?>
