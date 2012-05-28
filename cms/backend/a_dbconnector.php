@@ -230,6 +230,42 @@
 			mysql_query($query, $this->connection_ID);
 		}
 		
+		public function changeOneBeitrag($SID, $Beitrag) {
+			$query = sprintf("UPDATE Beitrag
+				SET CID = %d,
+				Sheadline = '%s',
+				Sshorttext = '%s',
+				Stext = '%s',
+				Slastmod = CURDATE(),
+				Skeywords = '%s'
+				WHERE SID = %d", $Beitrag['CID'], $Beitrag['Sheadline'], $Beitrag['Sshorttext'], $Beitrag['Stext'], $Beitrag['Skeywords'], $SID);
+			mysql_query($query, $this->connection_ID);
+		}
+		public function addOneBeitrag($Beitrag) {
+			$query = sprintf("INSERT INTO Beitrag
+				VALUES(NULL, %d, %d, '%s', '%s', '%s', CURDATE(), CURDATE(), Skeywords = '%s'",$Beitrag['UID'], $Beitrag['CID'], $Beitrag['Sheadline'], $Beitrag['Sshorttext'], $Beitrag['Stext'], $Beitrag['Skeywords']);
+			mysql_query($query, $this->connection_ID);
+		}
+		public function delOneBeitrag($SID) {
+			$query = sprintf("DELETE FROM Beitrag
+				WHERE SID = %d", $SID);
+			mysql_query($query, $this->connection_ID);
+		}
 		
+		public function changeKonfiguration($Konfiguration) {
+			$query = sprintf("UPDATE Konfiguration
+				SET Kstylename = '%s',
+				Kpagetitle = '%s',
+				Klanguage = '%s',
+				Knosnippet = %s'
+				WHERE KID = 1", $Konfiguration['Kstylename'], $Konfiguration['Kpagetitle'],$Konfiguration['Klanguage'], $Konfiguration['Knosnippet']);
+			mysql_query($query, $this->connection_ID);
+		}
+		
+		public function addEreignis($Etext) {
+			$query = sprintf("INSERT INTO Ereignis
+				VALUES(NULL, CURDATE(), '%s')", $Etext);
+			mysql_query($query, $this->connection_ID);
+		}
 	}
 ?>
