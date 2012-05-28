@@ -42,7 +42,7 @@ CREATE TABLE Kategorie (
 			
 CREATE TABLE Ereignis (
 	EID INT NOT NULL AUTO_INCREMENT,
-	Etime DATETIME,
+	Etime DATE,
 	Etext TEXT,
 	PRIMARY KEY(EID)
 );

@@ -62,7 +62,7 @@
 					WHERE Benutzer.UID = Beitrag.UID 
 					AND Beitrag.CID = Kategorie.CID 
 					AND Beitrag.CID != 3 
-					ORDER BY Sreleased DESC, Slastmod DESC");
+					ORDER BY Slastmod DESC, Sreleased DESC");
 			}
 			elseif($CID == 4) {
 				$query = sprintf("SELECT SID, Uname, Cname, Sheadline, Sshorttext, Slastmod, Sreleased 
@@ -72,7 +72,7 @@
 					AND Beitrag.CID != 1 
 					AND Beitrag.CID != 2 
 					AND Beitrag.CID != 3 
-					ORDER BY Sreleased DESC, Slastmod DESC");
+					ORDER BY Slastmod DESC, Sreleased DESC");
 			}
 			else {
 				$query = sprintf("SELECT SID, Uname, Cname, Sheadline, Sshorttext, Slastmod, Sreleased 
@@ -83,7 +83,7 @@
 				AND Beitrag.CID != 1 
 				AND Beitrag.CID != 2 
 				AND Beitrag.CID != 3 
-				ORDER BY Sreleased DESC, Slastmod DESC", $CID);
+				ORDER BY Slastmod DESC, Sreleased DESC", $CID);
 			}
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;

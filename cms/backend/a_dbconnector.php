@@ -25,7 +25,8 @@
 		
 		public function getAllBenutzer() {
 			$query = "SELECT UID, Uname 
-				FROM Benutzer";
+				FROM Benutzer
+				ORDER BY Uname";
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;
 			$returnarray = array();
@@ -53,7 +54,8 @@
 		
 		public function getAllKategorien() {
 			$query = "SELECT CID, Cname, Ckeywords 
-				FROM Kategorie";
+				FROM Kategorie
+				ORDER BY Cname";
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;
 			$returnarray = array();
@@ -66,7 +68,8 @@
 		public function getChoosableKategorien() {
 			$query = "SELECT CID, Cname 
 				FROM Kategorie
-				WHERE CID != 4";
+				WHERE CID != 4
+				ORDER BY CID DESC";
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;
 			$returnarray = array();
@@ -77,8 +80,9 @@
 			return $returnarray;
 		}
 		public function getOneKategorie($CID) {
-			$query = "SELECT CID, Cshorttext, Cname, Ckeywords
-				FROM Kategorie";
+			$query = sprintf("SELECT CID, Cshorttext, Cname, Ckeywords
+				FROM Kategorie
+				WHERE CID = %d", $CID);
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;
 			$returnarray = array();
@@ -93,7 +97,8 @@
 			$query = "SELECT SID, Uname, Cname, Sheadline, Slastmod, Sreleased
 				FROM Benutzer, Beitrag, Kategorie
 				WHERE Benutzer.UID = Beitrag.UID
-				AND Kategorie.CID = Beitrag.CID";
+				AND Kategorie.CID = Beitrag.CID
+				ORDER BY Slastmod DESC, Sreleased DESC";
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;
 			$returnarray = array();
@@ -103,5 +108,77 @@
 			}
 			return $returnarray;
 		}
+		public function getOneBeitrag($SID) {
+			$query = sprintf("SELECT SID, Cname, CID, Sheadline, Sshorttext, Stext, Skeywords
+				FROM Beitrag, Kategorie
+				WHERE Beitrag.CID = Kategorie.CID
+				AND Beitrag.SID = %d", $SID);
+			$result = mysql_query($query, $this->connection_ID);
+			$i = 0;
+			$returnarray = array();
+			while($row = mysql_fetch_assoc($result)){
+				$returnarray[$i] = $row;
+				$i++;
+			}
+			return $returnarray;
+		}
+		
+		public function getKonfiguration() {
+			$query = "SELECT *
+				FROM Konfiguration
+				WHERE KID = 1";
+			$result = mysql_query($query, $this->connection_ID);
+			$i = 0;
+			$returnarray = array();
+			while($row = mysql_fetch_assoc($result)){
+				$returnarray[$i] = $row;
+				$i++;
+			}
+			return $returnarray;
+		}
+		
+		public function getAllEreignisse() {
+			$query = "SELECT * 
+				FROM Ereignis
+				ORDER BY Etime DESC";
+			$result = mysql_query($query, $this->connection_ID);
+			$i = 0;
+			$returnarray = array();
+			while($row = mysql_fetch_assoc($result)){
+				$returnarray[$i] = $row;
+				$i++;
+			}
+			return $returnarray;
+		}
+		
+		public function getAllHelpKategorien() {
+			$query = "SELECT HCID, HCname
+				FROM Hilfekategorie
+				ORDER BY HCname";
+			$result = mysql_query($query, $this->connection_ID);
+			$i = 0;
+			$returnarray = array();
+			while($row = mysql_fetch_assoc($result)){
+				$returnarray[$i] = $row;
+				$i++;
+			}
+			return $returnarray;
+		}
+		public function getHelpBeitraege($HCID) {
+			$query = sprintf("SELECT HSID, HSheadline, HStext
+				FROM Hilfebeitrag
+				WHERE HCID = %d
+				ORDER BY HSheadline", $HCID);
+			$result = mysql_query($query, $this->connection_ID);
+			$i = 0;
+			$returnarray = array();
+			while($row = mysql_fetch_assoc($result)){
+				$returnarray[$i] = $row;
+				$i++;
+			}
+			return $returnarray;
+		}
+		
+		
 	}
 ?>
