@@ -52,7 +52,7 @@
 			$query = sprintf("SELECT XID, Xvalue, Rtopic
 				FROM Rolle, Berechtigung, Benutzer
 				WHERE Benutzer.UID = Berechtigung.UID
-				AND ROLLE.RID = Berechtigung.RID
+				AND Rolle.RID = Berechtigung.RID
 				AND Benutzer.UID = %d", $UID);
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;

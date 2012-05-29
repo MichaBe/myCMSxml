@@ -1,8 +1,13 @@
 <?php
-	include '/cms/backend/a_dbconnector.php' ;
+	$current_dir = getcwd();
+	chdir('../backend');
+	include('./a_dbconnector.php');
+	chdir($current_dir);
 	$myADBConnector = new advanced_dbconnector();
+	include('authentification.php');
+	authentificate(1);
 	
-	//authentifikation des Users
+	$currentUser = 
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
