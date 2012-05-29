@@ -35,6 +35,19 @@
 			}
 			return $returnarray;
 		}
+		public function getOneBenutzer($Uname) {
+			$query = sprintf("SELECT *
+				FROM Benutzer
+				WHERE Uname = '%s'", $Uname);
+			$result = mysql_query($query, $this->connection_ID);
+			$i = 0;
+			$returnarray = array();
+			while($row = mysql_fetch_assoc($result)){
+				$returnarray[$i] = $row;
+				$i++;
+			}
+			return $returnarray;
+		}
 		public function getOneBenutzer($UID) {
 			$query = sprintf("SELECT XID, Xvalue, Rtopic
 				FROM Rolle, Berechtigung, Benutzer

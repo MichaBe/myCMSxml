@@ -8,7 +8,7 @@ CREATE TABLE Berechtigung (
 	XID INT NOT NULL AUTO_INCREMENT,
 	UID INT,
 	RID INT,
-	Xvalue CHAR(5),
+	Xvalue BOOLEAN,
 	PRIMARY KEY(XID)
 );
 			
@@ -111,6 +111,14 @@ INSERT INTO Rolle VALUES(4, 'Benutzer und Berechtigungen verwalten');
 INSERT INTO Rolle VALUES(5, 'Allgemeine Konfiguration &#228;ndern');
 INSERT INTO Rolle VALUES(6, 'Ereignislog einsehen');
 INSERT INTO Rolle VALUES(7, 'Hilfe aufrufen');
+
+INSERT INTO Berechtigung VALUES(NULL, 1, 1, TRUE);
+INSERT INTO Berechtigung VALUES(NULL, 1, 2, TRUE);
+INSERT INTO Berechtigung VALUES(NULL, 1, 3, TRUE);
+INSERT INTO Berechtigung VALUES(NULL, 1, 4, TRUE);
+INSERT INTO Berechtigung VALUES(NULL, 1, 5, TRUE);
+INSERT INTO Berechtigung VALUES(NULL, 1, 6, TRUE);
+INSERT INTO Berechtigung VALUES(NULL, 1, 7, TRUE);
 
 INSERT INTO Konfiguration VALUES(1, 'konservativ', 'myCMS.xml', NULL, 'deutsch', 'Hier wurde noch kein Beitrag ver&#246;ffentlicht');
 
