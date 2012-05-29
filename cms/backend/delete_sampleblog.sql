@@ -1,4 +1,3 @@
-USE mycmsxml;
 DELETE FROM Beitrag WHERE SID = 10;
 DELETE FROM Beitrag WHERE SID = 11;
 DELETE FROM Beitrag WHERE SID = 12;

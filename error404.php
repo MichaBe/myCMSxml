@@ -1,5 +1,8 @@
 <?php
-	include("cms/backend/s_dbconnector.php");
+	$current_dir = getcwd();
+	chdir('cms/backend/');
+	include("s_dbconnector.php");
+	chdir($current_dir);
 	$myConnector = new simple_dbconnector();
 	$Konfiguration = $myConnector->getKonfiguration();
 	$allKategories = $myConnector->getAllKategorien();

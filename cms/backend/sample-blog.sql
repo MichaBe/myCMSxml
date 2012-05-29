@@ -1,4 +1,3 @@
-USE mycmsxml;
 INSERT INTO Kategorie VALUES (5, 'Die erste neue Kategorie', 'Erste Kategorie', 'erste,kategorie,neu');
 INSERT INTO Kategorie VALUES (6, 'Die zweite Kategorie', 'Zweite Kategorie', NULL);
 INSERT INTO Kategorie VALUES (7, 'Eine leere Kategorie', 'Leere Kategorie', 'leer, Kategorie, test');

@@ -1,7 +1,7 @@
 <?php
 //Advanced DB-Connector. Nur für die Benutzung in verbindung mit dem Backend des CMS
 
-	$globalConfig = include('/cms/backend/config.php');
+	$globalConfig = include('config.php');
 	
 	class advanced_dbconnector {
 		private $connection_ID;
@@ -35,7 +35,7 @@
 			}
 			return $returnarray;
 		}
-		public function getOneBenutzer($Uname) {
+		public function getOneBenutzerByName($Uname) {
 			$query = sprintf("SELECT *
 				FROM Benutzer
 				WHERE Uname = '%s'", $Uname);

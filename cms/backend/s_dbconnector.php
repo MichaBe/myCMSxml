@@ -1,7 +1,7 @@
 <?php
 //simple DB-Connector. Enthält die für das Frontend nötigen Funktionen
 
-	$globalConfig = include '/cms/backend/config.php';
+	$globalConfig = include('config.php');
 	
 	class simple_dbconnector {
 		
