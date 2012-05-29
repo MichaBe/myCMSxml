@@ -4,7 +4,7 @@
 	include('./a_dbconnector.php');
 	chdir($current_dir);
 	$myADBconnector = new advanced_dbconnector();
-	$users = $myADBconnector->getOneBenutzerByName($_POST['username']);
+	$users = $myADBconnector->getOneBenutzerByNameOrID($_POST['username']);
 	$currentUser;
 	if(isset($users[0]['UID']))
 		$currentUser = $myADBconnector->getOneBenutzer($users[0]['UID']);

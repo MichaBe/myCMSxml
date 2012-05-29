@@ -1,13 +1,18 @@
 <?php
+	session_start();
 	$current_dir = getcwd();
 	chdir('../backend');
 	include('./a_dbconnector.php');
 	chdir($current_dir);
 	$myADBConnector = new advanced_dbconnector();
-	include('authentification.php');
-	authentificate(1);
+	$currentRights = $myADBConnector->getOneBenutzer($_SESSION['UID']);
 	
-	$currentUser = 
+	if($currentRights[0]['Xvalue'] != 1) {
+		unset($myADBconnector);
+		header('Location: http://'.$_SERVER['HTTP_HOST'].'/cms/management/logout.php');
+	}
+	
+	$currentUser = $myADBConnector->getOneBenutzerByNameOrID($_SESSION['UID']);
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
@@ -20,18 +25,25 @@
 	<body>
 		<div class="wrapper">
 			<?php
-				echo '<h1>Herzlich willkommen, '..'</h1>';
+				echo '<h1>Herzlich willkommen, '.$currentUser[0]['Uname'].'</h1>';
 			?>
 			<h2>Was m&#246;chten Sie tun?</h2>
 			<ul>
 				<?php
-					<li><a href="#">Beitr&#228;ge verwalten</a></li>
-					<li><a href="#">Kategorien verwalten</a></li>
-					<li><a href="#">Benutzer und Berechtigungen verwalten</a></li>
-					<li><a href="#">Allgemeine Konfiguration &#228;ndern</a></li>
-					<li><a href="#">Ereignislog einsehen</a></li>
-					<li><a href="#">Hilfe aufrufen</a></li>
-					<li><a href="#">Vom System abmelden</a></li>
+					if($currentRights[1]['Xvalue'] == 1)
+						echo '<li><a href="#">Beitr&#228;ge verwalten</a></li>';
+					if($currentRights[2]['Xvalue'] == 1)
+						echo '<li><a href="#">Kategorien verwalten</a></li>';
+					if($currentRights[3]['Xvalue'] == 1)
+						echo '<li><a href="#">Benutzer und Berechtigungen verwalten</a></li>';
+					if($currentRights[4]['Xvalue'] == 1)
+						echo '<li><a href="#">Allgemeine Konfiguration &#228;ndern</a></li>';
+					if($currentRights[5]['Xvalue'] == 1)
+						echo '<li><a href="#">Ereignislog einsehen</a></li>';
+					if($currentRights[6]['Xvalue'] == 1)
+						echo '<li><a href="#">Hilfe aufrufen</a></li>';
+					
+					echo '<li><a href="logout.php">Vom System abmelden</a></li>';
 				?>
 			</ul>
 		</div>

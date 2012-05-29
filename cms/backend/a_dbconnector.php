@@ -35,10 +35,11 @@
 			}
 			return $returnarray;
 		}
-		public function getOneBenutzerByName($Uname) {
+		public function getOneBenutzerByNameOrID($Uname) {
 			$query = sprintf("SELECT *
 				FROM Benutzer
-				WHERE Uname = '%s'", $Uname);
+				WHERE Uname = '%s'
+				OR UID = %d", $Uname, $Uname);
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;
 			$returnarray = array();
