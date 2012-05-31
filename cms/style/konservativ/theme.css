@@ -48,19 +48,15 @@ body {
 	padding: 0px;
 	padding-top: 20px;
 	padding-bottom: 20px;
-	background: -webkit-linear-gradient(top, #D4A500, #6A4D00 );
-	background: -moz-linear-gradient(top, #D4A500, #6A4D00 );
-    background: -ms-linear-gradient(top, #D4A500, #6A4D00 );
-	background: -o-linear-gradient(top, #D4A500, #6A4D00 );
-	background: linear-gradient(top, #D4A500, #6A4D00 );
+	background-color: #a77900;
 }
 .categories li {
 	display: inline;
 	padding: 15px;
 	margin: 0px;
 	margin-right: 1px;
-	border-left: 1px dotted #E4BF28;
-	border-right: 1px dotted #E4BF28;
+	border-left: 1px dotted #e4d628;
+	border-right: 1px dotted #e4d628;
 }
 .categories a {
 	font-size: 150%;
