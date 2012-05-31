@@ -32,7 +32,7 @@
 			<ul>
 				<?php
 					if($currentRights[1]['Xvalue'] == 1)
-						echo '<li><a href="#">Beitr&#228;ge verwalten</a></li>';
+						echo '<li><a href="beitraege/">Beitr&#228;ge verwalten</a></li>';
 					if($currentRights[2]['Xvalue'] == 1)
 						echo '<li><a href="#">Kategorien verwalten</a></li>';
 					if($currentRights[3]['Xvalue'] == 1)
