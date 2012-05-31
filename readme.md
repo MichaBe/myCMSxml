@@ -22,6 +22,7 @@ Für die installation des CMS wird der Zugriff auf das entsprechende php-Rootver
 Außerdem muss das Datenbank-Initscript auf dem Server ausgeführt werden. Hierfür bieten die meisten 
 Provider eine Administrationsoberfläche wie z. B. phpmyAdmin an. Folgende Schritte müssen für die 
 Installation durchgeführt werden:
+
 1. Bearbeiten der config.php
 	Diese Datei liegt im Verzeichnis /cms/backend/ und enthält die für die Datenbankverbindung wichtigen 
 	Einstellungen wie z. B. Servername, Datenbank-User, ... . Diese Angaben bekommen Sie von ihrem Provider.
