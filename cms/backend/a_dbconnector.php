@@ -39,7 +39,9 @@
 			$query = sprintf("SELECT *
 				FROM Benutzer
 				WHERE Uname = '%s'
-				OR UID = %d", $Uname, $Uname);
+				OR UID = %d", 
+				mysql_real_escape_string($Uname), 
+				mysql_real_escape_string($Uname));
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;
 			$returnarray = array();
@@ -54,7 +56,8 @@
 				FROM Rolle, Berechtigung, Benutzer
 				WHERE Benutzer.UID = Berechtigung.UID
 				AND Rolle.RID = Berechtigung.RID
-				AND Benutzer.UID = %d", $UID);
+				AND Benutzer.UID = %d", 
+				mysql_real_escape_string($UID));
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;
 			$returnarray = array();
@@ -95,7 +98,8 @@
 		public function getOneKategorie($CID) {
 			$query = sprintf("SELECT CID, Cshorttext, Cname, Ckeywords
 				FROM Kategorie
-				WHERE CID = %d", $CID);
+				WHERE CID = %d", 
+				mysql_real_escape_string($CID));
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;
 			$returnarray = array();
@@ -125,7 +129,8 @@
 			$query = sprintf("SELECT SID, Cname, CID, Sheadline, Sshorttext, Stext, Skeywords
 				FROM Beitrag, Kategorie
 				WHERE Beitrag.CID = Kategorie.CID
-				AND Beitrag.SID = %d", $SID);
+				AND Beitrag.SID = %d", 
+				mysql_real_escape_string($SID));
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;
 			$returnarray = array();
@@ -181,7 +186,8 @@
 			$query = sprintf("SELECT HSID, HSheadline, HStext
 				FROM Hilfebeitrag
 				WHERE HCID = %d
-				ORDER BY HSheadline", $HCID);
+				ORDER BY HSheadline", 
+				mysql_real_escape_string($HCID));
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;
 			$returnarray = array();
@@ -199,7 +205,9 @@
 				$query[$i] = sprintf("UPDATE Berechtigung
 					SET Xvalue = %d
 					WHERE RID = %d
-					AND UID = %d", $Berechtigung[$i]['Xvalue'], $Berechtigung[$i]['RID'], $UID);
+					AND UID = %d", 
+					mysql_real_escape_string($Berechtigung[$i]['Xvalue']), 
+					mysql_real_escape_string($Berechtigung[$i]['RID'], $UID));
 			}
 			foreach($query as $curQuery) {
 				mysql_query($curQuery, $this->connection_ID);
@@ -207,14 +215,19 @@
 		}
 		public function addOneBenutzer($Uname, $upassw, $Berechtigungen) {
 			$query = sprintf("INSERT INTO Benutzer 
-				VALUES(NULL, '%s', '%s')", $Uname, $upassw);
+				VALUES(NULL, '%s', '%s')", 
+				mysql_real_escape_string($Uname), 
+				mysql_real_escape_string($upassw));
 			mysql_query($query, $this->connection_ID);
 			$UID = mysql_insert_id($this->connection_ID);
 			
 			$query = array();
 			for($i = 0; $i < count($Berechtigungen); $i++) {
 				$query[$i] = sprintf("INSERT INTO Berechtigung
-					VALUES(NULL, %d, %d, %d)", $UID, $Berechtigung[$i]['RID'], $Berechtigung[$i]['Xvalue']);
+					VALUES(NULL, %d, %d, %d)", 
+					mysql_real_escape_string($UID), 
+					mysql_real_escape_string($Berechtigung[$i]['RID']), 
+					mysql_real_escape_string($Berechtigung[$i]['Xvalue']));
 			}
 			foreach($query as $curQuery) {
 				mysql_query($curQuery, $this->connection_ID);
@@ -224,10 +237,12 @@
 		public function delOneBenutzer($UID) {
 			$query[0] = sprintf("DELETE FROM Berechtigung
 				WHERE UID = %d
-				AND UID != 1", $UID);
+				AND UID != 1", 
+				mysql_real_escape_string($UID));
 			$query[1] = sprintf("DELETE FROM Benutzer
 				WHERE UID = %d
-				AND UID != 1", $UID);
+				AND UID != 1", 
+				mysql_real_escape_string($UID));
 			
 			foreach($query as $curQuery) {
 				mysql_query($curQuery, $this->connection_ID);
@@ -236,7 +251,10 @@
 		
 		public function addOneKategorie($Kategorie) {
 			$query = sprintf("INSERT INTO Kategorie
-				VALUES(NULL, '%s', '%s', '%s')", $Kategorie['Cshorttext'], $Kategorie['Cname'], $Kategorie['Ckeywords']);
+				VALUES(NULL, '%s', '%s', '%s')", 
+				mysql_real_escape_string($Kategorie['Cshorttext']), 
+				mysql_real_escape_string($Kategorie['Cname']), 
+				mysql_real_escape_string($Kategorie['Ckeywords']));
 			mysql_query($query, $this->connection_ID);
 		}
 		public function delOneKategorie($CID) {
@@ -245,7 +263,8 @@
 				AND CID != 1
 				AND CID != 2
 				AND CID != 3
-				AND CID != 4", $CID);
+				AND CID != 4", 
+				mysql_real_escape_string($CID));
 			mysql_query($query, $this->connection_ID);
 		}
 		
@@ -257,19 +276,32 @@
 				Stext = '%s',
 				Slastmod = CURDATE(),
 				Skeywords = '%s'
-				WHERE SID = %d", $Beitrag['CID'], $Beitrag['Sheadline'], $Beitrag['Sshorttext'], $Beitrag['Stext'], $Beitrag['Skeywords'], $SID);
+				WHERE SID = %d", 
+				mysql_real_escape_string($Beitrag['CID']), 
+				mysql_real_escape_string($Beitrag['Sheadline']), 
+				mysql_real_escape_string($Beitrag['Sshorttext']), 
+				mysql_real_escape_string($Beitrag['Stext']), 
+				mysql_real_escape_string($Beitrag['Skeywords']), 
+				mysql_real_escape_string($SID));
 			mysql_query($query, $this->connection_ID);
 		}
 		public function addOneBeitrag($Beitrag) {
 			$query = sprintf("INSERT INTO Beitrag
-				VALUES(NULL, %d, %d, '%s', '%s', '%s', CURDATE(), CURDATE(), Skeywords = '%s'",$Beitrag['UID'], $Beitrag['CID'], $Beitrag['Sheadline'], $Beitrag['Sshorttext'], $Beitrag['Stext'], $Beitrag['Skeywords']);
+				VALUES(NULL, %d, %d, '%s', '%s', '%s', CURDATE(), CURDATE(), Skeywords = '%s'",
+				mysql_real_escape_string($Beitrag['UID']), 
+				mysql_real_escape_string($Beitrag['CID']), 
+				mysql_real_escape_string($Beitrag['Sheadline']), 
+				mysql_real_escape_string($Beitrag['Sshorttext']), 
+				mysql_real_escape_string($Beitrag['Stext']), 
+				mysql_real_escape_string($Beitrag['Skeywords']));
 			mysql_query($query, $this->connection_ID);
 		}
 		public function delOneBeitrag($SID) {
 			$query = sprintf("DELETE FROM Beitrag
 				WHERE SID = %d
 				AND SID != 1
-				AND SID != 404", $SID);
+				AND SID != 404", 
+				mysql_real_escape_string($SID));
 			mysql_query($query, $this->connection_ID);
 		}
 		
@@ -279,13 +311,18 @@
 				Kpagetitle = '%s',
 				Klanguage = '%s',
 				Knosnippet = %s'
-				WHERE KID = 1", $Konfiguration['Kstylename'], $Konfiguration['Kpagetitle'],$Konfiguration['Klanguage'], $Konfiguration['Knosnippet']);
+				WHERE KID = 1", 
+				mysql_real_escape_string($Konfiguration['Kstylename']), 
+				mysql_real_escape_string($Konfiguration['Kpagetitle']),
+				mysql_real_escape_string($Konfiguration['Klanguage']), 
+				mysql_real_escape_string($Konfiguration['Knosnippet']));
 			mysql_query($query, $this->connection_ID);
 		}
 		
 		public function addEreignis($Etext) {
 			$query = sprintf("INSERT INTO Ereignis
-				VALUES(NULL, CURDATE(), '%s')", $Etext);
+				VALUES(NULL, CURDATE(), '%s')", 
+				mysql_real_escape_string($Etext));
 			mysql_query($query, $this->connection_ID);
 		}
 	}

@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	session_regenerate_id(TRUE);
 	$current_dir = getcwd();
 	chdir('../backend');
 	include('./a_dbconnector.php');

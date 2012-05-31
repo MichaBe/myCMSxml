@@ -43,7 +43,8 @@
 		public function getOneKategorie($CID) {
 			$query = sprintf("SELECT * 
 				FROM Kategorie 
-				WHERE CID = %d", $CID);
+				WHERE CID = %d", 
+				mysql_real_escape_string($CID));
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;
 			$returnarray = array();
@@ -83,7 +84,8 @@
 				AND Beitrag.CID != 1 
 				AND Beitrag.CID != 2 
 				AND Beitrag.CID != 3 
-				ORDER BY Slastmod DESC, Sreleased DESC", $CID);
+				ORDER BY Slastmod DESC, Sreleased DESC", 
+				mysql_real_escape_string($CID));
 			}
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;
@@ -101,7 +103,8 @@
 				WHERE Benutzer.UID = Beitrag.UID 
 				AND Beitrag.SID = %d 
 				AND Beitrag.CID = Kategorie.CID 
-				AND Beitrag.CID != 3", $SID);
+				AND Beitrag.CID != 3", 
+				mysql_real_escape_string($SID));
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;
 			$returnarray = array();
