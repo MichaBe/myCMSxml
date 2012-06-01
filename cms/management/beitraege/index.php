@@ -38,18 +38,22 @@
 				echo '<th>Kategorie</th>';
 				echo '<th>Author</th>';
 				echo '<th>Letzte &#196;nderung</th>';
-				echo '<th>Ver&#246;ffentlicht</th></tr>';
+				echo '<th>Ver&#246;ffentlicht</th>';
+				echo '<th colspan="2">Beitrag &#228;ndern</th></tr>';
 				for($i = 0; $i < count($alleBeitraege); $i++) {
 					echo '<tr>';
-					echo '<td><a href="Smask.php?SID='.$alleBeitraege[$i]['SID'].'">'.$alleBeitraege[$i]['Sheadline'].'</a></td>';
+					echo '<td>'.$alleBeitraege[$i]['Sheadline'].'</td>';
 					echo '<td>'.$alleBeitraege[$i]['Cname'].'</td>';
 					echo '<td>'.$alleBeitraege[$i]['Uname'].'</td>';
 					echo '<td>'.$alleBeitraege[$i]['Slastmod'].'</td>';
 					echo '<td>'.$alleBeitraege[$i]['Sreleased'].'</td>';
+					echo '<td><a href="Smask.php?SID='.$alleBeitraege[$i]['SID'].'">bearbeiten...</a></td>';
+					echo '<td><a href="delete.php?SID='.$alleBeitraege[$i]['SID'].'">l&#246;schen...</a></td>';
 					echo '</tr>';
 				}
 				
 				echo '</table>';
+				echo '<a href="Smask.php">Neuen Beitrag verfassen</a>';
 			?>
 		</div>
 	</body>

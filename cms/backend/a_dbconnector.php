@@ -115,6 +115,8 @@
 				FROM Benutzer, Beitrag, Kategorie
 				WHERE Benutzer.UID = Beitrag.UID
 				AND Kategorie.CID = Beitrag.CID
+				AND SID != 1
+				AND SID != 2
 				ORDER BY Slastmod DESC, Sreleased DESC";
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;
@@ -126,11 +128,11 @@
 			return $returnarray;
 		}
 		public function getOneBeitrag($SID) {
-			$query = sprintf("SELECT SID, Cname, CID, Sheadline, Sshorttext, Stext, Skeywords
+			$query = sprintf("SELECT SID, Cname, Beitrag.CID, Sheadline, Sshorttext, Stext, Skeywords
 				FROM Beitrag, Kategorie
 				WHERE Beitrag.CID = Kategorie.CID
 				AND Beitrag.SID = %d", 
-				mysql_real_escape_string($SID));
+				$SID);
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;
 			$returnarray = array();
