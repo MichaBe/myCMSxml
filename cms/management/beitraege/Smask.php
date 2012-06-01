@@ -12,8 +12,22 @@
 		unset($myADBconnector);
 		header('Location: http://'.$_SERVER['HTTP_HOST'].'/cms/management/index.php');
 	}
-	
 	$currentUser = $myADBConnector->getOneBenutzerByNameOrID($_SESSION['UID']);
+	
+	$currentBeitrag = array();
+	$currentBeitrag[0] = array();
+	$currentBeitrag[0]['Sheadline'] = "";
+	$currentBeitrag[0]['Sshorttext'] = "Ein kurzer Beschreibungstext...";
+	$currentBeitrag[0]['Skeywords'] = "Ihre Schl&#252;ssselw&#246;rter, Kommagetrennt";
+	$currentBeitrag[0]['Stext'] = "";
+	$currentBeitrag[0]['CID'] = "3";
+	
+	
+	if(isset($_GET['SID'])) {
+		$tempBeitrag = $myADBConnector->getOneBeitrag($_GET['SID']);
+		if(isset($tempBeitrag[0]['SID']))
+			$currentBeitrag = $tempBeitrag;
+	}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
@@ -28,29 +42,20 @@
 			<?php
 				echo '<h1>Herzlich willkommen, '.$currentUser[0]['Uname'].'</h1>';
 			?>
-			<h2>Verwalten sie hier die Beitr&#228;ge</h2>
-			<a href="../">zurück zur Hauptseite</a>
-			<?php
-				$alleBeitraege = $myADBConnector->getAllBeitraege();
+			<h2>Beitrag bearbeiten</h2>
+			<a href="index.php">zur&#252;ck zur Beitrags&#252;bersicht</a>
+			<form action="save.php">
+				<?php
+					echo '&#220;berschrift: <input name="headline" type="text" size="30" maxlength="30" value="'.$currentBeitrag[0]['Sheadline'].'" />';
+					//echo 'Kategorie: <input type=''<br />';
+					echo 'Schl&#252;sselw&#246;rter: <input name="keywords" type="text" size="60" maxlength="60" value="'.$currentBeitrag[0]['Skeywords'].'" /><br />';
+					echo 'Vorschautext:<br />';
+					echo '<textarea name="shorttext">'.$currentBeitrag[0]['Sshorttext'].'</textarea><br />';
+					echo 'Ihr Beitrag:<br />';
+					echo '<textarea name="text">'.$currentBeitrag[0]['Stext'].'</textarea>';
+				?>
 				
-				echo '<table><tr>';
-				echo '<th>&#220;berschrift</th>';
-				echo '<th>Kategorie</th>';
-				echo '<th>Author</th>';
-				echo '<th>Letzte &#196;nderung</th>';
-				echo '<th>Ver&#246;ffentlicht</th></tr>';
-				for($i = 0; $i < count($alleBeitraege); $i++) {
-					echo '<tr>';
-					echo '<td><a href="Smask.php?SID='.$alleBeitraege[$i]['SID'].'">'.$alleBeitraege[$i]['Sheadline'].'</a></td>';
-					echo '<td>'.$alleBeitraege[$i]['Cname'].'</td>';
-					echo '<td>'.$alleBeitraege[$i]['Uname'].'</td>';
-					echo '<td>'.$alleBeitraege[$i]['Slastmod'].'</td>';
-					echo '<td>'.$alleBeitraege[$i]['Sreleased'].'</td>';
-					echo '</tr>';
-				}
-				
-				echo '</table>';
-			?>
+			</form>
 		</div>
 	</body>
 	<?php
