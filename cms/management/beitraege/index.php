@@ -29,7 +29,7 @@
 				echo '<h1>Herzlich willkommen, '.$currentUser[0]['Uname'].'</h1>';
 			?>
 			<h2>Verwalten sie hier die Beitr&#228;ge</h2>
-			<a href="../">zurück zur Hauptseite</a>
+			<a href="../">zur&#252;ck zur Hauptseite</a>
 			<?php
 				$alleBeitraege = $myADBConnector->getAllBeitraege();
 				
