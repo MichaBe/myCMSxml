@@ -1,0 +1,105 @@
+h1 {
+	font-family: 'Ribeye Marrow', cursive;
+	font-weight: bold;
+}
+
+body {
+	padding-left: 5%;
+	padding-right: 5%;
+	font-family: 'Voces', cursive;
+}
+
+.header {
+	border: none;
+	padding: 0%;
+	padding-left: 5%;
+	margin: 0%;
+	width: 100%;
+}
+
+.navigation {
+	margin-top: 1.25%;
+	padding-left: 0%;
+}
+
+.navigation .aktiv {
+	box-shadow: 3px -3px  3px #777777;
+}
+
+.navigation ul {
+	width: 100%;
+	display: inline;
+	margin-left: 1.5%;
+	list-style-type: none;
+}
+
+.navigation li {
+	margin-right: 0.5%;
+	padding-left: 4px;
+	padding-right: 4px;
+	border: 2px solid #333333;
+	border-bottom: none;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	display: inline;
+	font-family: 'Ribeye Marrow', cursive;
+	font-weight: bold;
+}
+
+.navigation a {
+	color: black;
+	text-decoration: none;
+}
+
+.inhalt {
+	box-shadow: 3px -3px  3px #777777;
+	background-color: #FFE57B;
+	padding: 2%;
+	border-radius: 5px;
+}
+
+.oneSnippet {
+	margin: 10px;
+	padding: 10px;
+}
+
+.inhalt a {
+	color: #09596c;
+	text-decoration: underline;
+}
+
+.inhalt a:hover {
+	color: #11aed5;
+	text-decoration: none;
+}
+
+.oneSnippet ul {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.oneSnippet li {
+	color: #777777;
+	display: inline;
+	margin-right: 10%;
+	font-size: smaller;
+	padding: 0px;
+}
+
+.oneSnippet h2 {
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+.inhalt #home  				{ border: 2px dashed #FFE57B; }
+.inhalt #websnippets 		{ border: 2px dashed #E80000; }
+.inhalt #codesnippets  		{ border: 2px dashed #36C736; }
+.inhalt #kontaktUebermich 	{ border: 2px dashed #8D75FF; }
+.inhalt #rechtliches  		{ border: 2px dashed #F69B26; }
+
+.navigation #home				{ background-color: #FFE57B; }
+.navigation #websnippets 		{ background-color: #E80000; }
+.navigation #codesnippets		{ background-color: #36C736; }
+.navigation #kontaktUebermich	{ background-color: #8D75FF; }
+.navigation #rechtliches		{ background-color: #F69B26; }
