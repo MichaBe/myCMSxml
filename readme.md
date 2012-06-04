@@ -41,7 +41,8 @@ was ihm gefällt, und wo noch was fehlt. Ich bin offen für neues, solange das S
 Hier noch ein kleiner Überblick, was auf meiner derzeitigen ToDo-Liste steht:
 
 * Fertigstellen des Backends für die Benutzer (Wahrscheinlich meine Baustelle für die nächsten Wochen ;) )
-* RSS / Atom - Feeds ermöglichen 
+* RSS / Atom - Feeds ermöglichen
+* Screenshoots vom (fertigen Teil des) Backend 
 * ... To be continued.
 
 Gerne nehm ich hier noch Ideen auf. An andere php-Entwickler: Gerne könnt ihr dieses Projekt forken. 

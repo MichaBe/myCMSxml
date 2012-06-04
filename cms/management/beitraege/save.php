@@ -20,11 +20,19 @@
 	$newBeitrag['Stext'] = $_POST['text'];
 	$newBeitrag['Skeywords'] = $_POST['keywords'];
 	
-	if(isset($_POST['ID']))
+	if(isset($_POST['ID'])) {
 		$myADBConnector->changeOneBeitrag($_POST['ID'], $newBeitrag);
+		
+		$currentUser = $myADBConnector->getOneBenutzerByNameOrID($_SESSION['UID']);
+		$myADBConnector->addEreignis('Benutzer '.$currentUser[0]['Uname'].' &#228;ndert Beitrag "'.$newBeitrag['Sheadline'].'" (ID '.$_POST['ID'].')');
+	}
 	else {
 		$newBeitrag['UID'] = $_SESSION['UID'];
 		$myADBConnector->addOneBeitrag($newBeitrag);
+		
+		$currentUser = $myADBConnector->getOneBenutzerByNameOrID($_SESSION['UID']);
+		$myADBConnector->addEreignis('Benutzer '.$currentUser[0]['Uname'].' erstellt Beitrag "'.$newBeitrag['Sheadline'].'"');
+	
 	}
 	header('Location: http://'.$_SERVER['HTTP_HOST'].'/cms/management/beitraege/index.php');
 ?>

@@ -52,7 +52,7 @@
 			return $returnarray;
 		}
 		public function getOneBenutzer($UID) {
-			$query = sprintf("SELECT XID, Xvalue, Rtopic
+			$query = sprintf("SELECT XID, Xvalue, Rtopic, Rshort
 				FROM Rolle, Berechtigung, Benutzer
 				WHERE Benutzer.UID = Berechtigung.UID
 				AND Rolle.RID = Berechtigung.RID

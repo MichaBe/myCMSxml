@@ -129,6 +129,7 @@ body {
 }
 .footer li {
 	margin: 0px;
+	margin-right: 15px;
 	padding: 0px;
 	display: inline;
 }
