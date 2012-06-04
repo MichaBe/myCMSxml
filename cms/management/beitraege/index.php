@@ -34,6 +34,7 @@
 				$alleBeitraege = $myADBConnector->getAllBeitraege();
 				
 				echo '<table><tr>';
+				echo '<th>ID</th>';
 				echo '<th>&#220;berschrift</th>';
 				echo '<th>Kategorie</th>';
 				echo '<th>Author</th>';
@@ -42,6 +43,7 @@
 				echo '<th colspan="2">Beitrag &#228;ndern</th></tr>';
 				for($i = 0; $i < count($alleBeitraege); $i++) {
 					echo '<tr>';
+					echo '<td>'.$alleBeitraege[$i]['SID'].'</td>';
 					echo '<td>'.$alleBeitraege[$i]['Sheadline'].'</td>';
 					echo '<td>'.$alleBeitraege[$i]['Cname'].'</td>';
 					echo '<td>'.$alleBeitraege[$i]['Uname'].'</td>';

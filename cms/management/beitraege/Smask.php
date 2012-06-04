@@ -22,11 +22,13 @@
 	$currentBeitrag[0]['Stext'] = "";
 	$currentBeitrag[0]['CID'] = "3";
 	
-	
+	$newBeitrag = TRUE;
 	if(isset($_GET['SID'])) {
 		$tempBeitrag = $myADBConnector->getOneBeitrag($_GET['SID']);
-		if(isset($tempBeitrag[0]['SID']))
+		if(isset($tempBeitrag[0]['SID'])) {
+			$newBeitrag = FALSE;
 			$currentBeitrag = $tempBeitrag;
+		}
 	}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -63,6 +65,8 @@
 					echo '<textarea name="shorttext">'.$currentBeitrag[0]['Sshorttext'].'</textarea><br />';
 					echo 'Ihr Beitrag:<br />';
 					echo '<textarea name="text">'.$currentBeitrag[0]['Stext'].'</textarea>';
+					if(!$newBeitrag)
+						echo '<input type="hidden" name="ID" value="'.$_GET['SID'].'" />';
 				?>
 				<br />
 				<input type="submit" value="speichern" />

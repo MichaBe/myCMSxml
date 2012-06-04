@@ -1,6 +1,7 @@
 CREATE TABLE Rolle (
 	RID INT NOT NULL AUTO_INCREMENT,
-	Rtopic CHAR(40) NOT NULL,
+	Rtopic CHAR(40),
+	Rshort CHAR(20),
 	PRIMARY KEY(RID)
 );
 			
@@ -104,13 +105,13 @@ INSERT INTO Kategorie VALUES(2, NULL, 'HIDDEN', NULL);
 INSERT INTO Kategorie VALUES(3, NULL, 'DRAFT', NULL);
 INSERT INTO Kategorie VALUES(4, NULL, 'Startseite', NULL);
 
-INSERT INTO Rolle VALUES(1, 'Am System anmelden');
-INSERT INTO Rolle VALUES(2, 'Beitr&#228;ge verwalten');
-INSERT INTO Rolle VALUES(3, 'Kategorien verwalten');
-INSERT INTO Rolle VALUES(4, 'Benutzer und Berechtigungen verwalten');
-INSERT INTO Rolle VALUES(5, 'Allgemeine Konfiguration &#228;ndern');
-INSERT INTO Rolle VALUES(6, 'Ereignislog einsehen');
-INSERT INTO Rolle VALUES(7, 'Hilfe aufrufen');
+INSERT INTO Rolle VALUES(1, 'Am System anmelden', 'anmelden');
+INSERT INTO Rolle VALUES(2, 'Beitr&#228;ge verwalten', 'beitraege');
+INSERT INTO Rolle VALUES(3, 'Kategorien verwalten', 'kategorien');
+INSERT INTO Rolle VALUES(4, 'Benutzer und Berechtigungen verwalten', 'benutzer');
+INSERT INTO Rolle VALUES(5, 'Allgemeine Konfiguration &#228;ndern', 'konfiguration');
+INSERT INTO Rolle VALUES(6, 'Ereignislog einsehen', 'ereignisse');
+INSERT INTO Rolle VALUES(7, 'Hilfe aufrufen', 'hilfe');
 
 INSERT INTO Berechtigung VALUES(NULL, 1, 1, TRUE);
 INSERT INTO Berechtigung VALUES(NULL, 1, 2, TRUE);
@@ -122,5 +123,5 @@ INSERT INTO Berechtigung VALUES(NULL, 1, 7, TRUE);
 
 INSERT INTO Konfiguration VALUES(1, 'konservativ', 'myCMS.xml', NULL, 'deutsch', 'Hier wurde noch kein Beitrag ver&#246;ffentlicht');
 
-INSERT INTO Beitrag VALUES(1, 1, 1, 'myCMSxml', NULL, '<p align="center"><form action="cms/management/login.php" method="post"><table><tr><td>Benutzername:</td><td><input type="text" name="username"/></td></tr><tr><td>Passwort:</td><td><input type="password" name="passwort"/></td></tr></table><input type="submit" value="Anmelden"/></form></p>', CURDATE(), CURDATE(), NULL);
-INSERT INTO Beitrag VALUES(2, 1, 2, 'Error 404', NULL, '<h1>Die von Ihnen gesuchte Seite konnte leider nicht gefunden werden</h1>Wir bitten, dies zu entschuldigen.', CURDATE(), CURDATE(), NULL);
+INSERT INTO Beitrag VALUES(1, 1, 1, 'myCMSxml', NULL, '<p align="center"><form action="cms/management/login.php" method="post"><table><tr><td>Benutzername:</td><td><input type="text" name="username"/></td></tr><tr><td>Passwort:</td><td><input type="password" name="passwort"/></td></tr></table><input type="submit" value="Anmelden"/></form></p>', '2012-05-20', '2012-05-20', NULL);
+INSERT INTO Beitrag VALUES(2, 1, 2, 'Error 404', NULL, '<h1>Die von Ihnen gesuchte Seite konnte leider nicht gefunden werden</h1>Wir bitten, dies zu entschuldigen.', '2012-05-20', 2012-05-20', NULL);
