@@ -25,28 +25,36 @@
 	</head>
 	<body>
 		<div class="wrapper">
-			<?php
-				echo '<h1>Herzlich willkommen, '.$currentUser[0]['Uname'].'</h1>';
-			?>
-			<h2>Was m&#246;chten Sie tun?</h2>
-			<ul>
+			<div class="navigation">
+				<ul>
+					<?php
+						for($i = 1; $i < count($currentRights); $i++) {
+							if($currentRights[$i]['Xvalue'] == 1)
+								echo '<li><a href="'.$currentRights[$i]['Rshort'].'/">'.$currentRights[$i]['Rtopic'].'</a></li>';
+						}						
+						echo '<li><a href="logout.php">Vom System abmelden</a></li>';
+					?>
+				</ul>
+			</div>
+			<div class="inhalt">
 				<?php
-					if($currentRights[1]['Xvalue'] == 1)
-						echo '<li><a href="beitraege/">Beitr&#228;ge verwalten</a></li>';
-					if($currentRights[2]['Xvalue'] == 1)
-						echo '<li><a href="#">Kategorien verwalten</a></li>';
-					if($currentRights[3]['Xvalue'] == 1)
-						echo '<li><a href="#">Benutzer und Berechtigungen verwalten</a></li>';
-					if($currentRights[4]['Xvalue'] == 1)
-						echo '<li><a href="#">Allgemeine Konfiguration &#228;ndern</a></li>';
-					if($currentRights[5]['Xvalue'] == 1)
-						echo '<li><a href="#">Ereignislog einsehen</a></li>';
-					if($currentRights[6]['Xvalue'] == 1)
-						echo '<li><a href="#">Hilfe aufrufen</a></li>';
-					
-					echo '<li><a href="logout.php">Vom System abmelden</a></li>';
+					echo '<h1>Herzlich willkommen, '.$currentUser[0]['Uname'].'</h1>';
 				?>
-			</ul>
+				<h2>Was m&#246;chten Sie tun?</h2>
+			</div>
+			<div class="footer">
+				<ul>
+					<?php
+						$currentConfig = $myADBConnector->getKonfiguration();
+						
+						echo '<li>'.date("d.m.Y", time()).'</li>';
+						echo '<li><a href="https://github.com/MichaBe/myCMSxml" target="_blank">myCMSxml auf github</a></li>';
+						echo '<li>Lizenz: <a rel="license" href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a></li>';
+						echo '<li>Version '.$currentConfig[0]['Kversion'].'</li>';
+					?>
+				</ul>
+				
+			</div>
 		</div>
 	</body>
 	<?php

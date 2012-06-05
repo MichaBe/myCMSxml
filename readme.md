@@ -1,6 +1,9 @@
 myCMSxml - Ein php-Projekt
 ==========================
 
+Aktuelle Version: 0.0.1, Lizenz: CC BY 3.0
+------------------------------------------
+
 #### Ein kleiner Rückblick ####
 myCMSxml ist ein kleines Projekt, das ich vor ca. 4 Monaten (Anfang 2012) begonnen hatte,
 um mir selbst php beizubringen. In den ersten Versionen bassierte dieses 'CMS', wie man es da
