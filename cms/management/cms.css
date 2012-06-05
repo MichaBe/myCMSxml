@@ -40,6 +40,48 @@ body {
 	margin-left: 15px;
 	margin-bottom: 15px;
 }
+.inhalt table {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.inhalt td, th {
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+.inhalt tr:nth-child(even) {
+	background-color: #FFF58E;
+}
+.inhalt tr:nth-child(odd) {
+	background-color: #F4E64B;
+}
+
+.inhalt tr {
+	color: #847C26;
+}
+.inhalt tr:first-child {
+	color: #5B551A;
+}
+.inhalt #important_red:hover {
+	background-color: #F2614B;
+}
+.inhalt #important_green {
+	padding: 4px;
+	margin-top: 4px;
+	font-weight: bold;
+	color: #4DB231;
+}
+.inhalt #important_green:hover {
+	color: #4DB231;
+	background-color: #70F44B;
+	text-decoration: none;
+}
+.inhalt table a {
+	color: #5B551A;
+}
+.inhalt table a:hover {
+	text-decoration: none;
+}
 
 .footer {
 	text-align: center;
@@ -55,6 +97,9 @@ body {
 .footer a {
 	font-weight: bold;
 	color: #4DB231;
+}
+.footer a:hover {
+	text-decoration: none;
 }
 .footer ul {
 	margin: 0px;

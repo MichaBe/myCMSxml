@@ -28,6 +28,7 @@
 			<div class="navigation">
 				<ul>
 					<?php
+						echo '<li><a href="../">Zur Startseite</a></li>';
 						for($i = 1; $i < count($currentRights); $i++) {
 							if($currentRights[$i]['Xvalue'] == 1)
 								echo '<li><a href="../'.$currentRights[$i]['Rshort'].'/">'.$currentRights[$i]['Rtopic'].'</a></li>';
@@ -39,6 +40,8 @@
 			<div class="inhalt">
 				<h2>Verwalten sie hier die Beitr&#228;ge</h2>
 				<?php
+					echo '<a href="Smask.php" id="important_green">Neuen Beitrag verfassen</a>';
+				
 					$alleBeitraege = $myADBConnector->getAllBeitraege();
 					
 					echo '<table><tr>';
@@ -57,13 +60,12 @@
 						echo '<td>'.$alleBeitraege[$i]['Uname'].'</td>';
 						echo '<td>'.$alleBeitraege[$i]['Slastmod'].'</td>';
 						echo '<td>'.$alleBeitraege[$i]['Sreleased'].'</td>';
-						echo '<td><a href="Smask.php?SID='.$alleBeitraege[$i]['SID'].'">bearbeiten...</a></td>';
-						echo '<td><a href="delete.php?SID='.$alleBeitraege[$i]['SID'].'">l&#246;schen...</a></td>';
+						echo '<td><a href="Smask.php?SID='.$alleBeitraege[$i]['SID'].'">bearbeiten</a></td>';
+						echo '<td id="important_red"><a href="delete.php?SID='.$alleBeitraege[$i]['SID'].'">l&#246;schen</a></td>';
 						echo '</tr>';
 					}
 					
 					echo '</table>';
-					echo '<a href="Smask.php">Neuen Beitrag verfassen</a>';
 				?>
 			</div>
 			<?php include('../../backend/formanagement/getfooter.php'); ?>
