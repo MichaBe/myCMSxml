@@ -1,5 +1,19 @@
-h1 {
-	font-family: 'Ribeye Marrow', cursive;
+@font-face {
+    font-family: 'Ribeye Marrow';
+    src: url('RibeyeMarrow-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Voces';
+    src: url('Voces-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1, .header {
+	font-size: xx-large;
+	font-family: 'Ribeye Marrow';
 	font-weight: bold;
 }
 
@@ -17,23 +31,23 @@ body {
 	width: 100%;
 }
 
-.navigation {
+.categories {
 	margin-top: 1.25%;
 	padding-left: 0%;
 }
 
-.navigation .aktiv {
+.categories .aktiv {
 	box-shadow: 3px -3px  3px #777777;
 }
 
-.navigation ul {
+.categories ul {
 	width: 100%;
 	display: inline;
 	margin-left: 1.5%;
 	list-style-type: none;
 }
 
-.navigation li {
+.categories li {
 	margin-right: 0.5%;
 	padding-left: 4px;
 	padding-right: 4px;
@@ -46,7 +60,7 @@ body {
 	font-weight: bold;
 }
 
-.navigation a {
+.categories a {
 	color: black;
 	text-decoration: none;
 }
@@ -58,7 +72,7 @@ body {
 	border-radius: 5px;
 }
 
-.oneSnippet {
+.snippet {
 	margin: 10px;
 	padding: 10px;
 }
@@ -73,13 +87,13 @@ body {
 	text-decoration: none;
 }
 
-.oneSnippet ul {
+.snippet ul {
 	list-style-type: none;
 	margin: 0px;
 	padding: 0px;
 }
 
-.oneSnippet li {
+.snippet li {
 	color: #777777;
 	display: inline;
 	margin-right: 10%;
@@ -87,19 +101,36 @@ body {
 	padding: 0px;
 }
 
-.oneSnippet h2 {
+.snippet h2 {
 	margin-top: 2px;
 	margin-bottom: 2px;
 }
 
-.inhalt #home  				{ border: 2px dashed #FFE57B; }
-.inhalt #websnippets 		{ border: 2px dashed #E80000; }
-.inhalt #codesnippets  		{ border: 2px dashed #36C736; }
-.inhalt #kontaktUebermich 	{ border: 2px dashed #8D75FF; }
-.inhalt #rechtliches  		{ border: 2px dashed #F69B26; }
+.categories li:nth-child(1)	{ background-color: #FFE57B; }
+.categories li:nth-child(2)	{ background-color: #E80000; }
+.categories li:nth-child(3)	{ background-color: #36C736; }
+.categories li:nth-child(4)	{ background-color: #8D75FF; }
+.categories li:nth-child(5)	{ background-color: #F69B26; }
 
-.navigation #home				{ background-color: #FFE57B; }
-.navigation #websnippets 		{ background-color: #E80000; }
-.navigation #codesnippets		{ background-color: #36C736; }
-.navigation #kontaktUebermich	{ background-color: #8D75FF; }
-.navigation #rechtliches		{ background-color: #F69B26; }
+.footer ul {
+	margin: 0px;
+	padding: 0px;
+	margin-top: 20px;
+	margin-left: 20px;
+	list-style-type: none;
+}
+.footer li {
+	display: inline;
+	padding: 0px;
+	margin: 0px;
+	margin-right: 10px;
+}
+.footer a {
+	color: #09596c;
+	text-decoration: underline;
+	font-size: x-small;
+}
+.footer a:hover {
+	color: #11aed5;
+	text-decoration: none;
+}

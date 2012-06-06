@@ -83,6 +83,18 @@ body {
 	text-decoration: none;
 }
 
+
+.inhalt #shorttext {
+	width: 600px;
+	height: 50px;
+	max-height: 50px;
+}
+.inhalt #text {
+	width: 600px;
+	height: 500px;
+	max-height: 750px;
+}
+
 .footer {
 	text-align: center;
 	padding: 0px;
