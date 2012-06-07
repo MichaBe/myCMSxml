@@ -71,7 +71,7 @@
 		public function getAllKategorien() {
 			$query = "SELECT CID, Cname, Ckeywords 
 				FROM Kategorie
-				ORDER BY Cname";
+				ORDER BY CID DESC";
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;
 			$returnarray = array();
@@ -132,7 +132,7 @@
 				FROM Beitrag, Kategorie
 				WHERE Beitrag.CID = Kategorie.CID
 				AND Beitrag.SID = %d", 
-				$SID);
+				mysql_real_escape_string($SID));
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;
 			$returnarray = array();
@@ -251,6 +251,18 @@
 			}
 		}
 		
+		public function changeOneKategorie($CID, $Kategorie) {
+			$query = sprintf("UPDATE Kategorie
+				SET Cshorttext = '%s',
+				Cname = '%s',
+				Ckeywords = '%s'
+				WHERE CID = %d", 
+				mysql_real_escape_string($Kategorie['Cshorttext']), 
+				mysql_real_escape_string($Kategorie['Cname']), 
+				mysql_real_escape_string($Kategorie['Ckeywords']),
+				mysql_real_escape_string($CID));
+			mysql_query($query, $this->connection_ID);
+		}
 		public function addOneKategorie($Kategorie) {
 			$query = sprintf("INSERT INTO Kategorie
 				VALUES(NULL, '%s', '%s', '%s')", 
@@ -304,6 +316,13 @@
 				AND SID != 1
 				AND SID != 404", 
 				mysql_real_escape_string($SID));
+			mysql_query($query, $this->connection_ID);
+		}
+		public function movetoHIDDENfromOneKategorie($CID) {
+			$query = sprintf("UPDATE Beitrag
+				SET CID = 2
+				WHERE CID = %d", 
+				mysql_real_escape_string($CID));
 			mysql_query($query, $this->connection_ID);
 		}
 		
