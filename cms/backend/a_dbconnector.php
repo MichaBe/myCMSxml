@@ -52,11 +52,12 @@
 			return $returnarray;
 		}
 		public function getOneBenutzer($UID) {
-			$query = sprintf("SELECT XID, Xvalue, Rtopic, Rshort
+			$query = sprintf("SELECT Berechtigung.RID, Xvalue, Rtopic, Rshort
 				FROM Rolle, Berechtigung, Benutzer
 				WHERE Benutzer.UID = Berechtigung.UID
 				AND Rolle.RID = Berechtigung.RID
-				AND Benutzer.UID = %d", 
+				AND Benutzer.UID = %d
+				ORDER BY Berechtigung.RID", 
 				mysql_real_escape_string($UID));
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;

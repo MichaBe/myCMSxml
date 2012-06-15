@@ -8,7 +8,7 @@
 	$myADBConnector = new advanced_dbconnector();
 	$currentRights = $myADBConnector->getOneBenutzer($_SESSION['UID']);
 	
-	if($currentRights[1]['Xvalue'] != 1) {
+	if($currentRights[2]['Xvalue'] != 1) {
 		unset($myADBconnector);
 		header('Location: http://'.$_SERVER['HTTP_HOST'].'/cms/management/index.php');
 	}
