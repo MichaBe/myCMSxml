@@ -74,8 +74,11 @@
 						echo '<textarea name="shorttext" id="shorttext">'.$currentBeitrag[0]['Sshorttext'].'</textarea><br />';
 						echo 'Ihr Beitrag:<br />';
 						echo '<textarea name="text" id="text">'.$currentBeitrag[0]['Stext'].'</textarea>';
-						if(!$newBeitrag)
+						if(!$newBeitrag) {
 							echo '<input type="hidden" name="ID" value="'.$_GET['SID'].'" />';
+							if($currentBeitrag[0]['CID'] == 3)
+								echo '<input type="hidden" name="released" value="'.date("d.m.Y", time()).'" />';
+						}
 					?>
 					<br />
 					<input type="submit" value="speichern" />

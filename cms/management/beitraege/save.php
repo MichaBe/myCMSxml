@@ -18,6 +18,8 @@
 	$newBeitrag['Sheadline'] = $_POST['headline'];
 	$newBeitrag['Sshorttext'] = $_POST['shorttext'];
 	$newBeitrag['Stext'] = $_POST['text'];
+	if(isset($_POST['released']))
+		$newBeitrag['Sreleased'] = TRUE;
 	$newBeitrag['Skeywords'] = $_POST['keywords'];
 	
 	if(isset($_POST['ID'])) {

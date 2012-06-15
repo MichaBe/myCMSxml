@@ -289,14 +289,24 @@
 				Sshorttext = '%s',
 				Stext = '%s',
 				Slastmod = CURDATE(),
-				Skeywords = '%s'
-				WHERE SID = %d", 
+				Skeywords = '%s'", 
 				mysql_real_escape_string($Beitrag['CID']), 
 				mysql_real_escape_string($Beitrag['Sheadline']), 
 				mysql_real_escape_string($Beitrag['Sshorttext']), 
-				mysql_real_escape_string($Beitrag['Stext']), 
-				mysql_real_escape_string($Beitrag['Skeywords']), 
-				mysql_real_escape_string($SID));
+				mysql_real_escape_string($Beitrag['Stext']),
+				mysql_real_escape_string($Beitrag['Skeywords']));
+			if($Beitrag['Sreleased'] == TRUE)
+				$query = sprintf("%s, 
+					Sreleased = CURDATE()
+					WHERE SID = %d",
+					$query,
+					mysql_real_escape_string($SID));
+			else
+				$query = sprintf("%s
+					WHERE SID = %d",
+					$query,
+					mysql_real_escape_string($SID));
+				
 			mysql_query($query, $this->connection_ID);
 		}
 		public function addOneBeitrag($Beitrag) {

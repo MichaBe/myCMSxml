@@ -98,12 +98,15 @@ ALTER TABLE Hilfebeitrag
 		FOREIGN KEY (HCID)
 		REFERENCES Hilfekategorie(HCID);
 
-INSERT INTO Benutzer VALUES(1, 'Administrator', '8a974b0407e3f2f3bd9e1aa995563a7c');			
+INSERT INTO Benutzer VALUES(1, 'Administrator', '8a974b0407e3f2f3bd9e1aa995563a7c');
+INSERT INTO Benutzer VALUES(2, 'Anonymous', 'd7a851cca17e12678069be57985832cc');
+
 			
 INSERT INTO Kategorie VALUES(1, NULL, 'FOOTER', NULL);
 INSERT INTO Kategorie VALUES(2, NULL, 'HIDDEN', NULL);
 INSERT INTO Kategorie VALUES(3, NULL, 'DRAFT', NULL);
 INSERT INTO Kategorie VALUES(4, NULL, 'Startseite', NULL);
+
 
 INSERT INTO Rolle VALUES(1, 'Am System anmelden', 'anmelden');
 INSERT INTO Rolle VALUES(2, 'Beitr&#228;ge verwalten', 'beitraege');
@@ -113,6 +116,7 @@ INSERT INTO Rolle VALUES(5, 'Allgemeine Konfiguration &#228;ndern', 'konfigurati
 INSERT INTO Rolle VALUES(6, 'Ereignislog einsehen', 'ereignisse');
 INSERT INTO Rolle VALUES(7, 'Hilfe aufrufen', 'hilfe');
 
+
 INSERT INTO Berechtigung VALUES(NULL, 1, 1, TRUE);
 INSERT INTO Berechtigung VALUES(NULL, 1, 2, TRUE);
 INSERT INTO Berechtigung VALUES(NULL, 1, 3, TRUE);
@@ -121,9 +125,20 @@ INSERT INTO Berechtigung VALUES(NULL, 1, 5, TRUE);
 INSERT INTO Berechtigung VALUES(NULL, 1, 6, TRUE);
 INSERT INTO Berechtigung VALUES(NULL, 1, 7, TRUE);
 
+INSERT INTO Berechtigung VALUES(NULL, 2, 1, FALSE);
+INSERT INTO Berechtigung VALUES(NULL, 2, 2, FALSE);
+INSERT INTO Berechtigung VALUES(NULL, 2, 3, FALSE);
+INSERT INTO Berechtigung VALUES(NULL, 2, 4, FALSE);
+INSERT INTO Berechtigung VALUES(NULL, 2, 5, FALSE);
+INSERT INTO Berechtigung VALUES(NULL, 2, 6, FALSE);
+INSERT INTO Berechtigung VALUES(NULL, 2, 7, FALSE);
+
+
 INSERT INTO Konfiguration VALUES(1, 'konservativ', 'myCMS.xml', '0.0.1', 'deutsch', 'Hier wurde noch kein Beitrag ver&#246;ffentlicht');
+
 
 INSERT INTO Beitrag VALUES(1, 1, 1, 'myCMSxml', NULL, '<p align="center"><form action="cms/management/login.php" method="post"><table><tr><td>Benutzername:</td><td><input type="text" name="username"/></td></tr><tr><td>Passwort:</td><td><input type="password" name="passwort"/></td></tr></table><input type="submit" value="Anmelden"/></form></p>', '2012-05-20', '2012-05-20', NULL);
 INSERT INTO Beitrag VALUES(2, 1, 2, 'Error 404', NULL, '<h1>Die von Ihnen gesuchte Seite konnte leider nicht gefunden werden</h1>Wir bitten, dies zu entschuldigen.', '2012-05-20', '2012-05-20', NULL);
+
 
 INSERT INTO Ereignis VALUES(NULL, CURDATE(), 'Administrator installiert myCMSxml');

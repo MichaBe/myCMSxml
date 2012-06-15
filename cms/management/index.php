@@ -28,7 +28,7 @@
 			<div class="navigation">
 				<ul>
 					<?php
-						echo '<li><a href="../">Zur Startseite</a></li>';
+						echo '<li><a href="#">Zur Startseite</a></li>';
 						for($i = 1; $i < count($currentRights); $i++) {
 							if($currentRights[$i]['Xvalue'] == 1)
 								echo '<li><a href="'.$currentRights[$i]['Rshort'].'/">'.$currentRights[$i]['Rtopic'].'</a></li>';
