@@ -311,7 +311,7 @@
 		}
 		public function addOneBeitrag($Beitrag) {
 			$query = sprintf("INSERT INTO Beitrag
-				VALUES(NULL, %d, %d, '%s', '%s', '%s', CURDATE(), CURDATE(), Skeywords = '%s')",
+				VALUES(NULL, %d, %d, '%s', '%s', '%s', CURDATE(), CURDATE(), '%s')",
 				mysql_real_escape_string($Beitrag['UID']), 
 				mysql_real_escape_string($Beitrag['CID']), 
 				mysql_real_escape_string($Beitrag['Sheadline']), 

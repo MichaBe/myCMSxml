@@ -22,6 +22,8 @@
 		$newBeitrag['Sreleased'] = TRUE;
 	$newBeitrag['Skeywords'] = $_POST['keywords'];
 	
+	var_dump($newBeitrag);
+	
 	if(isset($_POST['ID'])) {
 		$myADBConnector->changeOneBeitrag($_POST['ID'], $newBeitrag);
 		
