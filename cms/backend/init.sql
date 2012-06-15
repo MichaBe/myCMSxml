@@ -141,4 +141,4 @@ INSERT INTO Beitrag VALUES(1, 1, 1, 'myCMSxml', NULL, '<p align="center"><form a
 INSERT INTO Beitrag VALUES(2, 1, 2, 'Error 404', NULL, '<h1>Die von Ihnen gesuchte Seite konnte leider nicht gefunden werden</h1>Wir bitten, dies zu entschuldigen.', '2012-05-20', '2012-05-20', NULL);
 
 
-INSERT INTO Ereignis VALUES(NULL, CURDATE(), 'Administrator installiert myCMSxml');
+INSERT INTO Ereignis VALUES(NULL, CURDATE(), 'Benutzer Administrator installiert myCMSxml');
