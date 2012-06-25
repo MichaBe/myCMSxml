@@ -54,7 +54,7 @@
 						echo '<td>'.$alleKategorien[$i]['CID'].'</td>';
 						echo '<td>'.$alleKategorien[$i]['Cname'].'</td>';
 						echo '<td>'.$alleKategorien[$i]['Ckeywords'].'</td>';
-						echo '<td><a href="Cmask.php?CID='.$alleKategorien[$i]['CID'].'">bearbeiten</a></td>';
+						echo '<td id="important_green"><a href="Cmask.php?CID='.$alleKategorien[$i]['CID'].'">bearbeiten</a></td>';
 						if($alleKategorien[$i]['CID'] <= 4)
 							echo '<td>l&#246;schen</td>';
 						else

@@ -1,5 +1,5 @@
 body {
-	background-color: #E0E0E0;
+	background-color: #FFFFCC;
 }
 
 .wrapper {
@@ -8,7 +8,7 @@ body {
 }
 
 .navigation {
-	background-color: #4A8BF5;
+	background-color: #dce6f1;
 	float: left;
 	margin-bottom: 15px;
 }
@@ -23,16 +23,16 @@ body {
 	padding-right: 10px;
 	padding-top: 3px;
 	padding-bottom: 3px;
-	background-color: #8EB9FF;
+	background-color: #95b3d7;
 }
 .navigation li:hover {
 	padding-left: 10px;
 	padding-right: 4px;
-	background-color: #4A8BF5;
+	background-color: #4f81bd;
 }
 .navigation a {
 	font-weight: bold;
-	color: #376BBF;
+	color: #FFFFFF;
 	text-decoration: none;
 }
 .inhalt {
@@ -50,34 +50,39 @@ body {
 }
 
 .inhalt tr:nth-child(even) {
-	background-color: #FFF58E;
+	background-color: #fabf8f;
 }
 .inhalt tr:nth-child(odd) {
-	background-color: #F4E64B;
+	background-color: #f79646;
 }
 
 .inhalt tr {
-	color: #847C26;
+	color: #FFFFFF;
 }
-.inhalt tr:first-child {
-	color: #5B551A;
+
+.inhalt #important_red {
+	padding: 4px;
+	margin-top: 4px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #da9694;
 }
 .inhalt #important_red:hover {
-	background-color: #F2614B;
+	background-color: #c0504d;
 }
 .inhalt #important_green {
 	padding: 4px;
 	margin-top: 4px;
 	font-weight: bold;
-	color: #4DB231;
+	color: #FFFFFF;
+	background-color: #c4d79b;
 }
 .inhalt #important_green:hover {
-	color: #4DB231;
-	background-color: #70F44B;
+	background-color: #9bbb59;
 	text-decoration: none;
 }
 .inhalt table a {
-	color: #5B551A;
+	color: #FFFFFF;
 }
 .inhalt table a:hover {
 	text-decoration: none;
@@ -103,12 +108,12 @@ body {
 	margin-top: 15px;
 	clear: both;
 	font-weight: bold;
-	color: #4DB231;
-	background-color: #70F44B;
+	color: #FFFFFF;
+	background-color: #daeef3;
 }
 .footer a {
 	font-weight: bold;
-	color: #4DB231;
+	color: #FFFFFF;
 }
 .footer a:hover {
 	text-decoration: none;
@@ -120,6 +125,8 @@ body {
 	list-style-type: none;
 }
 .footer li {
+	background-color: #4bacc6;
 	display: inline;
-	margin: 10px;
+	margin: 5px;
+	padding: 5px;
 }

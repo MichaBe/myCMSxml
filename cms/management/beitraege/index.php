@@ -60,7 +60,7 @@
 						echo '<td>'.$alleBeitraege[$i]['Uname'].'</td>';
 						echo '<td>'.$alleBeitraege[$i]['Slastmod'].'</td>';
 						echo '<td>'.$alleBeitraege[$i]['Sreleased'].'</td>';
-						echo '<td><a href="Smask.php?SID='.$alleBeitraege[$i]['SID'].'">bearbeiten</a></td>';
+						echo '<td id="important_green"><a href="Smask.php?SID='.$alleBeitraege[$i]['SID'].'">bearbeiten</a></td>';
 						echo '<td id="important_red"><a href="delete.php?SID='.$alleBeitraege[$i]['SID'].'">l&#246;schen</a></td>';
 						echo '</tr>';
 					}
