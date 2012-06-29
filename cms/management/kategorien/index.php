@@ -38,7 +38,7 @@
 				</ul>
 			</div>
 			<div class="inhalt">
-				<h2>Verwalten sie hier die Kategorien</h2>
+				<h2>Verwalten Sie hier die Kategorien</h2>
 				<?php
 					echo '<a href="Cmask.php" id="important_green">Neue Kategorie erstellen</a>';
 				

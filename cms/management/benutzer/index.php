@@ -8,7 +8,7 @@
 	$myADBConnector = new advanced_dbconnector();
 	$currentRights = $myADBConnector->getOneBenutzer($_SESSION['UID']);
 	
-	if($currentRights[1]['Xvalue'] != 1) {
+	if($currentRights[3]['Xvalue'] != 1) {
 		unset($myADBconnector);
 		header('Location: http://'.$_SERVER['HTTP_HOST'].'/cms/management/index.php');
 	}
@@ -38,33 +38,37 @@
 				</ul>
 			</div>
 			<div class="inhalt">
-				<h2>Verwalten Sie hier die Beitr&#228;ge</h2>
+				<h2>Verwalten Sie hier die Benutzer und ihre Berechtigungen</h2>
 				<?php
-					echo '<a href="Smask.php" id="important_green">Neuen Beitrag verfassen</a>';
+					echo '<a href="Umask.php" id="important_green">Neuen Benutzer erstellen</a>';
 				
-					$alleBeitraege = $myADBConnector->getAllBeitraege();
+					$alleBenutzer = $myADBConnector->getAllBenutzer();
+					$alleRollen = $myADBConnector->getAllPossibleRights();
 					
 					echo '<table><tr>';
-					echo '<th>ID</th>';
-					echo '<th>&#220;berschrift</th>';
-					echo '<th>Kategorie</th>';
-					echo '<th>Author</th>';
-					echo '<th>Letzte &#196;nderung</th>';
-					echo '<th>Ver&#246;ffentlicht</th>';
-					echo '<th colspan="2">Beitrag &#228;ndern</th></tr>';
-					for($i = 0; $i < count($alleBeitraege); $i++) {
-						echo '<tr>';
-						echo '<td>'.$alleBeitraege[$i]['SID'].'</td>';
-						echo '<td>'.$alleBeitraege[$i]['Sheadline'].'</td>';
-						echo '<td>'.$alleBeitraege[$i]['Cname'].'</td>';
-						echo '<td>'.$alleBeitraege[$i]['Uname'].'</td>';
-						echo '<td>'.$alleBeitraege[$i]['Slastmod'].'</td>';
-						echo '<td>'.$alleBeitraege[$i]['Sreleased'].'</td>';
-						echo '<td id="important_green"><a href="Smask.php?SID='.$alleBeitraege[$i]['SID'].'">bearbeiten</a></td>';
-						echo '<td id="important_red"><a href="delete.php?SID='.$alleBeitraege[$i]['SID'].'">l&#246;schen</a></td>';
-						echo '</tr>';
+					echo '<th>Benutzername</th>';
+					foreach($alleRollen as $currentRolle) {
+						echo '<th>'.$currentRolle['Rshort'].'</th>';
 					}
-					
+					echo '<th colspan="2">Benutzer &#228;ndern</th></tr>';
+					foreach($alleBenutzer as $currBenutzer) {
+						$BenutzerRights = $myADBConnector->getOneBenutzer($currBenutzer['UID']);
+						echo '<tr><td>'.$currBenutzer['Uname'].'</td>';
+						foreach($alleRollen as $currentRolle) {
+							if($BenutzerRights[0]['Xvalue'] == 1)
+								echo '<td id="important_green">berechtigt</td>';
+							else
+								echo '<td id="important_red">nicht berechtigt</td>';
+						}
+						if($currBenutzer['UID'] > 2) {
+							echo '<td id="important_green"><a href="Umask.php?UID='.$currBenutzer['UID'].'">bearbeiten</a></td>';
+							echo '<td id="important_red"><a href="delete.php?UID='.$currBenutzer['UID'].'">l&#246;schen</a></td>';
+						}
+						else {
+							echo '<td>bearbeiten</td>';
+							echo '<td>l&#246;schen</td></tr>';
+						}
+					}					
 					echo '</table>';
 				?>
 			</div>

@@ -25,7 +25,7 @@
 		public function getAllBenutzer() {
 			$query = "SELECT UID, Uname 
 				FROM Benutzer
-				ORDER BY Uname";
+				ORDER BY UID DESC";
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;
 			$returnarray = array();
@@ -60,6 +60,19 @@
 				ORDER BY Berechtigung.RID", 
 				mysql_real_escape_string($UID));
 			$result = mysql_query($query, $this->connection_ID);
+			$i = 0;
+			$returnarray = array();
+			while($row = mysql_fetch_assoc($result)){
+				$returnarray[$i] = $row;
+				$i++;
+			}
+			return $returnarray;
+		}
+		public function getAllPossibleRights() {
+			$query = "SELECT *
+				FROM Rolle
+				ORDER BY RID ASC";
+			$result = mysql_query($query);
 			$i = 0;
 			$returnarray = array();
 			while($row = mysql_fetch_assoc($result)){
@@ -171,36 +184,6 @@
 			}
 			return $returnarray;
 		}
-		
-		public function getAllHilfeKategorien() {
-			$query = "SELECT HCID, HCname
-				FROM Hilfekategorie
-				ORDER BY HCname";
-			$result = mysql_query($query, $this->connection_ID);
-			$i = 0;
-			$returnarray = array();
-			while($row = mysql_fetch_assoc($result)){
-				$returnarray[$i] = $row;
-				$i++;
-			}
-			return $returnarray;
-		}
-		public function getHilfeBeitraege($HCID) {
-			$query = sprintf("SELECT HSID, HSheadline, HStext
-				FROM Hilfebeitrag
-				WHERE HCID = %d
-				ORDER BY HSheadline", 
-				mysql_real_escape_string($HCID));
-			$result = mysql_query($query, $this->connection_ID);
-			$i = 0;
-			$returnarray = array();
-			while($row = mysql_fetch_assoc($result)){
-				$returnarray[$i] = $row;
-				$i++;
-			}
-			return $returnarray;
-		}
-		
 		
 		public function changeOneBenutzer($UID, $Berechtigungen) {
 			$query = array();

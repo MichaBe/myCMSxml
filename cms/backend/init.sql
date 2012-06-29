@@ -47,20 +47,6 @@ CREATE TABLE Ereignis (
 	Etext TEXT,
 	PRIMARY KEY(EID)
 );
-			
-CREATE TABLE Hilfebeitrag (
-	HSID INT NOT NULL AUTO_INCREMENT,
-	HCID INT,
-	HSheadline CHAR(30),
-	HStext TEXT,
-	PRIMARY KEY(HSID)
-);
-			
-CREATE TABLE Hilfekategorie (
-	HCID INT NOT NULL AUTO_INCREMENT,
-	HCname CHAR(20),
-	PRIMARY KEY(HCID)
-);
 
 CREATE TABLE Konfiguration (
 	KID INT NOT NULL AUTO_INCREMENT,
@@ -114,7 +100,6 @@ INSERT INTO Rolle VALUES(3, 'Kategorien verwalten', 'kategorien');
 INSERT INTO Rolle VALUES(4, 'Benutzer und Berechtigungen verwalten', 'benutzer');
 INSERT INTO Rolle VALUES(5, 'Allgemeine Konfiguration &#228;ndern', 'konfiguration');
 INSERT INTO Rolle VALUES(6, 'Ereignislog einsehen', 'ereignisse');
-INSERT INTO Rolle VALUES(7, 'Hilfe aufrufen', 'hilfe');
 
 
 INSERT INTO Berechtigung VALUES(NULL, 1, 1, TRUE);
@@ -123,7 +108,6 @@ INSERT INTO Berechtigung VALUES(NULL, 1, 3, TRUE);
 INSERT INTO Berechtigung VALUES(NULL, 1, 4, TRUE);
 INSERT INTO Berechtigung VALUES(NULL, 1, 5, TRUE);
 INSERT INTO Berechtigung VALUES(NULL, 1, 6, TRUE);
-INSERT INTO Berechtigung VALUES(NULL, 1, 7, TRUE);
 
 INSERT INTO Berechtigung VALUES(NULL, 2, 1, FALSE);
 INSERT INTO Berechtigung VALUES(NULL, 2, 2, FALSE);
@@ -131,7 +115,6 @@ INSERT INTO Berechtigung VALUES(NULL, 2, 3, FALSE);
 INSERT INTO Berechtigung VALUES(NULL, 2, 4, FALSE);
 INSERT INTO Berechtigung VALUES(NULL, 2, 5, FALSE);
 INSERT INTO Berechtigung VALUES(NULL, 2, 6, FALSE);
-INSERT INTO Berechtigung VALUES(NULL, 2, 7, FALSE);
 
 
 INSERT INTO Konfiguration VALUES(1, 'konservativ', 'myCMS.xml', '0.0.1', 'deutsch', 'Hier wurde noch kein Beitrag ver&#246;ffentlicht');
