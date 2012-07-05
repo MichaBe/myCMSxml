@@ -193,7 +193,8 @@
 					WHERE RID = %d
 					AND UID = %d", 
 					mysql_real_escape_string($Berechtigung[$i]['Xvalue']), 
-					mysql_real_escape_string($Berechtigung[$i]['RID'], $UID));
+					mysql_real_escape_string($Berechtigung[$i]['RID']), 
+					mysql_real_escape_string($UID));
 			}
 			foreach($query as $curQuery) {
 				mysql_query($curQuery, $this->connection_ID);

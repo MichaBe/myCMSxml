@@ -76,7 +76,7 @@
 									echo '<input type="radio" name="'.$currright['RID'].'" value="0" checked />nicht berechtigt<br />';
 								}
 							}
-							echo '<input type="hidden" name="UID" value="'.$_GET['UID'].'"'; //Verstecktes feld mit UID
+							echo '<input type="hidden" name="UID" value="'.$_GET['UID'].'" />'; //Verstecktes feld mit UID
 						}
 					?>
 					<br />
