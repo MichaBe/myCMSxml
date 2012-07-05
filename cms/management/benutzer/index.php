@@ -40,7 +40,7 @@
 			<div class="inhalt">
 				<h2>Verwalten Sie hier die Benutzer und ihre Berechtigungen</h2>
 				<?php
-					echo '<a href="Umask.php" id="important_green">Neuen Benutzer erstellen</a>';
+					echo '<a href="Umask.php" id="important_green">Neuen Benutzer anlegen</a>';
 				
 					$alleBenutzer = $myADBConnector->getAllBenutzer();
 					$alleRollen = $myADBConnector->getAllPossibleRights();
