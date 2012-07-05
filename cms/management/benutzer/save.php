@@ -15,15 +15,29 @@
 		
 	if(isset($_POST['UID'])) {
 		$newBerechtigungen = array();
+		$allRollen = $myADBConnector->getAllPossibleRights();
+		$i = 0;
+		foreach($allRollen  as $rolle) {
+			$newBerechtigungen[$i]['Xvalue'] = $_POST[$rolle['RID']];
+			$newBerechtigungen[$i]['RID'] = $rolle['RID'];
+			$i++;
+		}
 		
-		$myADBConnector->changeOneBeitrag($_POST['ID'], $newBeitrag);
+		$myADBConnector->changeOneBenutzer($_POST['UID'], $_POST['Uname'], md5(md5($_POST['Upassw'])),$newBerechtigungen);
 		
 		$currentUser = $myADBConnector->getOneBenutzerByNameOrID($_SESSION['UID']);
 		$myADBConnector->addEreignis('Benutzer '.$currentUser[0]['Uname'].' &#228;ndert Benutzer "'.$newBeitrag['Sheadline'].'" (ID '.$_POST['ID'].')');
 	}
 	else {
-		$newBeitrag['UID'] = $_SESSION['UID'];
-		$myADBConnector->addOneBeitrag($newBeitrag);
+		$Berechtigungen = array();
+		$allRollen = $myADBConnector->getAllPossibleRights();
+		$i = 0;
+		foreach($allRollen  as $rolle) {
+			$Berechtigungen[$i]['Xvalue'] = $_POST[$rolle['RID']];
+			$Berechtigungen[$i]['RID'] = $rolle['RID'];
+			$i++;
+		}
+		$myADBConnector->addOneBenutzer()
 		
 		$currentUser = $myADBConnector->getOneBenutzerByNameOrID($_SESSION['UID']);
 		$myADBConnector->addEreignis('Benutzer '.$currentUser[0]['Uname'].' erstellt Benutzer "'.$newBeitrag['Sheadline'].'"');

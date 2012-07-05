@@ -53,8 +53,8 @@
 					<?php
 						$rights = $myADBConnector->getAllPossibleRights();
 						if($newUser) {
-							echo 'Benutzername: <input type="text" size="20" maxlength="20" /><br />';
-							echo 'Initialpasswort: <input type="password" size="40" maxlength="20" /><br />';
+							echo 'Benutzername: <input type="text" name="Uname"size="20" maxlength="20" /><br />';
+							echo 'Initialpasswort: <input type="password" name="Upassw" size="40" maxlength="20" /><br />';
 							foreach($rights as $currright) {
 								echo '<br />'.$currright['Rtopic'].'<br />';
 								echo '<input type="radio" name="'.$currright['RID'].'" value="1" />berechtigt<br />';

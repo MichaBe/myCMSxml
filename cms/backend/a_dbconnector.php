@@ -185,7 +185,7 @@
 			return $returnarray;
 		}
 		
-		public function changeOneBenutzer($UID, $Berechtigungen) {
+		public function changeOneBenutzer($UID, $Uname, $Upassw, $Berechtigungen) {
 			$query = array();
 			for($i = 0; $i < count($Berechtigungen); $i++) {
 				$query[$i] = sprintf("UPDATE Berechtigung
@@ -199,6 +199,14 @@
 			foreach($query as $curQuery) {
 				mysql_query($curQuery, $this->connection_ID);
 			}
+			$query[0] = sprintf("UPDATE Benutzer
+				SET Uname = %s,
+				Upassw = %s
+				WHERE UID = %d",
+				mysql_real_escape_string($Uname),
+				mysql_real_escape_string($Upassw),
+				mysql_real_escape_string($UID));
+			mysql_query($query[0]);
 		}
 		public function addOneBenutzer($Uname, $upassw, $Berechtigungen) {
 			$query = sprintf("INSERT INTO Benutzer 
