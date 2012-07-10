@@ -51,7 +51,7 @@
 				<h2>Bearbeiten oder erstellen Sie hier einen Benutzer</h2>
 				<?php
 					if(isset($_GET['error_name']))
-						echo '<div id="important_red" align="center">Ein Benutzer mit dem gewählten Benutzername ist bereits vorhanden</div>';
+						echo '<div id="important_red" align="center">Ein Benutzer mit dem gewählten Benutzername ist bereits vorhanden<br />Bitte legen Sie den Benutzer nochmals mit einem neuen Namen an.</div>';
 				?>
 				<form action="save.php" method="post">
 					<?php

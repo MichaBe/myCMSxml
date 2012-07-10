@@ -54,11 +54,13 @@
 					foreach($alleBenutzer as $currBenutzer) {
 						$BenutzerRights = $myADBConnector->getOneBenutzer($currBenutzer['UID']);
 						echo '<tr><td>'.$currBenutzer['Uname'].'</td>';
+						$i = 0;
 						foreach($alleRollen as $currentRolle) {
-							if($BenutzerRights[0]['Xvalue'] == 1)
+							if($BenutzerRights[$i]['Xvalue'] == 1)
 								echo '<td id="important_green">berechtigt</td>';
 							else
 								echo '<td id="important_red">nicht berechtigt</td>';
+							$i++;
 						}
 						if($currBenutzer['UID'] > 2) {
 							echo '<td id="important_green"><a href="Umask.php?UID='.$currBenutzer['UID'].'">bearbeiten</a></td>';
