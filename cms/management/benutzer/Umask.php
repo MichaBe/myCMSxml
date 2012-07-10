@@ -49,12 +49,16 @@
 			</div>
 			<div class="inhalt">
 				<h2>Bearbeiten oder erstellen Sie hier einen Benutzer</h2>
+				<?php
+					if(isset($_GET['error_name']))
+						echo '<div id="important_red" align="center">Ein Benutzer mit dem gewählten Benutzername ist bereits vorhanden</div>';
+				?>
 				<form action="save.php" method="post">
 					<?php
 						$rights = $myADBConnector->getAllPossibleRights();
 						if($newUser) {
 							echo 'Benutzername: <input type="text" name="Uname"size="20" maxlength="20" /><br />';
-							echo 'Initialpasswort: <input type="password" name="Upassw" size="40" maxlength="20" /><br />';
+							echo 'Initialpasswort: <input type="text" name="Upassw" size="40" maxlength="20" /><br />';
 							foreach($rights as $currright) {
 								echo '<br />'.$currright['Rtopic'].'<br />';
 								echo '<input type="radio" name="'.$currright['RID'].'" value="1" />berechtigt<br />';
@@ -63,8 +67,6 @@
 						}
 						else {
 							$curruser = $myADBConnector->getOneBenutzerByNameORID($_GET['UID']);
-							echo 'Benutzername: <input type="text" size="20" maxlength="20" value="'.$curruser[0]['Uname'].'" /><br />';
-							echo 'Passwort (wenn &#196;nderung notwendig): <input type="password" size="20" maxlength="20" /><br />';
 							foreach ($rights as $currright) {
 								echo '<br />'.$currright['Rtopic'].'<br />';
 								if($UserToChange[0]['Xvalue'] == 1) {

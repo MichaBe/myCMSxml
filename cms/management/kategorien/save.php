@@ -22,13 +22,13 @@
 		$myADBConnector->changeOneKategorie($_POST['ID'], $newKategorie);
 		
 		$currentUser = $myADBConnector->getOneBenutzerByNameOrID($_SESSION['UID']);
-		$myADBConnector->addEreignis('Benutzer '.$currentUser[0]['Uname'].' &#228;ndert Kategorie "'.$newKategorie['Sheadline'].'" (ID '.$_POST['ID'].')');
+		$myADBConnector->addEreignis($currentUser[0]['Uname'].' &#228;ndert Kategorie "'.$newKategorie['Sheadline'].'" (ID '.$_POST['ID'].')');
 	}
 	else {
 		$myADBConnector->addOneKategorie($newKategorie);
 		
 		$currentUser = $myADBConnector->getOneBenutzerByNameOrID($_SESSION['UID']);
-		$myADBConnector->addEreignis('Benutzer '.$currentUser[0]['Uname'].' erstellt Kategorie "'.$newKategorie['Sheadline'].'"');
+		$myADBConnector->addEreignis($currentUser[0]['Uname'].' erstellt Kategorie "'.$newKategorie['Sheadline'].'"');
 	
 	}
 	header('Location: http://'.$_SERVER['HTTP_HOST'].'/cms/management/kategorien/index.php');

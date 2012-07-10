@@ -50,7 +50,7 @@
 					foreach($alleRollen as $currentRolle) {
 						echo '<th>'.$currentRolle['Rshort'].'</th>';
 					}
-					echo '<th colspan="2">Benutzer &#228;ndern</th></tr>';
+					echo '<th colspan="3">Benutzer &#228;ndern</th></tr>';
 					foreach($alleBenutzer as $currBenutzer) {
 						$BenutzerRights = $myADBConnector->getOneBenutzer($currBenutzer['UID']);
 						echo '<tr><td>'.$currBenutzer['Uname'].'</td>';
@@ -62,10 +62,12 @@
 						}
 						if($currBenutzer['UID'] > 2) {
 							echo '<td id="important_green"><a href="Umask.php?UID='.$currBenutzer['UID'].'">bearbeiten</a></td>';
+							echo '<td id="important_green"><a href="PWmask.php?UID='.$currBenutzer['UID'].'">Passwort &#228;ndern</a></td>';
 							echo '<td id="important_red"><a href="delete.php?UID='.$currBenutzer['UID'].'">l&#246;schen</a></td>';
 						}
 						else {
 							echo '<td>bearbeiten</td>';
+							echo '<td id="important_green"><a href="PWmask.php?UID='.$currBenutzer['UID'].'">Passwort &#228;ndern</a></td>';
 							echo '<td>l&#246;schen</td></tr>';
 						}
 					}					
