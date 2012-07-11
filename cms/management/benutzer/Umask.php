@@ -48,8 +48,15 @@
 				</ul>
 			</div>
 			<div class="inhalt">
-				<h2>Bearbeiten oder erstellen Sie hier einen Benutzer</h2>
 				<?php
+					if($newUser)
+						echo '<h2>Erstellen Sie hier einen neuen Benutzer</h2>';
+					else {
+						$tempUser = $myADBConnector->getOneBenutzerByNameOrID($_GET['UID']);
+						echo '<h2>Bearbeiten Sie hier den Benutzer "'.$tempUser[0]['Uname'].'"</h2>';
+					}
+						
+					
 					if(isset($_GET['error_name']))
 						echo '<div id="important_red" align="center">Ein Benutzer mit dem gewählten Benutzername ist bereits vorhanden<br />Bitte legen Sie den Benutzer nochmals mit einem neuen Namen an.</div>';
 				?>

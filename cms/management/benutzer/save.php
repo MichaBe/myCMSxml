@@ -14,9 +14,21 @@
 	
 		
 	if(isset($_POST['UID'])) {
+		$allRights = $myADBConnector->getAllPossibleRights();
+		$newRights = array();
+		$i = 0;
+		foreach ($allRights as $Rolle) {
+			$newRights[$i]['RID'] = $Rolle['RID'];
+			$newRights[$i]['Xvalue'] = $_POST[$Rolle['RID']];
+			$i++;
+		}
+		echo var_dump($newRights);
+		$myADBConnector->changeOneBenutzer($_POST['UID'], $newRights);
+		
 		
 		$currentUser = $myADBConnector->getOneBenutzerByNameOrID($_SESSION['UID']);
-		$myADBConnector->addEreignis($currentUser[0]['Uname'].' &#228;ndert Benutzer "'.$newBeitrag['Sheadline'].'" (ID '.$_POST['ID'].')');
+		$changedUser = $myADBConnector->getOneBenutzerByNameOrID($_POST['UID']);
+		$myADBConnector->addEreignis($currentUser[0]['Uname'].' &#228;ndert Benutzer "'.$changedUser[0]['Uname'].'" (ID '.$_POST['UID'].')');
 	}
 	else {
 		$testUname = $myADBConnector->getOneBenutzerByNameOrID($_POST['Uname']);

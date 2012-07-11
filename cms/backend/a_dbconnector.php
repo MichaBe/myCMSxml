@@ -192,8 +192,8 @@
 					SET Xvalue = %d
 					WHERE RID = %d
 					AND UID = %d", 
-					mysql_real_escape_string($Berechtigung[$i]['Xvalue']), 
-					mysql_real_escape_string($Berechtigung[$i]['RID']), 
+					mysql_real_escape_string($Berechtigungen[$i]['Xvalue']), 
+					mysql_real_escape_string($Berechtigungen[$i]['RID']), 
 					mysql_real_escape_string($UID));
 			}
 			foreach($query as $curQuery) {
