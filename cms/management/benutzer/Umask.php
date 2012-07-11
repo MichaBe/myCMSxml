@@ -74,15 +74,15 @@
 						}
 						else {
 							$curruser = $myADBConnector->getOneBenutzerByNameORID($_GET['UID']);
-							foreach ($rights as $currright) {
-								echo '<br />'.$currright['Rtopic'].'<br />';
-								if($UserToChange[0]['Xvalue'] == 1) {
-									echo '<input type="radio" name="'.$currright['RID'].'" value="1" checked />berechtigt<br />';
-									echo '<input type="radio" name="'.$currright['RID'].'" value="0" />nicht berechtigt<br />';
+							for($i = 0; $i < count($rights); $i++) {
+								echo '<br />'.$rights[$i]['Rtopic'].'<br />';
+								if($UserToChange[$i]['Xvalue'] == 1) {
+									echo '<input type="radio" name="'.$rights[$i]['RID'].'" value="1" checked />berechtigt<br />';
+									echo '<input type="radio" name="'.$rights[$i]['RID'].'" value="0" />nicht berechtigt<br />';
 								}
 								else {
-									echo '<input type="radio" name="'.$currright['RID'].'" value="1" />berechtigt<br />';
-									echo '<input type="radio" name="'.$currright['RID'].'" value="0" checked />nicht berechtigt<br />';
+									echo '<input type="radio" name="'.$rights[$i]['RID'].'" value="1" />berechtigt<br />';
+									echo '<input type="radio" name="'.$rights[$i]['RID'].'" value="0" checked />nicht berechtigt<br />';
 								}
 							}
 							echo '<input type="hidden" name="UID" value="'.$_GET['UID'].'" />'; //Verstecktes feld mit UID
