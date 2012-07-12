@@ -20,7 +20,7 @@
 				$myADBConnector->delOneKategorie($curKategorie[0]['CID']);
 				
 				$currentUser = $myADBConnector->getOneBenutzerByNameOrID($_SESSION['UID']);
-				$myADBConnector->addEreignis('Benutzer '.$currentUser[0]['Uname'].' l&#246;scht Kategorie "'.$curKategorie[0]['Cname'].'" (ID '.$_GET['CID'].')');
+				$myADBConnector->addEreignis($currentUser[0]['Uname'].' l&#246;scht Kategorie "'.$curKategorie[0]['Cname'].'" (ID '.$_GET['CID'].')');
 			}
 		}
 	}

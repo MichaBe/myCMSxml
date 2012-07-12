@@ -226,11 +226,13 @@
 		public function delOneBenutzer($UID) {
 			$query[0] = sprintf("DELETE FROM Berechtigung
 				WHERE UID = %d
-				AND UID != 1", 
+				AND UID != 1
+				AND UID != 2",
 				mysql_real_escape_string($UID));
 			$query[1] = sprintf("DELETE FROM Benutzer
 				WHERE UID = %d
-				AND UID != 1", 
+				AND UID != 1
+				AND UID != 2",
 				mysql_real_escape_string($UID));
 			
 			foreach($query as $curQuery) {
@@ -282,6 +284,9 @@
 				mysql_real_escape_string($Beitrag['Sshorttext']), 
 				mysql_real_escape_string($Beitrag['Stext']),
 				mysql_real_escape_string($Beitrag['Skeywords']));
+			if(isset($Beitrag['UID'])) {
+				$query = $query.', UID = '.mysql_real_escape_string($Beitrag['UID']).' ';
+			}
 			if($Beitrag['Sreleased'] == TRUE)
 				$query = sprintf("%s, 
 					Sreleased = CURDATE()
