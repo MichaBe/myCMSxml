@@ -200,6 +200,14 @@
 				mysql_query($curQuery, $this->connection_ID);
 			}
 		}
+		public function changeOneBenutzerPassw($UID, $UpasswHASHED) {
+			$query = sprintf("UPDATE Benutzer
+				SET Upassw = %s
+				WHERE UID = %d",
+				mysql_real_escape_string($UpasswHASHED),
+				mysql_real_escape_string($UID));
+			mysql_query($query, $this->connection_ID);
+		}
 		public function addOneBenutzer($Uname, $upassw, $Berechtigungen) {
 			$query = sprintf("INSERT INTO Benutzer 
 				VALUES(NULL, '%s', '%s')", 

@@ -64,7 +64,7 @@
 					<?php
 						$rights = $myADBConnector->getAllPossibleRights();
 						if($newUser) {
-							echo 'Benutzername: <input type="text" name="Uname"size="20" maxlength="20" /><br />';
+							echo 'Benutzername: <input type="text" name="Uname" size="20" maxlength="20" /><br />';
 							echo 'Initialpasswort: <input type="text" name="Upassw" size="40" maxlength="20" /><br />';
 							foreach($rights as $currright) {
 								echo '<br />'.$currright['Rtopic'].'<br />';
