@@ -338,14 +338,11 @@
 		
 		public function changeKonfiguration($Konfiguration) {
 			$query = sprintf("UPDATE Konfiguration
-				SET Kstylename = '%s',
-				Kpagetitle = '%s',
-				Klanguage = '%s',
-				Knosnippet = %s'
-				WHERE KID = 1", 
-				mysql_real_escape_string($Konfiguration['Kstylename']), 
-				mysql_real_escape_string($Konfiguration['Kpagetitle']),
-				mysql_real_escape_string($Konfiguration['Klanguage']), 
+				SET Kstyle = '%s',
+				Ktitle = '%s',
+				Knosnippet = '%s'",
+				mysql_real_escape_string($Konfiguration['Kstyle']), 
+				mysql_real_escape_string($Konfiguration['Ktitle']),
 				mysql_real_escape_string($Konfiguration['Knosnippet']));
 			mysql_query($query, $this->connection_ID);
 		}

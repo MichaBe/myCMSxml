@@ -54,7 +54,6 @@ CREATE TABLE Konfiguration (
 	Kstyle CHAR(20),
 	Ktitle CHAR(20),
 	Kversion CHAR(10),
-	Klanguage CHAR(20),
 	Knosnippet TEXT,
 	PRIMARY KEY(KID)
 );
@@ -114,7 +113,7 @@ INSERT INTO Berechtigung VALUES(NULL, 2, 5, FALSE);
 INSERT INTO Berechtigung VALUES(NULL, 2, 6, FALSE);
 
 
-INSERT INTO Konfiguration VALUES(1, 'konservativ', 'myCMS.xml', '0.0.4', 'deutsch', 'Hier wurde noch kein Beitrag ver&#246;ffentlicht');
+INSERT INTO Konfiguration VALUES(1, 'konservativ', 'myCMS.xml', '0.0.5', 'Hier wurde noch kein Beitrag ver&#246;ffentlicht');
 
 
 INSERT INTO Beitrag VALUES(1, 1, 1, 'myCMSxml', NULL, '<p align="center"><form action="cms/management/login.php" method="post"><table><tr><td>Benutzername:</td><td><input type="text" name="username"/></td></tr><tr><td>Passwort:</td><td><input type="password" name="passwort"/></td></tr></table><input type="submit" value="Anmelden"/></form></p>', '2012-05-20', '2012-05-20', NULL);
