@@ -55,7 +55,7 @@
 							echo '</tr><tr>';
 							echo '<td>Neues Passwort best&#228;tigen:</td><td><input type="password" name="Upassw2" maxlength="20" size="20" /></td>';
 							echo '</tr></table>';
-							echo '<input type="hidden" name="UID" value="'.$userToChange[0]['UID'].'" />';
+							echo '<input type="hidden" name="UID" value="'.$_GET['UID'].'" />';
 						}
 					}
 				?>

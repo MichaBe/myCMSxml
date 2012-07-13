@@ -202,7 +202,7 @@
 		}
 		public function changeOneBenutzerPassw($UID, $UpasswHASHED) {
 			$query = sprintf("UPDATE Benutzer
-				SET Upassw = %s
+				SET Upassw = '%s'
 				WHERE UID = %d",
 				mysql_real_escape_string($UpasswHASHED),
 				mysql_real_escape_string($UID));
