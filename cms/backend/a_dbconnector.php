@@ -184,6 +184,21 @@
 			}
 			return $returnarray;
 		}
+		public function searchEreignis($search) {
+			$query = sprintf("SELECT * 
+				FROM Ereignis
+				WHERE Etext LIKE '%%%s%%'
+				ORDER BY Etime DESC, EID DESC",
+				mysql_real_escape_string($search));
+			$result = mysql_query($query, $this->connection_ID);
+			$i = 0;
+			$returnarray = array();
+			while($row = mysql_fetch_assoc($result)){
+				$returnarray[$i] = $row;
+				$i++;
+			}
+			return $returnarray;
+		}
 		
 		public function changeOneBenutzer($UID, $Berechtigungen) {
 			$query = array();
