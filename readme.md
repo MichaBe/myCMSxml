@@ -1,7 +1,7 @@
 myCMSxml - Ein php-Projekt
 ==========================
 
-__Aktuelle Version: 0.0.4, Lizenz: CC BY 3.0__
+__Aktuelle Version: 0.0.5, Lizenz: CC BY 3.0__
 ----------------------------------------------
 
 #### Ein kleiner Rückblick ####
@@ -12,9 +12,8 @@ klassischste Beispiel dafür: Was passiert, wenn ein Author von Beiträgen seine
 Wie übernehme ich diese Änderung am besten in Alle Beiträge, die ja als xml-Datei abgespeichert waren?
 
 #### Gegenwart ####
-Mittlerweile ist das gesamte CMS auf MySQL umgestellt. Das Frontend ist soweit fertiggestellt, 
-dass Besucher der Seite nur noch Fehlermeldungen bekommen, die sie auch wirklich bekommen sollen 
-und auch das Stylesheet sieht einigermaßen gut aus.
+Mittlerweile ist das gesamte CMS auf MySQL umgestellt. Das Frontend ist komplett fertig gestellt 
+und das Backend benötigt nur noch den nötigen Feinschliff (siehe ToDo-Listen)
 
 ### Installation ###
 
@@ -39,14 +38,30 @@ Installation durchgeführt werden:
 ### Beispiel ###
 Wer das ganze mal Live sehen will, kann sich den [Beispielblog](http://www.mycmsxml.org) ansehen und mir gerne Rückmeldung geben, 
 was ihm gefällt, und wo noch was fehlt. Ich bin offen für neues, solange das Sinn macht ;)
+## Update vom 16.7.2012 ##
+Das Backend ist komplett fertiggestellt. In den ToDo-Listen stehen nun noch die Komponenten, die Verbesserungen benötigen.
 
 #### Zukunft ####
 Hier noch ein kleiner Überblick, was auf meiner derzeitigen ToDo-Liste steht:
 
-* Fertigstellen des Backends für die Benutzer (Wahrscheinlich meine Baustelle für die nächsten Wochen ;) )
+# Bis Version 0.1.0 #
+* Anzahl der Beiträge pro Kategorie soll in der Kategorieübersicht angezeigt werden
+* Ändern des Designs für die Maske zum erstellen der Beiträge
+* Ändern der Benutzerrechte direkt in der Übersicht ermöglichen
+* Ermöglichen des Erstellens eigener Ereignisse im Log
+* Sicherheit: Inizialisierungspasswörter _MÜSSEN_ geändert werden
+
+# Bis Version 0.2.0 #
+* Ermöglichen von Inizialisierungsscripten für Themes
+* Maske für das Hochladen von Themes
+* Erstellen eines Theme-Database-Connector, über den Themes Änderungen in der Datenbank vornehmen können
+
+# Bis Version 0.3.0 #
+* Ermöglichen von Benutzerdefinierten Head-Elementen (z. B. eigenen Tracking-Codes, ...)
+
+# ... #
 * RSS / Atom - Feeds ermöglichen
-* Screenshoots vom (fertigen Teil des) Backend 
-* ... To be continued.
+* Screenshoots vom (fertigen Teil des) Backend / G+-Seite für myCMSxml
 
 Gerne nehm ich hier noch Ideen auf. An andere php-Entwickler: Gerne könnt ihr dieses Projekt forken. 
 Allerdings wird das bei diesem Codedurcheinander nicht einfach. Ich verspreche Besserung. 
