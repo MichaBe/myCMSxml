@@ -84,10 +84,10 @@
 		
 		public function getAllKategorien() {
 			$query = "SELECT COUNT(Beitrag.SID) AS Scount, Kategorie.CID, Cname, Ckeywords 
-				FROM Beitrag, Kategorie
-				WHERE Kategorie.CID = Beitrag.CID
-				GROUP BY CID
-				ORDER BY Kategorie.CID DESC";
+				FROM Beitrag RIGHT JOIN Kategorie
+				ON Kategorie.CID = Beitrag.CID
+				GROUP BY Kategorie.CID
+				ORDER BY CID DESC";
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;
 			$returnarray = array();

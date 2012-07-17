@@ -48,6 +48,7 @@ Hier noch ein kleiner Überblick, was auf meiner derzeitigen ToDo-Liste steht:
 * _Tipp des Tages_ in die CMS-Startseite einbauen
 * *ERLEDIGT:* Anzahl der Beiträge pro Kategorie soll in der Kategorieübersicht angezeigt werden
 * *ERLEDIGT:* Ändern des Designs für die Maske zum erstellen der Beiträge
+* Ändern des Designs zum Erstellen / Ändern von Kategorien
 * Ändern der Benutzerrechte direkt in der Übersicht ermöglichen
 * Ermöglichen des Erstellens eigener Ereignisse im Log
 * Sicherheit: Inizialisierungspasswörter _MÜSSEN_ geändert werden
