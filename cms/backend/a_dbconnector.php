@@ -83,13 +83,18 @@
 		}
 		
 		public function getAllKategorien() {
-			$query = "SELECT CID, Cname, Ckeywords 
-				FROM Kategorie
-				ORDER BY CID DESC";
+			$query = "SELECT COUNT(Beitrag.SID) AS Scount, Kategorie.CID, Cname, Ckeywords 
+				FROM Beitrag, Kategorie
+				WHERE Kategorie.CID = Beitrag.CID
+				GROUP BY CID
+				ORDER BY Kategorie.CID DESC";
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;
 			$returnarray = array();
 			while($row = mysql_fetch_assoc($result)){
+				if($row['CID'] == 1 || $row['CID'] == 2) {
+					$row['Scount'] -= 1;
+				}
 				$returnarray[$i] = $row;
 				$i++;
 			}

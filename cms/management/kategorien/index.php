@@ -48,12 +48,14 @@
 					echo '<th>ID</th>';
 					echo '<th>Name</th>';
 					echo '<th>Schl&#252;sselw&#246;rter</th>';
+					echo '<th>Beitr&#228;ge</th>';
 					echo '<th colspan="2">Kategorie &#228;ndern</th></tr>';
 					for($i = 0; $i < count($alleKategorien); $i++) {
 						echo '<tr>';
 						echo '<td>'.$alleKategorien[$i]['CID'].'</td>';
 						echo '<td>'.$alleKategorien[$i]['Cname'].'</td>';
 						echo '<td>'.$alleKategorien[$i]['Ckeywords'].'</td>';
+						echo '<td>'.$alleKategorien[$i]['Scount'].'</td>';
 						echo '<td id="important_green"><a href="Cmask.php?CID='.$alleKategorien[$i]['CID'].'">bearbeiten</a></td>';
 						if($alleKategorien[$i]['CID'] <= 4)
 							echo '<td>l&#246;schen</td>';
