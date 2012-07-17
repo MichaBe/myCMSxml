@@ -1,21 +1,21 @@
 myCMSxml - Ein php-Projekt
 ==========================
 
-__Aktuelle Version: 0.0.5, Lizenz: CC BY 3.0__
+__Aktuelle Version: 0.0.7, Lizenz: CC BY 3.0__
 ----------------------------------------------
 
-#### Ein kleiner Rückblick ####
+# Ein kleiner Rückblick #
 myCMSxml ist ein kleines Projekt, das ich vor ca. 4 Monaten (Anfang 2012) begonnen hatte,
 um mir selbst php beizubringen. In den ersten Versionen bassierte dieses 'CMS', wie man es da
 allerdings noch nicht nennen konnte, auf xml. Damit waren auch viele Schwächen verbunden. Das 
 klassischste Beispiel dafür: Was passiert, wenn ein Author von Beiträgen seinen Namen ändert? 
 Wie übernehme ich diese Änderung am besten in Alle Beiträge, die ja als xml-Datei abgespeichert waren?
 
-#### Gegenwart ####
+# Gegenwart #
 Mittlerweile ist das gesamte CMS auf MySQL umgestellt. Das Frontend ist komplett fertig gestellt 
 und das Backend benötigt nur noch den nötigen Feinschliff (siehe ToDo-Listen)
 
-### Installation ###
+## Installation ##
 
 __Wichtiger Hinweis: Das CMS befindet sich noch im pre-Alpha-Stadium. Für etwaige Schäden bei einer 
 installation werde ich nicht aufkommen!__
@@ -35,32 +35,32 @@ Installation durchgeführt werden:
 3. Hochladen der Dateien
 	Als letzter Schritt müssen alle Dateien auf den Server hochgeladen werden. Fertig!
 
-### Beispiel ###
+## Beispiel ##
 Wer das ganze mal Live sehen will, kann sich den [Beispielblog](http://www.mycmsxml.org) ansehen und mir gerne Rückmeldung geben, 
 was ihm gefällt, und wo noch was fehlt. Ich bin offen für neues, solange das Sinn macht ;)
-## Update vom 16.7.2012 ##
+### Update vom 16.7.2012 ###
 Das Backend ist komplett fertiggestellt. In den ToDo-Listen stehen nun noch die Komponenten, die Verbesserungen benötigen.
 
-#### Zukunft ####
+# Zukunft #
 Hier noch ein kleiner Überblick, was auf meiner derzeitigen ToDo-Liste steht:
 
-# Bis Version 0.1.0 #
-* "Tipp des Tages" in die CMS-Startseite einbauen
+### Bis Version 0.1.0 ###
+* _Tipp des Tages_ in die CMS-Startseite einbauen
 * *ERLEDIGT:* Anzahl der Beiträge pro Kategorie soll in der Kategorieübersicht angezeigt werden
 * *ERLEDIGT:* Ändern des Designs für die Maske zum erstellen der Beiträge
 * Ändern der Benutzerrechte direkt in der Übersicht ermöglichen
 * Ermöglichen des Erstellens eigener Ereignisse im Log
 * Sicherheit: Inizialisierungspasswörter _MÜSSEN_ geändert werden
 
-# Bis Version 0.2.0 #
+### Bis Version 0.2.0 ###
 * Ermöglichen von Inizialisierungsscripten für Themes
 * Maske für das Hochladen von Themes
 * Erstellen eines Theme-Database-Connector, über den Themes Änderungen in der Datenbank vornehmen können
 
-# Bis Version 0.3.0 #
+### Bis Version 0.3.0 ###
 * Ermöglichen von Benutzerdefinierten Head-Elementen (z. B. eigenen Tracking-Codes, ...)
 
-# ... #
+### ... ###
 * RSS / Atom - Feeds ermöglichen
 * Screenshoots vom (fertigen Teil des) Backend / G+-Seite für myCMSxml
 
