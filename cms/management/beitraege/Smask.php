@@ -57,32 +57,40 @@
 				<h2>Bearbeiten oder erstellen Sie hier die Beitr&#228;ge</h2>
 				<form action="save.php" method="post">
 					<?php
-						echo '&#220;berschrift: <input name="headline" type="text" size="30" maxlength="30" value="'.$currentBeitrag[0]['Sheadline'].'" />';
+						echo '<table><tr>';
+						echo '<td>&#220;berschrift:</td><td><input name="headline" type="text" size="30" maxlength="30" value="'.$currentBeitrag[0]['Sheadline'].'" /></td>';
 						
 						$allKategorien = $myADBConnector->getChoosableKategorien();
-						echo '<select name="cid" size="1">';
+						echo '<td><select name="cid" size="1">';
 						foreach($allKategorien as $Kategorie) {
 							if ($Kategorie['CID'] == $currentBeitrag[0]['CID'])
 								echo '<option value="'.$Kategorie['CID'].'" selected>'.$Kategorie['Cname'].'</option>';
 							else
 								echo '<option value="'.$Kategorie['CID'].'">'.$Kategorie['Cname'].'</option>';
 						}
-						echo '</select><br />';
+						echo '</select></td>';
+						echo '</tr><tr>';
 						
-						echo 'Schl&#252;sselw&#246;rter: <input name="keywords" type="text" size="60" maxlength="60" value="'.$currentBeitrag[0]['Skeywords'].'" /><br />';
-						echo 'Vorschautext:<br />';
-						echo '<textarea name="shorttext" id="shorttext">'.$currentBeitrag[0]['Sshorttext'].'</textarea><br />';
-						echo 'Ihr Beitrag:<br />';
-						echo '<textarea name="text" id="text">'.$currentBeitrag[0]['Stext'].'</textarea>';
+						echo '<td>Schl&#252;sselw&#246;rter:</td><td colspan="2"><input name="keywords" type="text" size="60" maxlength="60" value="'.$currentBeitrag[0]['Skeywords'].'" /></td>';
+						echo '</tr><tr>';
+						echo '<td colspan="3">Vorschautext:</td>';
+						echo '</tr><tr>';
+						echo '<td colspan="3"><textarea name="shorttext" id="shorttext">'.$currentBeitrag[0]['Sshorttext'].'</textarea></td>';
+						echo '</tr><tr>';
+						echo '<td colspan="3">Ihr Beitrag:</td>';
+						echo '</tr><tr>';
+						echo '<td colspan="3"><textarea name="text" id="text">'.$currentBeitrag[0]['Stext'].'</textarea></td>';
+						echo '</tr><tr>';
+						echo '<td colspan="3">';
 						if(!$newBeitrag) {
 							echo '<input type="hidden" name="ID" value="'.$_GET['SID'].'" />';
 							if($currentBeitrag[0]['CID'] == 3)
 								echo '<input type="hidden" name="released" value="'.date("d.m.Y", time()).'" />';
 						}
+						echo '<input type="submit" value="speichern" />';
+						echo '<input type="reset"  value="zur&#252;cksetzen" />';
+						echo '</td></tr></table>';
 					?>
-					<br />
-					<input type="submit" value="speichern" />
-					<input type="reset"  value="zur&#252;cksetzen" />
 				</form>	
 			</div>
 			<?php include('../../backend/formanagement/getfooter.php'); ?>

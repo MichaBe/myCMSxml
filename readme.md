@@ -45,8 +45,9 @@ Das Backend ist komplett fertiggestellt. In den ToDo-Listen stehen nun noch die 
 Hier noch ein kleiner Überblick, was auf meiner derzeitigen ToDo-Liste steht:
 
 # Bis Version 0.1.0 #
+* "Tipp des Tages" in die CMS-Startseite einbauen
 * Anzahl der Beiträge pro Kategorie soll in der Kategorieübersicht angezeigt werden
-* Ändern des Designs für die Maske zum erstellen der Beiträge
+* *ERLEDIGT:* Ändern des Designs für die Maske zum erstellen der Beiträge
 * Ändern der Benutzerrechte direkt in der Übersicht ermöglichen
 * Ermöglichen des Erstellens eigener Ereignisse im Log
 * Sicherheit: Inizialisierungspasswörter _MÜSSEN_ geändert werden
