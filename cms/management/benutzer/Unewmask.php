@@ -46,10 +46,10 @@
 				<form action="savenewU.php" method="post">
 					<table>
 						<tr>
-							<td>Benutzername:</td><td><input type="text" name="Uname" size="20" maxlength="20" /></td>
+							<td>Benutzername:</td><td><input type="text" name="Uname" size="30" maxlength="20" /></td>
 						</tr>
 						<tr>
-							<td>Initialpasswort:</td><td><input type="text" name="Upassw" size="40" maxlength="20" /></td>
+							<td>Initialpasswort:</td><td><input type="text" name="Upassw" size="30" maxlength="25" /></td>
 						</tr>
 						<tr>
 							<td colspan="2"><input type="submit" value="speichern" /><input type="reset"  value="zur&#252;cksetzen" /></td>
