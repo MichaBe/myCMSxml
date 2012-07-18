@@ -12,43 +12,14 @@
 		header('Location: http://'.$_SERVER['HTTP_HOST'].'/cms/management/index.php');
 	}
 	
-		
-	if(isset($_POST['UID'])) {
-		$allRights = $myADBConnector->getAllPossibleRights();
-		$newRights = array();
-		$i = 0;
-		foreach ($allRights as $Rolle) {
-			$newRights[$i]['RID'] = $Rolle['RID'];
-			$newRights[$i]['Xvalue'] = $_POST[$Rolle['RID']];
-			$i++;
-		}
-		echo var_dump($newRights);
-		$myADBConnector->changeOneBenutzer($_POST['UID'], $newRights);
-		
+	if(isset($_GET['UID']) && isset($_GET['RID']) && isset($_GET['Xvalue'])) {
+		$myADBConnector->changeOneBenutzer($_GET['UID'], $_GET['RID'], $_GET['Xvalue']);
 		
 		$currentUser = $myADBConnector->getOneBenutzerByNameOrID($_SESSION['UID']);
-		$changedUser = $myADBConnector->getOneBenutzerByNameOrID($_POST['UID']);
-		$myADBConnector->addEreignis($currentUser[0]['Uname'].' &#228;ndert Benutzer "'.$changedUser[0]['Uname'].'" (ID '.$_POST['UID'].')');
+		$changedUser = $myADBConnector->getOneBenutzerByNameOrID($_GET['UID']);
+		$myADBConnector->addEreignis($currentUser[0]['Uname'].' &#228;ndert Rechte von Benutzer "'.$changedUser[0]['Uname'].'" (ID '.$_GET['UID'].')');
 	}
-	else {
-		$testUname = $myADBConnector->getOneBenutzerByNameOrID($_POST['Uname']);
-		if(isset($testUname[0]['UID']))
-			header('Location: http://'.$_SERVER['HTTP_HOST'].'/cms/management/benutzer/Umask.php?error_name=TRUE');
-		
-		
-		else {
-			$allRights = $myADBConnector->getAllPossibleRights();
-			$newRights = array();
-			$i = 0;
-			foreach ($allRights as $Rolle) {
-				$newRights[$i]['RID'] = $Rolle['RID'];
-				$newRights[$i]['Xvalue'] = $_POST[$Rolle['RID']];
-				$i++;
-			}
-			$myADBConnector->addOneBenutzer($_POST['Uname'], md5(md5($_POST['Upassw'])), $newRights);
-			$currentUser = $myADBConnector->getOneBenutzerByNameOrID($_SESSION['UID']);
-			$myADBConnector->addEreignis($currentUser[0]['Uname'].' erstellt Benutzer "'.$_POST['Uname'].'"');
-		}
-	}
+	
 	header('Location: http://'.$_SERVER['HTTP_HOST'].'/cms/management/benutzer/index.php');
+	
 ?>

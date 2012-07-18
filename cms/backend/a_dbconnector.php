@@ -205,20 +205,16 @@
 			return $returnarray;
 		}
 		
-		public function changeOneBenutzer($UID, $Berechtigungen) {
-			$query = array();
-			for($i = 0; $i < count($Berechtigungen); $i++) {
-				$query[$i] = sprintf("UPDATE Berechtigung
-					SET Xvalue = %d
-					WHERE RID = %d
-					AND UID = %d", 
-					mysql_real_escape_string($Berechtigungen[$i]['Xvalue']), 
-					mysql_real_escape_string($Berechtigungen[$i]['RID']), 
-					mysql_real_escape_string($UID));
-			}
-			foreach($query as $curQuery) {
-				mysql_query($curQuery, $this->connection_ID);
-			}
+		public function changeOneBenutzer($UID, $RID, $Xvalue) {
+			$query =  sprintf("UPDATE Berechtigung
+				SET Xvalue = %d
+				WHERE RID = %d
+				AND UID = %d", 
+				mysql_real_escape_string($Xvalue), 
+				mysql_real_escape_string($RID), 
+				mysql_real_escape_string($UID));
+			
+			mysql_query($query, $this->connection_ID);
 		}
 		public function changeOneBenutzerPassw($UID, $UpasswHASHED) {
 			$query = sprintf("UPDATE Benutzer
@@ -228,22 +224,22 @@
 				mysql_real_escape_string($UID));
 			mysql_query($query, $this->connection_ID);
 		}
-		public function addOneBenutzer($Uname, $upassw, $Berechtigungen) {
+		public function addOneBenutzer($Uname, $UpasswHASHED) {
 			$query = sprintf("INSERT INTO Benutzer 
 				VALUES(NULL, '%s', '%s')", 
 				mysql_real_escape_string($Uname), 
-				mysql_real_escape_string($upassw));
+				mysql_real_escape_string($UpasswHASHED));
 			mysql_query($query, $this->connection_ID);
 			$UID = mysql_insert_id($this->connection_ID);
 			
 			$query = array();
+			$allRights = $this->getAllPossibleRights();
 			$i = 0;
-			foreach($Berechtigungen as $curBerechtigung) {
+			foreach($allRights as $curRight) {
 				$query[$i] = sprintf("INSERT INTO Berechtigung
-					VALUES(NULL, %d, %d, %d)", 
+					VALUES(NULL, %d, %d, 0)", 
 					mysql_real_escape_string($UID), 
-					mysql_real_escape_string($curBerechtigung['RID']), 
-					mysql_real_escape_string($curBerechtigung['Xvalue']));
+					mysql_real_escape_string($curRight['RID']));
 					$i++;
 			}
 			foreach($query as $curQuery) {

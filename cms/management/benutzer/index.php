@@ -40,7 +40,7 @@
 			<div class="inhalt">
 				<h2>Verwalten Sie hier die Benutzer und ihre Berechtigungen</h2>
 				<?php
-					echo '<a href="Umask.php" id="important_green">Neuen Benutzer anlegen</a>';
+					echo '<a href="Unewmask.php" id="important_green">Neuen Benutzer anlegen</a>';
 				
 					$alleBenutzer = $myADBConnector->getAllBenutzer();
 					$alleRollen = $myADBConnector->getAllPossibleRights();
@@ -50,25 +50,31 @@
 					foreach($alleRollen as $currentRolle) {
 						echo '<th>'.$currentRolle['Rshort'].'</th>';
 					}
-					echo '<th colspan="3">Benutzer &#228;ndern</th></tr>';
+					echo '<th colspan="2">Benutzer &#228;ndern</th></tr>';
 					foreach($alleBenutzer as $currBenutzer) {
 						$BenutzerRights = $myADBConnector->getOneBenutzer($currBenutzer['UID']);
 						echo '<tr><td>'.$currBenutzer['Uname'].'</td>';
 						$i = 0;
 						foreach($alleRollen as $currentRolle) {
-							if($BenutzerRights[$i]['Xvalue'] == 1)
-								echo '<td id="important_green">berechtigt</td>';
-							else
-								echo '<td id="important_red">nicht berechtigt</td>';
+							if($currBenutzer['UID'] <= 2) {
+								if($BenutzerRights[$i]['Xvalue'] == 1)
+									echo '<td id="important_green">berechtigt</td>';
+								else
+									echo '<td id="important_red">nicht berechtigt</td>';
+							}
+							else {
+								if($BenutzerRights[$i]['Xvalue'] == 1)
+									echo '<td id="important_green"><a href="save.php?UID='.$currBenutzer['UID'].'&RID='.($i+1).'&Xvalue=0">berechtigt</a></td>';
+								else
+									echo '<td id="important_red"><a href="save.php?UID='.$currBenutzer['UID'].'&RID='.($i+1).'&Xvalue=1">nicht berechtigt</a></td>';
+							}
 							$i++;
 						}
 						if($currBenutzer['UID'] > 2) {
-							echo '<td id="important_green"><a href="Umask.php?UID='.$currBenutzer['UID'].'">bearbeiten</a></td>';
 							echo '<td id="important_green"><a href="PWmask.php?UID='.$currBenutzer['UID'].'">Passwort &#228;ndern</a></td>';
 							echo '<td id="important_red"><a href="delete.php?UID='.$currBenutzer['UID'].'">l&#246;schen</a></td>';
 						}
 						else {
-							echo '<td>bearbeiten</td>';
 							echo '<td id="important_green"><a href="PWmask.php?UID='.$currBenutzer['UID'].'">Passwort &#228;ndern</a></td>';
 							echo '<td>l&#246;schen</td></tr>';
 						}

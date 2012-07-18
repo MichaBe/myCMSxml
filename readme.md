@@ -1,7 +1,7 @@
 myCMSxml - Ein php-Projekt
 ==========================
 
-__Aktuelle Version: 0.0.7, Lizenz: CC BY 3.0__
+__Aktuelle Version: 0.0.8, Lizenz: CC BY 3.0__
 ----------------------------------------------
 
 # Ein kleiner Rückblick #
@@ -48,8 +48,8 @@ Hier noch ein kleiner Überblick, was auf meiner derzeitigen ToDo-Liste steht:
 * _Tipp des Tages_ in die CMS-Startseite einbauen
 * *ERLEDIGT:* Anzahl der Beiträge pro Kategorie soll in der Kategorieübersicht angezeigt werden
 * *ERLEDIGT:* Ändern des Designs für die Maske zum erstellen der Beiträge
-* Ändern des Designs zum Erstellen / Ändern von Kategorien
-* Ändern der Benutzerrechte direkt in der Übersicht ermöglichen
+* *ERLEDIGT:* Ändern des Designs zum Erstellen / Ändern von Kategorien
+* *ERLEDIGT:* Ändern der Benutzerrechte direkt in der Übersicht ermöglichen
 * Ermöglichen des Erstellens eigener Ereignisse im Log
 * Sicherheit: Inizialisierungspasswörter _MÜSSEN_ geändert werden
 
@@ -63,7 +63,7 @@ Hier noch ein kleiner Überblick, was auf meiner derzeitigen ToDo-Liste steht:
 
 ### ... ###
 * RSS / Atom - Feeds ermöglichen
-* Screenshoots vom (fertigen Teil des) Backend / G+-Seite für myCMSxml
+* Screenshoots vom (fertigen Teil des) Backend / G+-Seite für myCMSxml / github-wiki / ??
 
 Gerne nehm ich hier noch Ideen auf. An andere php-Entwickler: Gerne könnt ihr dieses Projekt forken. 
 Allerdings wird das bei diesem Codedurcheinander nicht einfach. Ich verspreche Besserung. 

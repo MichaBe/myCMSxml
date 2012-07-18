@@ -55,17 +55,22 @@
 				<h2>Bearbeiten oder erstellen Sie hier die Kategorien</h2>
 				<form action="save.php" method="post">
 					<?php
-						echo 'Name: <input name="name" type="text" size="20" maxlength="20" value="'.$currentKategorie[0]['Cname'].'" /><br />';
-												
-						echo 'Schl&#252;sselw&#246;rter: <input name="keywords" type="text" size="60" maxlength="60" value="'.$currentKategorie[0]['Ckeywords'].'" /><br />';
-						echo 'Vorschautext:<br />';
-						echo '<textarea name="shorttext" id="shorttext">'.$currentKategorie[0]['Cshorttext'].'</textarea><br />';
+						echo '<table><tr>';
+						echo '<td>Name:</td><td><input name="name" type="text" size="77" maxlength="20" value="'.$currentKategorie[0]['Cname'].'" /></td>';
+						echo '</tr><tr>';
+						echo '<td>Schl&#252;sselw&#246;rter:</td><td><input name="keywords" type="text" size="77" maxlength="60" value="'.$currentKategorie[0]['Ckeywords'].'" /></td>';
+						echo '</tr><tr>';
+						echo '<td colspan="2">Vorschautext:</td>';
+						echo '</tr><tr>';
+						echo '<td colspan="2"><textarea name="shorttext" id="shorttext">'.$currentKategorie[0]['Cshorttext'].'</textarea></td>';
+						echo '</tr><tr>';
+						echo '<td colspan="2">';
 						if(!$newKategorie)
 							echo '<input type="hidden" name="ID" value="'.$_GET['CID'].'" />';
+						echo '<input type="submit" value="speichern" />';
+						echo '<input type="reset"  value="zur&#252;cksetzen" />';
+						echo '</td></tr></table>';
 					?>
-					<br />
-					<input type="submit" value="speichern" />
-					<input type="reset"  value="zur&#252;cksetzen" />
 				</form>	
 			</div>
 			<?php include('../../backend/formanagement/getfooter.php'); ?>

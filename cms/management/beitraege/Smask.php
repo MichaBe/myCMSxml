@@ -58,7 +58,7 @@
 				<form action="save.php" method="post">
 					<?php
 						echo '<table><tr>';
-						echo '<td>&#220;berschrift:</td><td><input name="headline" type="text" size="30" maxlength="30" value="'.$currentBeitrag[0]['Sheadline'].'" /></td>';
+						echo '<td>&#220;berschrift:</td><td><input name="headline" type="text" size="50" maxlength="30" value="'.$currentBeitrag[0]['Sheadline'].'" /></td>';
 						
 						$allKategorien = $myADBConnector->getChoosableKategorien();
 						echo '<td><select name="cid" size="1">';
@@ -71,7 +71,7 @@
 						echo '</select></td>';
 						echo '</tr><tr>';
 						
-						echo '<td>Schl&#252;sselw&#246;rter:</td><td colspan="2"><input name="keywords" type="text" size="60" maxlength="60" value="'.$currentBeitrag[0]['Skeywords'].'" /></td>';
+						echo '<td>Schl&#252;sselw&#246;rter:</td><td colspan="2"><input name="keywords" type="text" size="77" maxlength="60" value="'.$currentBeitrag[0]['Skeywords'].'" /></td>';
 						echo '</tr><tr>';
 						echo '<td colspan="3">Vorschautext:</td>';
 						echo '</tr><tr>';
