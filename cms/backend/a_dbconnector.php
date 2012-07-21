@@ -176,6 +176,22 @@
 			return $returnarray;
 		}
 		
+		public function getallMOTD($type) {
+			$query = sprintf("SELECT *
+				FROM MOTD
+				WHERE Mtype = '%s'
+				ORDER BY MID ASC",
+				mysql_real_escape_string($type));
+			$result = mysql_query($query, $this->connection_ID);
+			$i = 0;
+			$returnarray = array();
+			while($row = mysql_fetch_assoc($result)){
+				$returnarray[$i] = $row;
+				$i++;
+			}
+			return $returnarray;
+		}
+		
 		public function getAllEreignisse() {
 			$query = "SELECT * 
 				FROM Ereignis
@@ -226,7 +242,7 @@
 		}
 		public function addOneBenutzer($Uname, $UpasswHASHED) {
 			$query = sprintf("INSERT INTO Benutzer 
-				VALUES(NULL, '%s', '%s')", 
+				VALUES(NULL, '%s', '%s', TRUE)", 
 				mysql_real_escape_string($Uname), 
 				mysql_real_escape_string($UpasswHASHED));
 			mysql_query($query, $this->connection_ID);

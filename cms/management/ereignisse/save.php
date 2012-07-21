@@ -13,8 +13,10 @@
 	}
 	
 	if(isset($_POST['Etext'])) {
-		$currentUser = $myADBConnector->getOneBenutzerByNameOrID($_SESSION['UID']);
-		$myADBConnector->addEreignis($currentUser[0]['Uname'].': "'.$_POST['Etext'].'"');
+		if($_POST['Etext'] != "") {
+			$currentUser = $myADBConnector->getOneBenutzerByNameOrID($_SESSION['UID']);
+			$myADBConnector->addEreignis($currentUser[0]['Uname'].': "'.$_POST['Etext'].'"');
+		}
 	}
 	
 	

@@ -44,11 +44,11 @@
 					
 					echo '<table><tr>';
 					echo '<td colspan="3"><form action="save.php" method="POST">';
-					echo '<input type="text" size="50" maxlength="50" name="Etext"/><input type="submit" value="Ereignis loggen" /></td>';
+					echo '<input type="text" size="50" maxlength="50" name="Etext"/><input type="submit" value="Ereignis loggen" /></form></td>';
 					echo '</tr><tr>';
 					echo '<th>Datum</th><th>Ereignistext</th>';
 					echo '<th>';
-					echo '<form action="index.php" method="POST"><input type="text" name="search" size="20" maxlength="20" /><input type="submit" value="suchen" /></td>';
+					echo '<form action="index.php" method="POST"><input type="text" name="search" size="20" maxlength="20" /><input type="submit" value="suchen" /></form>';
 					echo '</th></tr>';
 					
 					if(isset($_POST['search'])) {

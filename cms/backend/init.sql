@@ -18,6 +18,7 @@ CREATE TABLE Benutzer (
 	UID INT NOT NULL AUTO_INCREMENT,
 	Uname CHAR(20),
 	Upassw CHAR(40),
+	Uchangepw BOOLEAN,
 	PRIMARY KEY(UID)
 );
 			
@@ -37,7 +38,7 @@ CREATE TABLE Beitrag (
 CREATE TABLE Kategorie (
 	CID INT NOT NULL AUTO_INCREMENT,
 	Cshorttext TEXT,
-	Cname CHAR(20),
+	Cname CHAR(30),
 	Ckeywords CHAR(60),
 	PRIMARY KEY(CID)
 );
@@ -56,6 +57,13 @@ CREATE TABLE Konfiguration (
 	Kversion CHAR(10),
 	Knosnippet TEXT,
 	PRIMARY KEY(KID)
+);
+
+CREATE TABLE MOTD (
+	MID INT NOT NULL AUTO_INCREMENT,
+	Mtype ENUM('CMS', 'STYLE'),
+	Mmessage TEXT,
+	PRIMARY KEY(MID)
 );
 			
 			
@@ -80,13 +88,13 @@ ALTER TABLE Beitrag
 		REFERENCES Kategorie(CID);
 
 
-INSERT INTO Benutzer VALUES(1, 'Administrator', '8a974b0407e3f2f3bd9e1aa995563a7c');
-INSERT INTO Benutzer VALUES(2, 'Anonymous', 'd7a851cca17e12678069be57985832cc');
+INSERT INTO Benutzer VALUES(1, 'Administrator', '8a974b0407e3f2f3bd9e1aa995563a7c', TRUE);
+INSERT INTO Benutzer VALUES(2, 'Anonymous', 'd7a851cca17e12678069be57985832cc', TRUE);
 
 			
-INSERT INTO Kategorie VALUES(1, NULL, 'FOOTER', NULL);
-INSERT INTO Kategorie VALUES(2, NULL, 'HIDDEN', NULL);
-INSERT INTO Kategorie VALUES(3, NULL, 'DRAFT', NULL);
+INSERT INTO Kategorie VALUES(1, NULL, 'Footer', NULL);
+INSERT INTO Kategorie VALUES(2, NULL, 'Versteckt', NULL);
+INSERT INTO Kategorie VALUES(3, NULL, 'Entwurf', NULL);
 INSERT INTO Kategorie VALUES(4, NULL, 'Startseite', NULL);
 
 
