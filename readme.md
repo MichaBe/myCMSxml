@@ -1,7 +1,7 @@
 myCMSxml - Ein php-Projekt
 ==========================
 
-__Aktuelle Version: 0.0.8, Lizenz: CC BY 3.0__
+__Aktuelle Version: 0.1.0, Lizenz: CC BY 3.0__
 ----------------------------------------------
 
 # Ein kleiner Rückblick #
@@ -58,12 +58,13 @@ Hier noch ein kleiner Überblick, was auf meiner derzeitigen ToDo-Liste steht:
 * *ERLEDIGT:* Ändern des Designs zum Erstellen / Ändern von Kategorien
 * *ERLEDIGT:* Ändern der Benutzerrechte direkt in der Übersicht ermöglichen
 * *ERLEDIGT:* Ermöglichen des Erstellens eigener Ereignisse im Log
-* Sicherheit: Inizialisierungspasswörter _MÜSSEN_ geändert werden
+* *ERLEDIGT:* Sicherheit: Inizialisierungspasswörter _MÜSSEN_ geändert werden
 
 ### Bis Version 0.2.0 ###
 * Ermöglichen von Inizialisierungsscripten für Themes
 * Maske für das Hochladen von Themes
 * Erstellen eines Theme-Database-Connector, über den Themes Änderungen in der Datenbank vornehmen können
+* Anpassen der bestehenden Themes
 
 ### Bis Version 0.3.0 ###
 * Verbessern des Vorgangs bei der ersten Anmeldung:

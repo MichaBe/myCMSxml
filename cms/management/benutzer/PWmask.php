@@ -44,7 +44,7 @@
 						if(isset($userToChange[0]['UID'])) {
 							echo '<h2>&#196;ndern Sie hier das Passwort f&#252;r "'.$userToChange[0]['Uname'].'"</h2>';
 							if(isset($_GET['error_pw1u2']))
-								echo '<div id="important_red">Die Passw&#246;rter für den neuen Benutzer stimmen nicht überein.</div>';
+								echo '<div id="important_red">Die Passw&#246;rter für den Benutzer stimmen nicht überein.</div>';
 							if(isset($_GET['error_pwOwn']))
 								echo '<div id="important_red">Ihr Passwort wurde falsch eingegeben.</div>';
 							echo '<form action="PWsave.php" method="POST">';

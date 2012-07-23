@@ -10,9 +10,14 @@
 		$currentUser = $myADBconnector->getOneBenutzer($users[0]['UID']);
 	
 	if(md5(md5($_POST['passwort'])) == $users[0]['Upassw'] && $currentUser[0]['Xvalue'] == 1) {
-		session_start();
-		$_SESSION['UID'] = $users[0]['UID'];
-		header('Location: http://'.$_SERVER['HTTP_HOST'].'/cms/management/index.php');
+		if($users[0]['Uchangepw'] == FALSE) {
+			session_start();
+			$_SESSION['UID'] = $users[0]['UID'];
+			header('Location: http://'.$_SERVER['HTTP_HOST'].'/cms/management/index.php');
+		}
+		else {
+			header('Location: http://'.$_SERVER['HTTP_HOST'].'/cms/management/Uchangepw.php?UID='.$users[0]['UID']);
+		}
 	}
 	else {
 		header('Location: http://'.$_SERVER['HTTP_HOST'].'/snippet.php?SID=1');

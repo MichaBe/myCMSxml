@@ -20,7 +20,7 @@
 	
 	if($curUserHASH == $curUser[0]['Upassw']) {
 		if($newPasswHash1 == $newPasswHash2) {
-			$myADBConnector->changeOneBenutzerPassw($_POST['UID'], $newPasswHash1);
+			$myADBConnector->changeOneBenutzerPassw($_POST['UID'], $newPasswHash1, TRUE);
 			
 			$currentUser = $myADBConnector->getOneBenutzerByNameOrID($_SESSION['UID']);
 			$myADBConnector->addEreignis($currentUser[0]['Uname'].' ändert das Passwort für Benutzer "'.$userToChange[0]['Uname'].'"');

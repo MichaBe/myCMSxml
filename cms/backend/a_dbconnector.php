@@ -232,12 +232,23 @@
 			
 			mysql_query($query, $this->connection_ID);
 		}
-		public function changeOneBenutzerPassw($UID, $UpasswHASHED) {
+		public function changeOneBenutzerPassw($UID, $UpasswHASHED, $Uchangepw) {
+			if($Uchangepw) {
 			$query = sprintf("UPDATE Benutzer
-				SET Upassw = '%s'
+				SET Upassw = '%s',
+				Uchangepw = TRUE
 				WHERE UID = %d",
 				mysql_real_escape_string($UpasswHASHED),
 				mysql_real_escape_string($UID));
+			}
+			else {
+				$query = sprintf("UPDATE Benutzer
+				SET Upassw = '%s',
+				Uchangepw = FALSE
+				WHERE UID = %d",
+				mysql_real_escape_string($UpasswHASHED),
+				mysql_real_escape_string($UID));
+			}
 			mysql_query($query, $this->connection_ID);
 		}
 		public function addOneBenutzer($Uname, $UpasswHASHED) {
