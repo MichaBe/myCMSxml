@@ -58,7 +58,7 @@ Hier noch ein kleiner Überblick, was auf meiner derzeitigen ToDo-Liste steht:
 * *ERLEDIGT:* Ändern des Designs zum Erstellen / Ändern von Kategorien
 * *ERLEDIGT:* Ändern der Benutzerrechte direkt in der Übersicht ermöglichen
 * *ERLEDIGT:* Ermöglichen des Erstellens eigener Ereignisse im Log
-* *ERLEDIGT:* Sicherheit: Inizialisierungspasswörter _MÜSSEN_ geändert werden
+* *ERLEDIGT:* Sicherheit: Initialisierungspasswörter _MÜSSEN_ geändert werden
 
 ### Bis Version 0.2.0 ###
 * Ermöglichen von Inizialisierungsscripten für Themes
