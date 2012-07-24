@@ -75,6 +75,8 @@ Hier noch ein kleiner Überblick, was auf meiner derzeitigen ToDo-Liste steht:
 ### ... ###
 * RSS / Atom - Feeds ermöglichen
 * Screenshoots vom (fertigen Teil des) Backend / G+-Seite für myCMSxml / github-wiki / ??
+* Erstellen einer Sperrtabelle für die Beiträge / Kategorien. In der Bearbeitungsmaske geöffnete Beiträge / 
+  Kategorien sollen nicht erneut geöffnet werden können.
 
 Gerne nehm ich hier noch Ideen auf. An andere php-Entwickler: Gerne könnt ihr dieses Projekt forken. 
 Allerdings wird das bei diesem Codedurcheinander nicht einfach. Ich verspreche Besserung. 

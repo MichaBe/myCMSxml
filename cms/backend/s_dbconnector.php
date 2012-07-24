@@ -131,8 +131,8 @@
 		
 		public function getKonfiguration() {
 			$query = "SELECT * 
-				FROM Konfiguration 
-				WHERE KID = 1";
+				FROM Konfiguration
+				ORDER BY KID ASC";
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;
 			$returnarray = array();

@@ -49,13 +49,11 @@ CREATE TABLE Ereignis (
 	PRIMARY KEY(EID)
 );
 
-CREATE TABLE Konfiguration (
-	KID INT NOT NULL AUTO_INCREMENT,
-	Kstyle CHAR(20),
-	Ktitle CHAR(20),
-	Kversion CHAR(10),
-	Knosnippet TEXT,
-	PRIMARY KEY(KID)
+CREATE TABLE Konfiguration(
+  KID INT NOT NULL AUTO_INCREMENT,
+  Kname CHAR(20),
+  Kvalue TEXT,
+  PRIMARY KEY(KID)
 );
 
 CREATE TABLE MOTD (
@@ -120,8 +118,10 @@ INSERT INTO Berechtigung VALUES(NULL, 2, 5, FALSE);
 INSERT INTO Berechtigung VALUES(NULL, 2, 6, FALSE);
 
 
-INSERT INTO Konfiguration VALUES(1, 'konservativ', 'myCMS.xml', '0.1.0', 'Hier wurde noch kein Beitrag ver&#246;ffentlicht');
-
+INSERT INTO Konfiguration VALUES(1, 'style', 'konservativ');
+INSERT INTO Konfiguration VALUES(2, 'title', 'myCMS.xml');
+INSERT INTO Konfiguration VALUES(3, 'nosnippet', 'Hier wurde noch kein Beitrag ver&#246;ffentlicht');
+INSERT INTO Konfiguration VALUES(4, 'version', '0.1.0');
 
 INSERT INTO Beitrag VALUES(1, 1, 1, 'myCMSxml', NULL, '<p align="center"><form action="cms/management/login.php" method="post"><table><tr><td>Benutzername:</td><td><input type="text" name="username"/></td></tr><tr><td>Passwort:</td><td><input type="password" name="passwort"/></td></tr></table><input type="submit" value="Anmelden"/></form></p>', '2012-05-20', '2012-05-20', NULL);
 INSERT INTO Beitrag VALUES(2, 1, 2, 'Error 404', NULL, '<h1>Die von Ihnen gesuchte Seite konnte leider nicht gefunden werden</h1>Wir bitten, dies zu entschuldigen.', '2012-05-20', '2012-05-20', NULL);

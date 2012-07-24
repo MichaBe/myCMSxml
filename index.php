@@ -28,17 +28,17 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<?php
-			echo '<title>'.$Konfiguration[0]['Ktitle'].' - '.$curKategorie[0]['Cname'].'</title>';
+			echo '<title>'.$Konfiguration[1]['Kvalue'].' - '.$curKategorie[0]['Cname'].'</title>';
 			echo '<meta name="keywords" content="'.$curKategorie[0]['Ckeywords'].'" />';
 			echo '<meta name="description" content="'.$curKategorie[0]['Cshorttext'].'" />';
-			echo '<link rel="stylesheet" type="text/css" href="/cms/style/'.$Konfiguration[0]['Kstyle'].'/theme.css" />';
+			echo '<link rel="stylesheet" type="text/css" href="/cms/style/'.$Konfiguration[0]['Kvalue'].'/theme.css" />';
 		?>
 	</head>
 	<body>
 		<div class="wrapper">
 			<div class="header">
 				<?php
-					echo $Konfiguration[0]['Ktitle'];
+					echo $Konfiguration[1]['Kvalue'];
 				?>
 			</div>
 			<div class="categories">
@@ -55,7 +55,7 @@
 					$Beitraege = $myConnector->getShortBeitraege($curKategorie[0]['CID']);
 					
 					if(count($Beitraege) < 1) {
-						echo '<h2>'.$Konfiguration[0]['Knosnippet'].'</h2>';
+						echo '<h2>'.$Konfiguration[2]['Kvalue'].'</h2>';
 					}
 					foreach ($Beitraege as $curBeitrag) {
 						echo '<div class="snippet" id="'.$curBeitrag['SID'].'">';
