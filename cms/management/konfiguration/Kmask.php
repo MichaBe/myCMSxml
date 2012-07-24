@@ -53,7 +53,7 @@
 					
 					echo '<form action="save.php" method="POST">';
 					echo '<table><tr>';
-					echo '<td>Blogtitel:</td><td><input type="text" name="Ktitle" maxlength="20" size="77" value="'.$Konfiguration[0]['Ktitle'].'" /></td>';
+					echo '<td>Blogtitel:</td><td><input type="text" name="Ktitle" maxlength="20" size="77" value="'.$Konfiguration[1]['Kvalue'].'" /></td>';
 					echo '</tr><tr>';
 					echo '<td>Blogdesign:</td><td>';
 					echo '<select name="Kstyle" size="1">';
@@ -67,7 +67,7 @@
 					echo '</tr><tr>';
 					echo '<td colspan="2">Text für leere Kategorien:</td>';
 					echo '</tr><tr>';
-					echo '<td colspan="2"><textarea name="Knosnippet" id="shorttext">'.$Konfiguration[0]['Knosnippet'].'</textarea></td>';
+					echo '<td colspan="2"><textarea name="Knosnippet" id="shorttext">'.$Konfiguration[2]['Kvalue'].'</textarea></td>';
 					echo '</tr><tr>';
 					echo '<td colspan="2"><input type="submit" value="speichern" /><input type="reset"  value="zur&#252;cksetzen" /></td>';
 					echo '</tr></table>';

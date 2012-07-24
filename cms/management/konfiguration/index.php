@@ -45,11 +45,11 @@
 					$Konfiguration = $myADBConnector->getKonfiguration();
 					
 					echo '<table><tr>';
-					echo '<td>Blogtitel</td><td>'.$Konfiguration[0]['Ktitle'].'</td>';
+					echo '<td>Blogtitel</td><td>'.$Konfiguration[1]['Kvalue'].'</td>';
 					echo '</tr><tr>';
-					echo '<td>Blogdesign</td><td>'.$Konfiguration[0]['Kstyle'].'</td>';
+					echo '<td>Blogdesign</td><td>'.$Konfiguration[0]['Kvalue'].'</td>';
 					echo '</tr><tr>';
-					echo '<td>Text für leere Kategorien</td><td>'.$Konfiguration[0]['Knosnippet'].'</td>';
+					echo '<td>Text für leere Kategorien</td><td>'.$Konfiguration[2]['Kvalue'].'</td>';
 					echo '</tr></table>';
 				?>
 			</div>

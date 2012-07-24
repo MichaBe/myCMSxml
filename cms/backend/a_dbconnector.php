@@ -380,14 +380,23 @@
 		}
 		
 		public function changeKonfiguration($Konfiguration) {
-			$query = sprintf("UPDATE Konfiguration
-				SET Kstyle = '%s',
-				Ktitle = '%s',
-				Knosnippet = '%s'",
-				mysql_real_escape_string($Konfiguration['Kstyle']), 
-				mysql_real_escape_string($Konfiguration['Ktitle']),
+			$query = array();
+			$query[0] = sprintf("UPDATE Konfiguration
+				SET Kvalue = '%s'
+				WHERE KID = 1",
+				mysql_real_escape_string($Konfiguration['Kstyle']));
+			$query[1] = sprintf("UPDATE Konfiguration
+				SET Kvalue = '%s'
+				WHERE KID = 2",
+				mysql_real_escape_string($Konfiguration['Ktitle']));
+			$query[2] = sprintf("UPDATE Konfiguration
+				SET Kvalue = '%s'
+				WHERE KID = 3",
 				mysql_real_escape_string($Konfiguration['Knosnippet']));
-			mysql_query($query, $this->connection_ID);
+			foreach($query as $curquery) {
+				mysql_query($curquery, $this->connection_ID);
+			}
+			
 		}
 		
 		public function addEreignis($Etext) {
