@@ -86,6 +86,7 @@
 			$query = "SELECT COUNT(Beitrag.SID) AS Scount, Kategorie.CID, Cname, Ckeywords 
 				FROM Beitrag RIGHT JOIN Kategorie
 				ON Kategorie.CID = Beitrag.CID
+				WHERE Ctarget = 'index'
 				GROUP BY Kategorie.CID
 				ORDER BY CID DESC";
 			$result = mysql_query($query, $this->connection_ID);
@@ -104,6 +105,7 @@
 			$query = "SELECT CID, Cname 
 				FROM Kategorie
 				WHERE CID != 4
+				AND Ctarget = 'index'
 				ORDER BY CID DESC";
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;
@@ -115,7 +117,7 @@
 			return $returnarray;
 		}
 		public function getOneKategorie($CID) {
-			$query = sprintf("SELECT CID, Cshorttext, Cname, Ckeywords
+			$query = sprintf("SELECT *
 				FROM Kategorie
 				WHERE CID = %d", 
 				mysql_real_escape_string($CID));
@@ -295,20 +297,23 @@
 			$query = sprintf("UPDATE Kategorie
 				SET Cshorttext = '%s',
 				Cname = '%s',
-				Ckeywords = '%s'
+				Ckeywords = '%s',
+				Ctarget = '%s'
 				WHERE CID = %d", 
 				mysql_real_escape_string($Kategorie['Cshorttext']), 
 				mysql_real_escape_string($Kategorie['Cname']), 
 				mysql_real_escape_string($Kategorie['Ckeywords']),
+				mysql_real_escape_string($Kategorie['Ctarget']),
 				mysql_real_escape_string($CID));
 			mysql_query($query, $this->connection_ID);
 		}
 		public function addOneKategorie($Kategorie) {
 			$query = sprintf("INSERT INTO Kategorie
-				VALUES(NULL, '%s', '%s', '%s')", 
+				VALUES(NULL, '%s', '%s', '%s', '%s')", 
 				mysql_real_escape_string($Kategorie['Cshorttext']), 
 				mysql_real_escape_string($Kategorie['Cname']), 
-				mysql_real_escape_string($Kategorie['Ckeywords']));
+				mysql_real_escape_string($Kategorie['Ckeywords']),
+				mysql_real_escape_string($Kategorie['Ctarget']));
 			mysql_query($query, $this->connection_ID);
 		}
 		public function delOneKategorie($CID) {

@@ -45,7 +45,7 @@
 				<ul>
 					<?php
 						foreach ($allKategories as $curKat) {
-							echo '<li id="C'.$curKat['CID'].'"><a href="index.php?CID='.$curKat['CID'].'">'.$curKat['Cname'].'</a></li>';
+							echo '<li id="C'.$curKat['CID'].'"><a href="'.$curKat['Ctarget'].'.php?CID='.$curKat['CID'].'">'.$curKat['Cname'].'</a></li>';
 						}
 					?>
 				</ul>

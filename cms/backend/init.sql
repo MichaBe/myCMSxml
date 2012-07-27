@@ -39,7 +39,16 @@ CREATE TABLE Kategorie (
 	Cshorttext TEXT,
 	Cname CHAR(30),
 	Ckeywords CHAR(60),
+	Ctarget CHAR(30),
 	PRIMARY KEY(CID)
+);
+
+CREATE TABLE Bild (
+	BID INT NOT NULL AUTO_INCREMENT,
+	CID INT,
+	Btitle CHAR(30),
+	Bdescription TEXT,
+	PRIMARY KEY(BID)
 );
 			
 CREATE TABLE Ereignis (
@@ -84,15 +93,19 @@ ALTER TABLE Beitrag
 		FOREIGN KEY (CID)
 		REFERENCES Kategorie(CID);
 
+ALTER TABLE Bild
+	ADD CONSTRAINT BCID
+		FOREIGN KEY (CID)
+		REFERENCES Kategorie(CID);
 
 INSERT INTO Benutzer VALUES(1, 'Administrator', '8a974b0407e3f2f3bd9e1aa995563a7c', TRUE);
 INSERT INTO Benutzer VALUES(2, 'Anonymous', 'd7a851cca17e12678069be57985832cc', TRUE);
 
 			
-INSERT INTO Kategorie VALUES(1, NULL, 'Footer', NULL);
-INSERT INTO Kategorie VALUES(2, NULL, 'Versteckt', NULL);
-INSERT INTO Kategorie VALUES(3, NULL, 'Entwurf', NULL);
-INSERT INTO Kategorie VALUES(4, NULL, 'Startseite', NULL);
+INSERT INTO Kategorie VALUES(1, NULL, 'Footer', NULL, 'index');
+INSERT INTO Kategorie VALUES(2, NULL, 'Versteckt', NULL, 'index');
+INSERT INTO Kategorie VALUES(3, NULL, 'Entwurf', NULL, 'index');
+INSERT INTO Kategorie VALUES(4, NULL, 'Startseite', NULL, 'index');
 
 
 INSERT INTO Rolle VALUES(1, 'Am System anmelden', 'anmelden');
@@ -101,6 +114,7 @@ INSERT INTO Rolle VALUES(3, 'Kategorien verwalten', 'kategorien');
 INSERT INTO Rolle VALUES(4, 'Benutzer und Berechtigungen verwalten', 'benutzer');
 INSERT INTO Rolle VALUES(5, 'Allgemeine Konfiguration &#228;ndern', 'konfiguration');
 INSERT INTO Rolle VALUES(6, 'Ereignislog einsehen', 'ereignisse');
+INSERT INTO Rolle VALUES(7, 'Galerien verwalten', 'galerien');
 
 
 INSERT INTO Berechtigung VALUES(NULL, 1, 1, TRUE);
@@ -109,6 +123,7 @@ INSERT INTO Berechtigung VALUES(NULL, 1, 3, TRUE);
 INSERT INTO Berechtigung VALUES(NULL, 1, 4, TRUE);
 INSERT INTO Berechtigung VALUES(NULL, 1, 5, TRUE);
 INSERT INTO Berechtigung VALUES(NULL, 1, 6, TRUE);
+INSERT INTO Berechtigung VALUES(NULL, 1, 7, TRUE);
 
 INSERT INTO Berechtigung VALUES(NULL, 2, 1, FALSE);
 INSERT INTO Berechtigung VALUES(NULL, 2, 2, FALSE);
@@ -116,6 +131,7 @@ INSERT INTO Berechtigung VALUES(NULL, 2, 3, FALSE);
 INSERT INTO Berechtigung VALUES(NULL, 2, 4, FALSE);
 INSERT INTO Berechtigung VALUES(NULL, 2, 5, FALSE);
 INSERT INTO Berechtigung VALUES(NULL, 2, 6, FALSE);
+INSERT INTO Berechtigung VALUES(NULL, 2, 7, FALSE);
 
 
 INSERT INTO Konfiguration VALUES(1, 'style', 'konservativ');

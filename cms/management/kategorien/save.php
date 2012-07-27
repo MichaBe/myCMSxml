@@ -17,6 +17,7 @@
 	$newKategorie['Cshorttext'] = $_POST['shorttext'];
 	$newKategorie['Cname'] = $_POST['name'];
 	$newKategorie['Ckeywords'] = $_POST['keywords'];
+	$newKategorie['Ctarget'] = 'index';
 	
 	if(isset($_POST['ID'])) {
 		$myADBConnector->changeOneKategorie($_POST['ID'], $newKategorie);
