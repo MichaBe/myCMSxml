@@ -52,10 +52,10 @@
 					$curSTYtipp = $CMStipps[($diff->d)%(count($STYLEtipps))];
 					echo '<h1>Herzlich willkommen, '.$currentUser[0]['Uname'].'</h1>';
 					echo '<div id="important_green">';
-					echo 'Message of the day - CMS: '.$curCMStipp['Mmessage'];
+					echo 'Message of the day - CMS:<br />'.$curCMStipp['Mmessage'];
 					echo '</div>';
 					echo '<div id="important_green">';
-					echo 'Message of the day - Style: '.$curSTYtipp['Mmessage'];
+					echo 'Message of the day - Style:<br />'.$curSTYtipp['Mmessage'];
 					echo '</div>';
 				?>
 			</div>

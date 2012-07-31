@@ -61,6 +61,7 @@ Hier noch ein kleiner Überblick, was auf meiner derzeitigen ToDo-Liste steht:
 * *ERLEDIGT:* Sicherheit: Initialisierungspasswörter _MÜSSEN_ geändert werden
 
 ### Bis Version 0.2.0 ###
+* Ermöglichen von Galerien
 * Ermöglichen von Inizialisierungsscripten für Themes
 * Maske für das Hochladen von Themes
 * Erstellen eines Theme-Database-Connector, über den Themes Änderungen in der Datenbank vornehmen können
@@ -73,7 +74,6 @@ Hier noch ein kleiner Überblick, was auf meiner derzeitigen ToDo-Liste steht:
 * Ermöglichen von Benutzerdefinierten Head-Elementen (z. B. eigenen Tracking-Codes, ...)
 
 ### ... ###
-* Ermöglichen von Galerien
 * RSS / Atom - Feeds ermöglichen
 * Screenshoots vom (fertigen Teil des) Backend / G+-Seite für myCMSxml / github-wiki / ??
 * Erstellen einer Sperrtabelle für die Beiträge / Kategorien. In der Bearbeitungsmaske geöffnete Beiträge / 

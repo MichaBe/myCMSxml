@@ -42,6 +42,7 @@
 				<?php
 					$allEreignisse = $myADBConnector->getAllEreignisse();
 					
+					echo '<a href="delete.php" id="important_red">Log leeren</a>';
 					echo '<table><tr>';
 					echo '<td colspan="3"><form action="save.php" method="POST">';
 					echo '<input type="text" size="50" maxlength="50" name="Etext"/><input type="submit" value="Ereignis loggen" /></form></td>';

@@ -131,6 +131,62 @@
 			return $returnarray;
 		}
 		
+		public function getAllGalerien() {
+			$query = "SELECT COUNT(Bildgruppe.BGID) AS BGcount, Kategorie.CID, Cname, Ckeywords 
+				FROM Bildgruppe RIGHT JOIN Kategorie
+				ON Kategorie.CID = Bildgruppe.CID
+				WHERE Ctarget = 'galerie'
+				GROUP BY Kategorie.CID
+				ORDER BY CID DESC";
+			$result = mysql_query($query, $this->connection_ID);
+			$i = 0;
+			$returnarray = array();
+			while($row = mysql_fetch_assoc($result)){
+				$returnarray[$i] = $row;
+				$i++;
+			}
+			return $returnarray;
+		}
+		public function getChoosableGalerien() {
+			$query = "SELECT CID, Cname 
+				FROM Kategorie
+				WHERE CID != 4
+				AND Ctarget = 'galerie'
+				ORDER BY CID DESC";
+			$result = mysql_query($query, $this->connection_ID);
+			$i = 0;
+			$returnarray = array();
+			while($row = mysql_fetch_assoc($result)){
+				$returnarray[$i] = $row;
+				$i++;
+			}
+			return $returnarray;
+		}
+		public function getOneGalerie($CID) {
+			$this->getOneKategorie($CID);
+		}
+		
+		public function getOnesBildgruppen($CID) {
+			$query = sprintf("SELECT COUNT(Bild.BID) AS Bcount, Bildgruppe.BGID, BGname
+				FROM Bild RIGHT JOIN Bildgruppe
+				ON Bildgruppe.BGID = Bild.BGID
+				WHERE Bildgruppe.CID = %d
+				GROUP BY BGID
+				ORDER BY CID DESC",
+				mysql_real_escape_string($CID));
+			$result = mysql_query($query, $this->connection_ID);
+			$i = 0;
+			$returnarray = FALSE;
+			if($result !== FALSE) {
+				$returnarray = array();
+				while($row = mysql_fetch_assoc($result)){
+					$returnarray[$i] = $row;
+					$i++;
+				}
+			}
+			return $returnarray;
+		}
+		
 		public function getAllBeitraege() {
 			$query = "SELECT SID, Uname, Cname, Sheadline, Slastmod, Sreleased
 				FROM Benutzer, Beitrag, Kategorie
@@ -327,6 +383,20 @@
 			mysql_query($query, $this->connection_ID);
 		}
 		
+		public function changeOneGalerie($CID, $Galerie) {
+			$this->changeOneKategorie($CID, $Galerie);
+		}
+		public function addOneGalerie($Galerie) {
+			$this->addOneKategorie($Galerie);
+		}
+		public function delOneGalerie($CID) {
+			$this->delOneKategorie($CID);
+		}
+
+		public function addOneBildgruppe($Bildgruppe) {
+			
+		}
+		
 		public function changeOneBeitrag($SID, $Beitrag) {
 			$query = sprintf("UPDATE Beitrag
 				SET CID = %d,
@@ -408,6 +478,10 @@
 			$query = sprintf("INSERT INTO Ereignis
 				VALUES(NULL, CURDATE(), '%s')", 
 				mysql_real_escape_string($Etext));
+			mysql_query($query, $this->connection_ID);
+		}
+		public function delLog() {
+			$query = sprintf("TRUNCATE Ereignis");
 			mysql_query($query, $this->connection_ID);
 		}
 	}
