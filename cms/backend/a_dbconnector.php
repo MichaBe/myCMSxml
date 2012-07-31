@@ -481,7 +481,8 @@
 			mysql_query($query, $this->connection_ID);
 		}
 		public function delLog() {
-			$query = sprintf("TRUNCATE Ereignis");
+			$query = sprintf("DELETE FROM Ereignis
+				WHERE EID != 1");
 			mysql_query($query, $this->connection_ID);
 		}
 	}
