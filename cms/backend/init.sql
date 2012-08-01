@@ -39,7 +39,7 @@ CREATE TABLE Kategorie (
 	Cshorttext TEXT,
 	Cname CHAR(30),
 	Ckeywords CHAR(60),
-	Ctarget CHAR(30),
+	Ctarget ENUM('index', 'galerie'),
 	PRIMARY KEY(CID)
 );
 

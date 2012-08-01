@@ -60,7 +60,7 @@
 						echo '</tr><tr>';
 						echo '<td>Schl&#252;sselw&#246;rter:</td><td><input name="keywords" type="text" size="77" maxlength="60" value="'.$currentKategorie[0]['Ckeywords'].'" /></td>';
 						echo '</tr><tr>';
-						echo '<td colspan="2">Vorschautext:</td>';
+						echo '<td colspan="2">Beschreibung:</td>';
 						echo '</tr><tr>';
 						echo '<td colspan="2"><textarea name="shorttext" id="shorttext">'.$currentKategorie[0]['Cshorttext'].'</textarea></td>';
 						echo '</tr><tr>';

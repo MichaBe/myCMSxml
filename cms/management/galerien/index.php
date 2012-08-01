@@ -38,7 +38,7 @@
 				</ul>
 			</div>
 			<div class="inhalt">
-				<h2>Erstellen und bearbeiten Sie hier Galerien</h2>
+				<h2>Erstellen oder bearbeiten Sie hier Galerien</h2>
 				<?php
 					$allGalerien = $myADBConnector->getAllGalerien();
 					echo '<a href="Gmask.php" id="important_green">Neue Galerie</a>';
@@ -60,7 +60,7 @@
 							echo '<th>l&#246;schen</th></tr>';
 							
 							foreach($allBildgruppen as $curBildgruppe) {
-								echo '<tr><td>&nbsp;</td>';
+								echo '<tr><td id="important_green">&nbsp;</td>';
 								echo '<td>'.$curBildgruppe['BGname'].'</td>';
 								echo '<td>Bilder: '.$curBildgruppe['Bcount'].'</td>';
 								echo '<td id="important_green"><a href="BGmask.php?BGID='.$curBildgruppe['BGID'].'">bearbeiten</a></td>';

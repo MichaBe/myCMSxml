@@ -163,7 +163,7 @@
 			return $returnarray;
 		}
 		public function getOneGalerie($CID) {
-			$this->getOneKategorie($CID);
+			return $this->getOneKategorie($CID);
 		}
 		
 		public function getOnesBildgruppen($CID) {
@@ -174,6 +174,23 @@
 				GROUP BY BGID
 				ORDER BY CID DESC",
 				mysql_real_escape_string($CID));
+			$result = mysql_query($query, $this->connection_ID);
+			$i = 0;
+			$returnarray = FALSE;
+			if($result !== FALSE) {
+				$returnarray = array();
+				while($row = mysql_fetch_assoc($result)){
+					$returnarray[$i] = $row;
+					$i++;
+				}
+			}
+			return $returnarray;
+		}
+		public function getOneBildgruppe($BGID) {
+			$query = sprintf("SELECT *
+				FROM Bildgruppe
+				WHERE BGID = %d",
+				mysql_real_escape_string($BGID));
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;
 			$returnarray = FALSE;
@@ -392,9 +409,31 @@
 		public function delOneGalerie($CID) {
 			$this->delOneKategorie($CID);
 		}
-
+		
+		public function setThumbfromBG($BGID, $BGthumb) {
+			$query = sprintf("UPDATE Bildgruppe
+				SET BGthumb = %d
+				WHERE BGID = %d", 
+				mysql_real_escape_string($BGthumb),
+				mysql_real_escape_string($BGID));
+			mysql_query($query, $this->connection_ID);
+		}
+		public function changeOneBildgruppe($BGID, $Bildgruppe) {
+			$query = sprintf("UPDATE Bildgruppe
+				SET CID = %d,
+				BGname = '%s'
+				WHERE BGID = %d", 
+				mysql_real_escape_string($Bildgruppe['CID']), 
+				mysql_real_escape_string($Bildgruppe['BGname']), 
+				mysql_real_escape_string($Bildgruppe['BGID']));
+			mysql_query($query, $this->connection_ID);
+		}
 		public function addOneBildgruppe($Bildgruppe) {
-			
+			$query = sprintf("INSERT INTO Bildgruppe
+				VALUES(NULL, %d, '%s', NULL)",
+				mysql_real_escape_string($Bildgruppe['CID']), 
+				mysql_real_escape_string($Bildgruppe['BGname']));
+			mysql_query($query, $this->connection_ID);
 		}
 		
 		public function changeOneBeitrag($SID, $Beitrag) {
