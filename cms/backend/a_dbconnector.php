@@ -204,6 +204,22 @@
 			return $returnarray;
 		}
 		
+		public function getOnesBilder($BGID) {
+			$query = sprintf("SELECT *
+				FROM Bild
+				WHERE BGID = %d
+				ORDER BY BID ASC",
+				mysql_real_escape_string($BGID));
+			$result = mysql_query($query, $this->connection_ID);
+			$i = 0;
+			$returnarray = array();
+			while($row = mysql_fetch_assoc($result)){
+				$returnarray[$i] = $row;
+				$i++;
+			}
+			return $returnarray;
+		}
+		
 		public function getAllBeitraege() {
 			$query = "SELECT SID, Uname, Cname, Sheadline, Slastmod, Sreleased
 				FROM Benutzer, Beitrag, Kategorie
@@ -425,7 +441,7 @@
 				WHERE BGID = %d", 
 				mysql_real_escape_string($Bildgruppe['CID']), 
 				mysql_real_escape_string($Bildgruppe['BGname']), 
-				mysql_real_escape_string($Bildgruppe['BGID']));
+				mysql_real_escape_string($BGID));
 			mysql_query($query, $this->connection_ID);
 		}
 		public function addOneBildgruppe($Bildgruppe) {
