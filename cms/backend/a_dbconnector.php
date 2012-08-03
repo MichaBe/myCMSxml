@@ -1,5 +1,5 @@
 <?php
-//Advanced DB-Connector. Nur für die Benutzung in verbindung mit dem Backend des CMS
+//Advanced DB-Connector. Nur für die Benutzung in Verbindung mit dem Backend des CMS
 
 	$globalConfig = include('config.php');
 	
@@ -450,6 +450,16 @@
 				mysql_real_escape_string($Bildgruppe['CID']), 
 				mysql_real_escape_string($Bildgruppe['BGname']));
 			mysql_query($query, $this->connection_ID);
+		}
+		
+		public function addOneBild($Bild) {
+			$query = sprintf("INSERT INTO Bild
+				VALUES(NULL, %d, '%s', '%s')",
+				mysql_real_escape_string($Bild['BGID']),
+				mysql_real_escape_string($Bild['Btitle']),
+				mysql_real_escape_string($Bild['Bdescription']));
+			mysql_query($query, $this->connection_ID);
+			return mysql_insert_id();
 		}
 		
 		public function changeOneBeitrag($SID, $Beitrag) {

@@ -53,7 +53,7 @@
 					$allBilder = $myADBConnector->getOnesBilder($currentBG[0]['BGID']);
 					$allGalerien = $myADBConnector->getAllGalerien();
 					echo '<table><form action="BGsave.php" method="post"><tr>';
-					echo '<th>Name: <input name="name" type="text" size="50" maxlength="30" value="'.$currentBG[0]['BGname'].'" />';
+					echo '<th colspan="10">Name: <input name="name" type="text" size="50" maxlength="30" value="'.$currentBG[0]['BGname'].'" />';
 					echo 'in ';
 					echo '<select name="CID" size="1">';
 					foreach($allGalerien as $curGalerie) {
@@ -65,13 +65,40 @@
 					echo '<input name="ID" type="hidden" value="'.$currentBG[0]['BGID'].'" />';
 					echo '<input type="submit" value="speichern" /> <input type="reset"  value="zur&#252;cksetzen" />';
 					echo '</th></tr></form>';
-					echo '<tr><th>Um ein Bild als Vorschaubild für die Bildgruppe auszuwählen, klicken sie auf das Bild:</th></tr>';
-					echo '<tr><td>';
-					foreach($allBilder as $curBild) {
-						echo '<a href="BGthumb.php?BID='.$curBild['BID'].'"><img src="B'.$curBild['BGID'].'thmb.jpg" /></a>';
-						//Bearbeiten bzw. löschen fehlt noch!!
+					echo '<tr><th colspan="10">Um ein Bild als Vorschaubild für die Bildgruppe auszuwählen, klicken sie auf das Bild:</th></tr>';
+					
+					$countZeilen = ((count($allBilder)-count($allBilder)%5)/5)+1;
+					if(count($allBilder)%5 == 0)
+						$countZeilen--;
+					
+					for($i = 0; $i < $countZeilen; $i++) {
+						echo '<tr>';
+						for($j = 0; $j < 5; $j++) {
+							if(isset($allBilder[$i*5+$j]['BID'])) {
+								echo '<td colspan="2"><a href="BGthumb.php?BID='.$allBilder[$i*5+$j]['BID'].'"><img src="../../bilder/B'.$allBilder[$i*5+$j]['BID'].'thmb.jpg" /></a></td>';
+							}
+							else {
+								echo '<td colspan="'.((5-$j)*2).'"></td>';
+								break;
+							}
+						}
+						echo '</tr><tr>';
+						for($j = 0; $j < 5; $j++) {
+							if(isset($allBilder[$i*5+$j]['BID'])) {
+								echo '<td id="important_green"><a href="Bchange.php?BID='.$allBilder[$i*5+$j]['BID'].'">bearbeiten</a></td>';
+								echo '<td id="important_red"><a href="Bdelete.php?BID='.$allBilder[$i*5+$j]['BID'].'">l&#246;schen</a></td>';
+							}
+							else {
+								echo '<td colspan="'.((5-$j)*2).'"></td>';
+								break;
+							}
+						}
+						echo '</tr>';
 					}
-					echo '</td></tr></table>';
+					echo '<tr><td colspan="10">';
+					echo '<form action="Bnewsave.php" method="post" enctype="multipart/form-data"><input type="hidden" name="BGID" value="'.$currentBG[0]['BGID'].'" /><input name="sourcepath" type="file" size="50" maxlength="10000" accept="image/jpg" /><input type="submit" value="Bild hochladen" /></form>';
+					echo '</td></tr>';
+					echo '</table>';
 				?>
 			</div>
 			<?php include('../../backend/formanagement/getfooter.php'); ?>
