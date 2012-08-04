@@ -426,12 +426,20 @@
 			$this->delOneKategorie($CID);
 		}
 		
-		public function setThumbfromBG($BGID, $BGthumb) {
+		public function setThumbfromBG($BGID, $BGthumb=NULL) {
+			if($BGthumb != NULL) {
 			$query = sprintf("UPDATE Bildgruppe
 				SET BGthumb = %d
 				WHERE BGID = %d", 
 				mysql_real_escape_string($BGthumb),
 				mysql_real_escape_string($BGID));
+			}
+			else {
+				$query = sprintf("UPDATE Bildgruppe
+				SET BGthumb = NULL
+				WHERE BGID = %d",
+				mysql_real_escape_string($BGID));
+			}
 			mysql_query($query, $this->connection_ID);
 		}
 		public function changeOneBildgruppe($BGID, $Bildgruppe) {
@@ -460,6 +468,12 @@
 				mysql_real_escape_string($Bild['Bdescription']));
 			mysql_query($query, $this->connection_ID);
 			return mysql_insert_id();
+		}
+		public function delOneBild($BID) {
+			$query = sprintf("DELETE FROM Bild
+				WHERE BID = %d",
+				mysql_real_escape_string($BID));
+			mysql_query($query, $this->connection_ID);
 		}
 		
 		public function changeOneBeitrag($SID, $Beitrag) {

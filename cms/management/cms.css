@@ -49,6 +49,11 @@ body {
 	padding-right: 4px;
 }
 
+.inhalt td img, td a {
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .inhalt tr:nth-child(even) {
 	background-color: #fabf8f;
 }

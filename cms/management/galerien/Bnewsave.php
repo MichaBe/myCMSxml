@@ -14,7 +14,7 @@
 		unset($myAFTPConnector);
 		header('Location: http://'.$_SERVER['HTTP_HOST'].'/cms/management/index.php');
 	}
-	
+	$BID = NULL;
 	if(isset($_POST['BGID']) /*&& isset($_POST['sourcepath'])*/) {
 		$newBild = array();
 		$newBild['BGID'] = $_POST['BGID'];
@@ -23,7 +23,6 @@
 		$BID = $myADBConnector->addOneBild($newBild);
 		
 		$myAFTPConnector->uploadPic("sourcepath", '../../bilder/B'.$BID.'temp.jpg');
-		echo var_dump($_FILES);
 		
 		$oldsize = getimagesize('../../bilder/B'.$BID.'temp.jpg');
 		$newNormalsize = array();
@@ -45,7 +44,7 @@
 		$thumbnail = imagecreatetruecolor($newThumbsize[0], $newThumbsize[1]);
 		$grossesB = imagecreatetruecolor($newNormalsize[0], $newNormalsize[1]);
 		
-		imagecopyresampled($thumbnail, $tempimage, 0, 0, 0, 0, $newThumbsize[0], $newThumbsize[0], $oldsize[0], $oldsize[1]);
+		imagecopyresampled($thumbnail, $tempimage, 0, 0, 0, 0, $newThumbsize[0], $newThumbsize[1], $oldsize[0], $oldsize[1]);
 		imagecopyresampled($grossesB, $tempimage, 0, 0, 0, 0, $newNormalsize[0], $newNormalsize[1], $oldsize[0], $oldsize[1]);
 		
 		imagejpeg($thumbnail, '../../bilder/B'.$BID.'thmb.jpg', 75);
@@ -60,5 +59,5 @@
 	unset($myADBConnector);
 	unset($myAFTPConnector);
 	
-	//header('Location: http://'.$_SERVER['HTTP_HOST'].'/cms/management/galerien/BGmask.php?BGID='.$_POST['BGID']);
+	header('Location: http://'.$_SERVER['HTTP_HOST'].'/cms/management/galerien/Bchange.php?BGID='.$_POST['BGID'].'&BID='.$BID);
 ?>
