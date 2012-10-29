@@ -39,24 +39,7 @@
 			</div>
 			<div class="inhalt">
 				<?php
-					$curdate = date("Y-m-d", time());
-					$curdate = new DateTime($curdate);
-					$installationdate = $myADBConnector->getallEreignisse();
-					$installationdate = new DateTime($installationdate[0]['Etime']);
-					$diff = $installationdate->diff($curdate);
-					
-					$CMStipps = $myADBConnector->getallMOTD("CMS");
-					$STYLEtipps = $myADBConnector->getallMOTD("STYLE");
-					
-					$curCMStipp = $CMStipps[($diff->d)%(count($CMStipps))];
-					$curSTYtipp = $CMStipps[($diff->d)%(count($STYLEtipps))];
 					echo '<h1>Herzlich willkommen, '.$currentUser[0]['Uname'].'</h1>';
-					echo '<div id="important_green">';
-					echo 'Message of the day - CMS:<br />'.$curCMStipp['Mmessage'];
-					echo '</div>';
-					echo '<div id="important_green">';
-					echo 'Message of the day - Style:<br />'.$curSTYtipp['Mmessage'];
-					echo '</div>';
 				?>
 			</div>
 			<?php include('../backend/formanagement/getfooter.php'); ?>

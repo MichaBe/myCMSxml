@@ -7,7 +7,7 @@
 	$myADBConnector = new advanced_dbconnector();
 	$currentRights = $myADBConnector->getOneBenutzer($_SESSION['UID']);
 	
-	if($currentRights[2]['Xvalue'] != 1) {
+	if($currentRights[5]['Xvalue'] != 1) {
 		unset($myADBconnector);
 		header('Location: http://'.$_SERVER['HTTP_HOST'].'/cms/management/index.php');
 	}
@@ -18,9 +18,6 @@
 		if(isset($curGalerie[0]['CID'])) {
 			if(!($curGalerie[0]['CID'] <= 4) && $curGalerie[0]['Ctarget'] == 'galerie') {
 				$myADBConnector->delOneGalerie($curGalerie[0]['CID']);
-				
-				$currentUser = $myADBConnector->getOneBenutzerByNameOrID($_SESSION['UID']);
-				$myADBConnector->addEreignis($currentUser[0]['Uname'].' l&#246;scht Galerie "'.$curGalerie[0]['Cname'].'" (ID '.$_GET['CID'].')');
 			}
 		}
 	}

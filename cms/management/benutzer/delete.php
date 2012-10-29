@@ -23,13 +23,11 @@
 					$beitrag[0]['UID'] = 2;
 					$beitrag[0]['Sreleased'] = FALSE;
 					$myADBConnector->changeOneBeitrag($beitrag[0]['SID'], $beitrag[0]);
-					$myADBConnector->addEreignis('Anonymous &#228;ndert Beitrag "'.$beitrag[0]['Sheadline'].'" (ID '.$beitrag[0]['SID'].')');
 				}
 			}
 			$myADBConnector->delOneBenutzer($curUser[0]['UID']);
 			
 			$currentUser = $myADBConnector->getOneBenutzerByNameOrID($_SESSION['UID']);
-			$myADBConnector->addEreignis($currentUser[0]['Uname'].' l&#246;scht Benutzer "'.$curUser[0]['Uname'].'" (ID '.$_GET['UID'].')');
 		}
 	}
 	header('Location: http://'.$_SERVER['HTTP_HOST'].'/cms/management/benutzer/index.php');

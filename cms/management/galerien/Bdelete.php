@@ -23,6 +23,7 @@
 			$myADBConnector->setThumbfromBG($_GET['BGID']);
 		}
 		$myADBConnector->delOneBild($_GET['BID']);
+		
 		header('Location: http://'.$_SERVER['HTTP_HOST'].'/cms/management/galerien/BGmask.php?BGID='.$_GET['BGID']);
 	}
 	else {

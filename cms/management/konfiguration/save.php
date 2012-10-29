@@ -21,8 +21,5 @@
 	
 	$myADBConnector->changeKonfiguration($Konfiguration);
 	
-	$currentUser = $myADBConnector->getOneBenutzerByNameOrID($_SESSION['UID']);
-	$myADBConnector->addEreignis($currentUser[0]['Uname'].' &#228;ndert die allgemeine Konfiguration');
-	
 	header('Location: http://'.$_SERVER['HTTP_HOST'].'/cms/management/konfiguration/index.php');
 ?>

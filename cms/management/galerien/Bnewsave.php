@@ -9,7 +9,7 @@
 	$myAFTPConnector = new advanced_ftpconnector();
 	$currentRights = $myADBConnector->getOneBenutzer($_SESSION['UID']);
 	
-	if($currentRights[6]['Xvalue'] != 1) {
+	if($currentRights[5]['Xvalue'] != 1) {
 		unset($myADBconnector);
 		unset($myAFTPConnector);
 		header('Location: http://'.$_SERVER['HTTP_HOST'].'/cms/management/index.php');

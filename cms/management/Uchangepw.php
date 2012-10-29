@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	$current_dir = getcwd();
 	chdir('../backend');
 	include('./a_dbconnector.php');
@@ -29,7 +29,7 @@
 								echo '<div id="important_red">Ihr Initialpasswort wurde falsch eingegeben.</div>';
 							echo '<form action="Usavepw.php" method="POST">';
 							echo '<table><tr>';
-							echo '<td>Ihr Initialasswort:</td><td><input type="password" name="passwSource" maxlength="20" size="20" /></td>';
+							echo '<td>Ihr Initialpasswort:</td><td><input type="password" name="passwSource" maxlength="20" size="20" /></td>';
 							echo '</tr><tr>';
 							echo '<td>Ihr Neues Passwort:</td><td><input type="password" name="Upassw1" maxlength="20" size="20" /></td>';
 							echo '</tr><tr>';

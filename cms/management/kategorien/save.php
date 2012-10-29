@@ -21,16 +21,9 @@
 	
 	if(isset($_POST['ID'])) {
 		$myADBConnector->changeOneKategorie($_POST['ID'], $newKategorie);
-		
-		$currentUser = $myADBConnector->getOneBenutzerByNameOrID($_SESSION['UID']);
-		$myADBConnector->addEreignis($currentUser[0]['Uname'].' &#228;ndert Kategorie "'.$newKategorie['Cname'].'" (ID '.$_POST['ID'].')');
 	}
 	else {
 		$myADBConnector->addOneKategorie($newKategorie);
-		
-		$currentUser = $myADBConnector->getOneBenutzerByNameOrID($_SESSION['UID']);
-		$myADBConnector->addEreignis($currentUser[0]['Uname'].' erstellt Kategorie "'.$newKategorie['Cname'].'"');
-	
 	}
 	header('Location: http://'.$_SERVER['HTTP_HOST'].'/cms/management/kategorien/index.php');
 ?>

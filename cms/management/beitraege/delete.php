@@ -17,9 +17,6 @@
 		if(isset($curBeitrag[0]['SID'])) {
 			if($curBeitrag[0]['CID'] == 3) {
 				$myADBConnector->delOneBeitrag($curBeitrag[0]['SID']);
-				
-				$currentUser = $myADBConnector->getOneBenutzerByNameOrID($_SESSION['UID']);
-				$myADBConnector->addEreignis($currentUser[0]['Uname'].' l&#246;scht Beitrag "'.$curBeitrag[0]['Sheadline'].'" (ID '.$_GET['SID'].')');
 			}
 			else {
 				$curBeitrag[0]['CID'] = 3;

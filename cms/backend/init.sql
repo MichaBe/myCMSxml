@@ -73,13 +73,6 @@ CREATE TABLE Konfiguration(
   PRIMARY KEY(KID)
 );
 
-CREATE TABLE MOTD (
-	MID INT NOT NULL AUTO_INCREMENT,
-	Mtype ENUM('CMS', 'STYLE'),
-	Mmessage TEXT,
-	PRIMARY KEY(MID)
-);
-			
 			
 ALTER TABLE Berechtigung
 	ADD CONSTRAINT XUID
@@ -131,8 +124,7 @@ INSERT INTO Rolle VALUES(2, 'Beitr&#228;ge verwalten', 'beitraege');
 INSERT INTO Rolle VALUES(3, 'Kategorien verwalten', 'kategorien');
 INSERT INTO Rolle VALUES(4, 'Benutzer und Berechtigungen verwalten', 'benutzer');
 INSERT INTO Rolle VALUES(5, 'Allgemeine Konfiguration &#228;ndern', 'konfiguration');
-INSERT INTO Rolle VALUES(6, 'Ereignislog einsehen', 'ereignisse');
-INSERT INTO Rolle VALUES(7, 'Galerien verwalten', 'galerien');
+INSERT INTO Rolle VALUES(6, 'Galerien verwalten', 'galerien');
 
 
 INSERT INTO Berechtigung VALUES(NULL, 1, 1, TRUE);
@@ -141,7 +133,6 @@ INSERT INTO Berechtigung VALUES(NULL, 1, 3, TRUE);
 INSERT INTO Berechtigung VALUES(NULL, 1, 4, TRUE);
 INSERT INTO Berechtigung VALUES(NULL, 1, 5, TRUE);
 INSERT INTO Berechtigung VALUES(NULL, 1, 6, TRUE);
-INSERT INTO Berechtigung VALUES(NULL, 1, 7, TRUE);
 
 INSERT INTO Berechtigung VALUES(NULL, 2, 1, FALSE);
 INSERT INTO Berechtigung VALUES(NULL, 2, 2, FALSE);
@@ -149,7 +140,6 @@ INSERT INTO Berechtigung VALUES(NULL, 2, 3, FALSE);
 INSERT INTO Berechtigung VALUES(NULL, 2, 4, FALSE);
 INSERT INTO Berechtigung VALUES(NULL, 2, 5, FALSE);
 INSERT INTO Berechtigung VALUES(NULL, 2, 6, FALSE);
-INSERT INTO Berechtigung VALUES(NULL, 2, 7, FALSE);
 
 
 INSERT INTO Konfiguration VALUES(1, 'style', 'konservativ');
@@ -159,8 +149,3 @@ INSERT INTO Konfiguration VALUES(4, 'version', '0.1.0');
 
 INSERT INTO Beitrag VALUES(1, 1, 1, 'myCMSxml', NULL, '<p align="center"><form action="cms/management/login.php" method="post"><table><tr><td>Benutzername:</td><td><input type="text" name="username"/></td></tr><tr><td>Passwort:</td><td><input type="password" name="passwort"/></td></tr></table><input type="submit" value="Anmelden"/></form></p>', '2012-05-20', '2012-05-20', NULL);
 INSERT INTO Beitrag VALUES(2, 1, 2, 'Error 404', NULL, '<h1>Die von Ihnen gesuchte Seite konnte leider nicht gefunden werden</h1>Wir bitten, dies zu entschuldigen.', '2012-05-20', '2012-05-20', NULL);
-
-INSERT INTO MOTD VALUES(NULL, 'CMS', 'Testnachricht');
-INSERT INTO MOTD VALUES(NULL, 'STYLE', 'Testnachricht');
-
-INSERT INTO Ereignis VALUES(1, CURDATE(), 'Administrator installiert myCMSxml');

@@ -19,7 +19,6 @@
 				return FALSE;
 			}
 		}
-		
 		public function __desctruct() {
 			mysql_close($this->connection_ID);
 		}
@@ -39,7 +38,6 @@
 			}
 			return $returnarray;
 		}
-		
 		public function getOneKategorie($CID) {
 			$query = sprintf("SELECT * 
 				FROM Kategorie 
@@ -128,7 +126,6 @@
 			}
 			return $returnarray;
 		}
-		
 		public function getKonfiguration() {
 			$query = "SELECT * 
 				FROM Konfiguration

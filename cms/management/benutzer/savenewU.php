@@ -16,9 +16,7 @@
 	if(isset($testUname[0]['UID']))
 		header('Location: http://'.$_SERVER['HTTP_HOST'].'/cms/management/benutzer/Unewmask.php?error_name=TRUE');
 	
-	$newUID = $myADBConnector->addOneBenutzer($_POST['Uname'], md5(md5($_POST['Upassw'])));
-			
-	$currentUser = $myADBConnector->getOneBenutzerByNameOrID($_SESSION['UID']);
-	$myADBConnector->addEreignis($currentUser[0]['Uname'].' erstellt Benutzer "'.$_POST['Uname'].'" (ID '.$newUID.')');
+	$myADBConnector->addOneBenutzer($_POST['Uname'], md5(md5($_POST['Upassw'])));
+	
 	header('Location: http://'.$_SERVER['HTTP_HOST'].'/cms/management/benutzer/index.php');
 ?>

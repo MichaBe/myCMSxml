@@ -18,9 +18,6 @@
 			if(!($curKategorie[0]['CID'] <= 4)) {
 				$myADBConnector->movetoHIDDENfromOneKategorie($curKategorie[0]['CID']);
 				$myADBConnector->delOneKategorie($curKategorie[0]['CID']);
-				
-				$currentUser = $myADBConnector->getOneBenutzerByNameOrID($_SESSION['UID']);
-				$myADBConnector->addEreignis($currentUser[0]['Uname'].' l&#246;scht Kategorie "'.$curKategorie[0]['Cname'].'" (ID '.$_GET['CID'].')');
 			}
 		}
 	}

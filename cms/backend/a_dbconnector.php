@@ -267,51 +267,6 @@
 			return $returnarray;
 		}
 		
-		public function getallMOTD($type) {
-			$query = sprintf("SELECT *
-				FROM MOTD
-				WHERE Mtype = '%s'
-				ORDER BY MID ASC",
-				mysql_real_escape_string($type));
-			$result = mysql_query($query, $this->connection_ID);
-			$i = 0;
-			$returnarray = array();
-			while($row = mysql_fetch_assoc($result)){
-				$returnarray[$i] = $row;
-				$i++;
-			}
-			return $returnarray;
-		}
-		
-		public function getAllEreignisse() {
-			$query = "SELECT * 
-				FROM Ereignis
-				ORDER BY Etime DESC, EID DESC";
-			$result = mysql_query($query, $this->connection_ID);
-			$i = 0;
-			$returnarray = array();
-			while($row = mysql_fetch_assoc($result)){
-				$returnarray[$i] = $row;
-				$i++;
-			}
-			return $returnarray;
-		}
-		public function searchEreignis($search) {
-			$query = sprintf("SELECT * 
-				FROM Ereignis
-				WHERE Etext LIKE '%%%s%%'
-				ORDER BY Etime DESC, EID DESC",
-				mysql_real_escape_string($search));
-			$result = mysql_query($query, $this->connection_ID);
-			$i = 0;
-			$returnarray = array();
-			while($row = mysql_fetch_assoc($result)){
-				$returnarray[$i] = $row;
-				$i++;
-			}
-			return $returnarray;
-		}
-		
 		public function changeOneBenutzer($UID, $RID, $Xvalue) {
 			$query =  sprintf("UPDATE Berechtigung
 				SET Xvalue = %d
@@ -552,17 +507,6 @@
 			}
 			
 		}
-		
-		public function addEreignis($Etext) {
-			$query = sprintf("INSERT INTO Ereignis
-				VALUES(NULL, CURDATE(), '%s')", 
-				mysql_real_escape_string($Etext));
-			mysql_query($query, $this->connection_ID);
-		}
-		public function delLog() {
-			$query = sprintf("DELETE FROM Ereignis
-				WHERE EID != 1");
-			mysql_query($query, $this->connection_ID);
-		}
+
 	}
 ?>
