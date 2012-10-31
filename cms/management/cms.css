@@ -49,9 +49,14 @@ body {
 	padding-right: 4px;
 }
 
-.inhalt td img, td a {
+.inhalt td a {
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.inhalt td img {
+	margin: 2px;
+	padding: 0px;
 }
 
 .inhalt tr:nth-child(even) {

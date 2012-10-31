@@ -1,5 +1,5 @@
 <?php
-//simple DB-Connector. Enthält die für das Frontend nötigen Funktionen
+	/* simple DB-Connector. Enthält die für das Frontend nötigen Funktionen */
 
 	$globalConfig = include('config.php');
 	

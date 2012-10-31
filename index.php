@@ -2,6 +2,7 @@
 	$current_dir = getcwd();
 	chdir('cms/backend/');
 	include("s_dbconnector.php");
+	include("ts_cmsconnector.php");
 	chdir($current_dir);
 	$myConnector = new simple_dbconnector();
 	$Konfiguration = $myConnector->getKonfiguration();
@@ -35,52 +36,7 @@
 		?>
 	</head>
 	<body>
-		<div class="wrapper">
-			<div class="header">
-				<?php
-					echo $Konfiguration[1]['Kvalue'];
-				?>
-			</div>
-			<div class="categories">
-				<ul>
-					<?php
-						foreach ($allKategories as $curKat) {
-							echo '<li id="C'.$curKat['CID'].'"><a href="'.$curKat['Ctarget'].'.php?CID='.$curKat['CID'].'">'.$curKat['Cname'].'</a></li>';
-						}
-					?>
-				</ul>
-			</div>
-			<div class="inhalt">
-				<?php
-					$Beitraege = $myConnector->getShortBeitraege($curKategorie[0]['CID']);
-					
-					if(count($Beitraege) < 1) {
-						echo '<h2>'.$Konfiguration[2]['Kvalue'].'</h2>';
-					}
-					foreach ($Beitraege as $curBeitrag) {
-						echo '<div class="snippet" id="'.$curBeitrag['SID'].'">';
-						echo '<h2>'.$curBeitrag['Sheadline'].'</h2>';
-						echo '<div class="s_header">';
-						echo 'Ver&#246;ffentlicht am '.$curBeitrag['Sreleased'].' von '.$curBeitrag['Uname'].', letzte Änderung am '.$curBeitrag['Slastmod'];
-						echo '</div>';
-						echo '<a href="snippet.php?SID='.$curBeitrag['SID'].'">';
-						echo $curBeitrag['Sshorttext'];
-						echo '</a>';
-						echo '</div>';
-					}
-				?>
-			</div>
-			<div class="footer">
-				<ul>
-					<?php
-						$footer = $myConnector->getforFooter();
-						foreach ($footer as $shorts) {
-							echo '<li><a href="snippet.php?SID='.$shorts['SID'].'">'.$shorts['Sheadline'].'</a></li>';
-						}
-					?>
-				</ul>
-			</div>
-		</div>
+		<?php include("/cms/style/".$Konfiguration[0]['Kvalue']."/main.php"); ?>
 	</body>
 	<?php
 		unset($myConnector);
