@@ -141,7 +141,7 @@
 					mysql_real_escape_string($_GET['CID']));
 			}
 			else {
-				$query = "SELECT Beitrag.CID, Sheadline, Sreleased, Cname, Slastmod, SID, Sshorttext, Uname
+				$query = "SELECT Beitrag.CID, Sheadline, Sreleased, Slastmod, SID, Sshorttext, Uname
 					FROM Beitrag, Kategorie, Benutzer
 					WHERE Beitrag.CID = Kategorie.CID
 					AND Beitrag.UID = Benutzer.UID
@@ -170,6 +170,39 @@
 					$returner[$j] = $oneTempLine;
 					$j++;
 				}
+			}
+			return $returner;
+		}
+		
+		//Liefert einen Beitrag als <div>-Tag zurück
+		//<div class="snippet" id="[Kategorie des snippets]">
+		//	<h2>[Überschrift des snippets]</h2>
+		//	<h3>Veröffentlicht am [veröffentlichungsdatum] von [Author], letzte Änderung am [Änderungsdatum]<h3>
+		//	[Text des Beitrags]
+		//</div>
+		//Im Fehlerfall wird eine Fehlermeldung als <h2>-Tag zurückgegeben
+		public function getOneBeitrag() {
+			$returner = "";
+			if(isset($_GET['SID'])) {
+				$query = sprintf("SELECT Sheadline, Sreleased, Slastmod, SID, Stext, Uname, CID
+					FROM Beitrag, Benutzer
+					WHERE Beitrag.UID = Benutzer.UID
+					AND Beitrag.CID != 3
+					AND Beitrag.CID != 4
+					AND Beitrag.SID = %d", 
+					$_GET['SID']);
+				$result = mysql_query($query);
+				$i = 0;
+				$resultarray = array();
+				while($row = mysql_fetch_assoc($result)){
+					$resultarray[$i] = $row;
+					$i++;
+				}
+				$returner = '<div class="snipppet" id="'.$resultarray[0]['CID'].'">
+					<h2>'.$resultarray[0]['Sheadline'].'</h2>
+					<h3>Ver&#246;ffentlicht am '.$resultarray[0]['Sreleased'].' von '.$resultarray[0]['Uname'].', letzte &#196;nderung am '.$resultarray[0]['Slastmod'].'</h3>
+					'.$resultarray[0]['Stext'].'
+					</div>';
 			}
 			return $returner;
 		}
