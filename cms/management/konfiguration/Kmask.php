@@ -58,7 +58,7 @@
 					echo '<td>Blogdesign:</td><td>';
 					echo '<select name="Kstyle" size="1">';
 					for($i = 0; $i < count($inhalt)-1; $i++) {
-						if($inhalt[$i] == $Konfiguration[0]['Kstyle'])
+						if($inhalt[$i] == $Konfiguration[0]['Kvalue'])
 							echo '<option value="'.$inhalt[$i].'" selected>'.$inhalt[$i].'</option>';
 						else 
 							echo '<option value="'.$inhalt[$i].'">'.$inhalt[$i].'</option>';
