@@ -25,7 +25,7 @@ CREATE TABLE Beitrag (
 	SID INT NOT NULL AUTO_INCREMENT,
 	UID INT,
 	CID INT,
-	Sheadline CHAR(30),
+	Sheadline CHAR(60),
 	Sshorttext TEXT,
 	Stext TEXT,
 	Slastmod DATE,
@@ -37,33 +37,9 @@ CREATE TABLE Beitrag (
 CREATE TABLE Kategorie (
 	CID INT NOT NULL AUTO_INCREMENT,
 	Cshorttext TEXT,
-	Cname CHAR(30),
+	Cname CHAR(50),
 	Ckeywords CHAR(60),
-	Ctarget ENUM('index', 'galerie'),
 	PRIMARY KEY(CID)
-);
-
-CREATE TABLE Bildgruppe (
-	BGID INT NOT NULL AUTO_INCREMENT,
-	CID INT,
-	BGname CHAR(30),
-	BGthumb INT,
-	PRIMARY KEY(BGID)
-);
-
-CREATE TABLE Bild (
-	BID INT NOT NULL AUTO_INCREMENT,
-	BGID INT,
-	Btitle CHAR(30),
-	Bdescription TEXT,
-	PRIMARY KEY(BID)
-);
-			
-CREATE TABLE Ereignis (
-	EID INT NOT NULL AUTO_INCREMENT,
-	Etime DATE,
-	Etext TEXT,
-	PRIMARY KEY(EID)
 );
 
 CREATE TABLE Konfiguration(
@@ -94,21 +70,6 @@ ALTER TABLE Beitrag
 		FOREIGN KEY (CID)
 		REFERENCES Kategorie(CID);
 
-ALTER TABLE Bildgruppe
-	ADD CONSTRAINT BGCID
-		FOREIGN KEY (CID)
-		REFERENCES Kategorie(CID);
-
-ALTER TABLE Bildgruppe
-	ADD CONSTRAINT BGBID
-		FOREIGN KEY (BGthumb)
-		REFERENCES Bild(BID);
-
-ALTER TABLE Bild
-	ADD CONSTRAINT BBGID
-		FOREIGN KEY (BGID)
-		REFERENCES Bildgruppe(BGID);
-
 INSERT INTO Benutzer VALUES(1, 'Administrator', '8a974b0407e3f2f3bd9e1aa995563a7c', TRUE);
 INSERT INTO Benutzer VALUES(2, 'Anonymous', 'd7a851cca17e12678069be57985832cc', TRUE);
 
@@ -124,7 +85,7 @@ INSERT INTO Rolle VALUES(2, 'Beitr&#228;ge verwalten', 'beitraege');
 INSERT INTO Rolle VALUES(3, 'Kategorien verwalten', 'kategorien');
 INSERT INTO Rolle VALUES(4, 'Benutzer und Berechtigungen verwalten', 'benutzer');
 INSERT INTO Rolle VALUES(5, 'Allgemeine Konfiguration &#228;ndern', 'konfiguration');
-INSERT INTO Rolle VALUES(6, 'Galerien verwalten', 'galerien');
+INSERT INTO Rolle VALUES(6, 'Dateien verwalten', 'dateien');
 
 
 INSERT INTO Berechtigung VALUES(NULL, 1, 1, TRUE);

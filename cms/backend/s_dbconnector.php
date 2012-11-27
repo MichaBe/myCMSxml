@@ -24,7 +24,7 @@
 		}
 		
 		public function getAllKategorien() {
-			$query = "SELECT CID, Cname, Ctarget 
+			$query = "SELECT CID, Cname 
 				FROM Kategorie 
 				WHERE CID != 1 
 				AND CID != 2 

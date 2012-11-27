@@ -86,7 +86,6 @@
 			$query = "SELECT COUNT(Beitrag.SID) AS Scount, Kategorie.CID, Cname, Ckeywords 
 				FROM Beitrag RIGHT JOIN Kategorie
 				ON Kategorie.CID = Beitrag.CID
-				WHERE Ctarget = 'index'
 				GROUP BY Kategorie.CID
 				ORDER BY CID DESC";
 			$result = mysql_query($query, $this->connection_ID);
@@ -105,7 +104,6 @@
 			$query = "SELECT CID, Cname 
 				FROM Kategorie
 				WHERE CID != 4
-				AND Ctarget = 'index'
 				ORDER BY CID DESC";
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;
@@ -121,95 +119,6 @@
 				FROM Kategorie
 				WHERE CID = %d", 
 				mysql_real_escape_string($CID));
-			$result = mysql_query($query, $this->connection_ID);
-			$i = 0;
-			$returnarray = array();
-			while($row = mysql_fetch_assoc($result)){
-				$returnarray[$i] = $row;
-				$i++;
-			}
-			return $returnarray;
-		}
-		
-		public function getAllGalerien() {
-			$query = "SELECT COUNT(Bildgruppe.BGID) AS BGcount, Kategorie.CID, Cname, Ckeywords 
-				FROM Bildgruppe RIGHT JOIN Kategorie
-				ON Kategorie.CID = Bildgruppe.CID
-				WHERE Ctarget = 'galerie'
-				GROUP BY Kategorie.CID
-				ORDER BY CID DESC";
-			$result = mysql_query($query, $this->connection_ID);
-			$i = 0;
-			$returnarray = array();
-			while($row = mysql_fetch_assoc($result)){
-				$returnarray[$i] = $row;
-				$i++;
-			}
-			return $returnarray;
-		}
-		public function getChoosableGalerien() {
-			$query = "SELECT CID, Cname 
-				FROM Kategorie
-				WHERE CID != 4
-				AND Ctarget = 'galerie'
-				ORDER BY CID DESC";
-			$result = mysql_query($query, $this->connection_ID);
-			$i = 0;
-			$returnarray = array();
-			while($row = mysql_fetch_assoc($result)){
-				$returnarray[$i] = $row;
-				$i++;
-			}
-			return $returnarray;
-		}
-		public function getOneGalerie($CID) {
-			return $this->getOneKategorie($CID);
-		}
-		
-		public function getOnesBildgruppen($CID) {
-			$query = sprintf("SELECT COUNT(Bild.BID) AS Bcount, Bildgruppe.BGID, BGname
-				FROM Bild RIGHT JOIN Bildgruppe
-				ON Bildgruppe.BGID = Bild.BGID
-				WHERE Bildgruppe.CID = %d
-				GROUP BY BGID
-				ORDER BY CID DESC",
-				mysql_real_escape_string($CID));
-			$result = mysql_query($query, $this->connection_ID);
-			$i = 0;
-			$returnarray = FALSE;
-			if($result !== FALSE) {
-				$returnarray = array();
-				while($row = mysql_fetch_assoc($result)){
-					$returnarray[$i] = $row;
-					$i++;
-				}
-			}
-			return $returnarray;
-		}
-		public function getOneBildgruppe($BGID) {
-			$query = sprintf("SELECT *
-				FROM Bildgruppe
-				WHERE BGID = %d",
-				mysql_real_escape_string($BGID));
-			$result = mysql_query($query, $this->connection_ID);
-			$i = 0;
-			$returnarray = FALSE;
-			if($result !== FALSE) {
-				$returnarray = array();
-				while($row = mysql_fetch_assoc($result)){
-					$returnarray[$i] = $row;
-					$i++;
-				}
-			}
-			return $returnarray;
-		}
-		
-		public function getOnesBilder($BGID) {
-			$query = sprintf("SELECT *
-				FROM Bild
-				WHERE BGID = %d
-				ORDER BY BID ASC",
-				mysql_real_escape_string($BGID));
 			$result = mysql_query($query, $this->connection_ID);
 			$i = 0;
 			$returnarray = array();

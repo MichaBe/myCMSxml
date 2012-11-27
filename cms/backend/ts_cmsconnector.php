@@ -44,8 +44,7 @@
 		public function getKategorien() {
 			$query = "SELECT CID, Cname
 				FROM Kategorie
-				WHERE Ctarget = 'index'
-				AND CID >= 4
+				WHERE CID >= 4
 				ORDER BY CID ASC";
 			$result = mysql_query($query);
 			$i = 0;
@@ -66,39 +65,6 @@
 			else {
 				foreach($resultarray as $curLine){
 					$returner = $returner.'<li id="Kategorie"><a href="index.php?CID='.$curLine['CID'].'">'.$curLine['Cname'].'</a></li>';
-				}
-			}
-			return $returner;
-		}
-		
-		//Liefert die Galerien als <li>-Tags zurück
-		//Die gerade aktive Galerie bekommt die id "ActiveGalerie"
-		//(Nur) Die restlichen Galerien bekommen die id "Galerie"
-		public function getGalerien() {
-			$query = "SELECT CID, Cname
-				FROM Kategorie
-				WHERE Ctarget = 'galerie'
-				AND CID >= 4
-				ORDER BY CID ASC";
-			$result = mysql_query($query);
-			$i = 0;
-			$resultarray = array();
-			$returner = "";
-			while($row = mysql_fetch_assoc($result)){
-				$resultarray[$i] = $row;
-				$i++;
-			}
-			if(isset($_GET['CID'])) {
-				foreach($resultarray as $curLine){
-					if($_GET['CID'] == $curLine['CID'])
-						$returner = $returner.'<li id="ActiveGalerie"><a href="galerie.php?CID='.$curLine['CID'].'">'.$curLine['Cname'].'</a></li>';
-					else 
-						$returner = $returner.'<li id="Galerie"><a href="galerie.php?CID='.$curLine['CID'].'">'.$curLine['Cname'].'</a></li>';
-				}
-			}
-			else {
-				foreach($resultarray as $curLine){
-					$returner = $returner.'<li id="Galerie"><a href="index.php?CID='.$curLine['CID'].'">'.$curLine['Cname'].'</a></li>';
 				}
 			}
 			return $returner;

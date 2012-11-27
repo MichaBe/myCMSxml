@@ -15,7 +15,6 @@
 		echo '<div class="categories">';
 			echo '<ul>';
 				echo $myTIDBC->getKategorien();
-				echo $myTIDBC->getGalerien();
 			echo '</ul>';
 		echo '</div>';
 	
