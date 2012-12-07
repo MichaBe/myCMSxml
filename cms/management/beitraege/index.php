@@ -25,18 +25,9 @@
 	</head>
 	<body>
 		<div class="wrapper">
-			<div class="navigation">
-				<ul>
-					<?php
-						echo '<li><a href="../">Zur Startseite</a></li>';
-						for($i = 1; $i < count($currentRights); $i++) {
-							if($currentRights[$i]['Xvalue'] == 1)
-								echo '<li><a href="../'.$currentRights[$i]['Rshort'].'/">'.$currentRights[$i]['Rtopic'].'</a></li>';
-						}						
-						echo '<li><a href="../logout.php">Vom System abmelden</a></li>';
-					?>
-				</ul>
-			</div>
+			
+			<?php include('../../backend/formanagement/getmenue.php'); ?>
+			
 			<div class="inhalt">
 				<h2>Verwalten Sie hier die Beitr&#228;ge</h2>
 				<?php
@@ -47,7 +38,7 @@
 					echo '<table><tr>';
 					echo '<th>&#220;berschrift</th>';
 					echo '<th>Kategorie</th>';
-					echo '<th>Author</th>';
+					echo '<th>Autor</th>';
 					echo '<th>Letzte &#196;nderung</th>';
 					echo '<th>Ver&#246;ffentlicht</th>';
 					echo '<th colspan="2">Beitrag &#228;ndern</th></tr>';

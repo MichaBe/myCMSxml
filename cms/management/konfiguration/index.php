@@ -25,18 +25,9 @@
 	</head>
 	<body>
 		<div class="wrapper">
-			<div class="navigation">
-				<ul>
-					<?php
-						echo '<li><a href="../">Zur Startseite</a></li>';
-						for($i = 1; $i < count($currentRights); $i++) {
-							if($currentRights[$i]['Xvalue'] == 1)
-								echo '<li><a href="../'.$currentRights[$i]['Rshort'].'/">'.$currentRights[$i]['Rtopic'].'</a></li>';
-						}						
-						echo '<li><a href="../logout.php">Vom System abmelden</a></li>';
-					?>
-				</ul>
-			</div>
+			
+			<?php include('../../backend/formanagement/getmenue.php'); ?>
+			
 			<div class="inhalt">
 				<h2>Passen Sie hier die allgemeine Konfiguration an</h2>
 				<?php

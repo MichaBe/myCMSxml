@@ -8,7 +8,7 @@
 	$myADBConnector = new advanced_dbconnector();
 	$currentRights = $myADBConnector->getOneBenutzer($_SESSION['UID']);
 	
-	if($currentRights[2]['Xvalue'] != 1) {
+	if($currentRights[1]['Xvalue'] != 1) {
 		unset($myADBconnector);
 		header('Location: http://'.$_SERVER['HTTP_HOST'].'/cms/management/index.php');
 	}
@@ -29,31 +29,9 @@
 			<?php include('../../backend/formanagement/getmenue.php'); ?>
 			
 			<div class="inhalt">
-				<h2>Verwalten Sie hier die Kategorien</h2>
+				<h2>Verwalten Sie hier die Dateien</h2>
 				<?php
-					echo '<a href="Cmask.php" id="important_green">Neue Kategorie erstellen</a>';
-				
-					$alleKategorien = $myADBConnector->getAllKategorien();
 					
-					echo '<table><tr>';
-					echo '<th>Name</th>';
-					echo '<th>Schl&#252;sselw&#246;rter</th>';
-					echo '<th>Beitr&#228;ge</th>';
-					echo '<th colspan="2">Kategorie &#228;ndern</th></tr>';
-					for($i = 0; $i < count($alleKategorien); $i++) {
-						echo '<tr>';
-						echo '<td>'.$alleKategorien[$i]['Cname'].'</td>';
-						echo '<td>'.$alleKategorien[$i]['Ckeywords'].'</td>';
-						echo '<td>'.$alleKategorien[$i]['Scount'].'</td>';
-						echo '<td id="important_green"><a href="Cmask.php?CID='.$alleKategorien[$i]['CID'].'">bearbeiten</a></td>';
-						if($alleKategorien[$i]['CID'] <= 4)
-							echo '<td>l&#246;schen</td>';
-						else
-							echo '<td id="important_red"><a href="delete.php?CID='.$alleKategorien[$i]['CID'].'">l&#246;schen</a></td>';
-						echo '</tr>';
-					}
-					
-					echo '</table>';
 				?>
 			</div>
 			<?php include('../../backend/formanagement/getfooter.php'); ?>

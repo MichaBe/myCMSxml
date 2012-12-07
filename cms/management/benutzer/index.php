@@ -25,20 +25,11 @@
 	</head>
 	<body>
 		<div class="wrapper">
-			<div class="navigation">
-				<ul>
-					<?php
-						echo '<li><a href="../">Zur Startseite</a></li>';
-						for($i = 1; $i < count($currentRights); $i++) {
-							if($currentRights[$i]['Xvalue'] == 1)
-								echo '<li><a href="../'.$currentRights[$i]['Rshort'].'/">'.$currentRights[$i]['Rtopic'].'</a></li>';
-						}						
-						echo '<li><a href="../logout.php">Vom System abmelden</a></li>';
-					?>
-				</ul>
-			</div>
+			
+			<?php include('../../backend/formanagement/getmenue.php'); ?>
+			
 			<div class="inhalt">
-				<h2>Verwalten Sie hier die Benutzer und ihre Berechtigungen</h2>
+				<h2>Verwalten Sie hier die Benutzer und Berechtigungen</h2>
 				<?php
 					echo '<a href="Unewmask.php" id="important_green">Neuen Benutzer anlegen</a>';
 				
@@ -58,15 +49,15 @@
 						foreach($alleRollen as $currentRolle) {
 							if($currBenutzer['UID'] <= 2) {
 								if($BenutzerRights[$i]['Xvalue'] == 1)
-									echo '<td id="important_green">berechtigt</td>';
+									echo '<td id="important_green">YES</td>';
 								else
-									echo '<td id="important_red">nicht berechtigt</td>';
+									echo '<td id="important_red">NO</td>';
 							}
 							else {
 								if($BenutzerRights[$i]['Xvalue'] == 1)
-									echo '<td id="important_green"><a href="save.php?UID='.$currBenutzer['UID'].'&RID='.($i+1).'&Xvalue=0">berechtigt</a></td>';
+									echo '<td id="important_green"><a href="save.php?UID='.$currBenutzer['UID'].'&RID='.($i+1).'&Xvalue=0">YES</a></td>';
 								else
-									echo '<td id="important_red"><a href="save.php?UID='.$currBenutzer['UID'].'&RID='.($i+1).'&Xvalue=1">nicht berechtigt</a></td>';
+									echo '<td id="important_red"><a href="save.php?UID='.$currBenutzer['UID'].'&RID='.($i+1).'&Xvalue=1">NO</a></td>';
 							}
 							$i++;
 						}
