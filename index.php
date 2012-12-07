@@ -28,6 +28,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta  name="generator" content="myCMSxml" />
 		<?php
 			echo '<title>'.$Konfiguration[1]['Kvalue'].' - '.$curKategorie[0]['Cname'].'</title>';
 			echo '<meta name="keywords" content="'.$curKategorie[0]['Ckeywords'].'" />';
