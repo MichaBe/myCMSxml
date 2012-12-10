@@ -280,66 +280,6 @@
 			mysql_query($query, $this->connection_ID);
 		}
 		
-		public function changeOneGalerie($CID, $Galerie) {
-			$this->changeOneKategorie($CID, $Galerie);
-		}
-		public function addOneGalerie($Galerie) {
-			$this->addOneKategorie($Galerie);
-		}
-		public function delOneGalerie($CID) {
-			$this->delOneKategorie($CID);
-		}
-		
-		public function setThumbfromBG($BGID, $BGthumb=NULL) {
-			if($BGthumb != NULL) {
-			$query = sprintf("UPDATE Bildgruppe
-				SET BGthumb = %d
-				WHERE BGID = %d", 
-				mysql_real_escape_string($BGthumb),
-				mysql_real_escape_string($BGID));
-			}
-			else {
-				$query = sprintf("UPDATE Bildgruppe
-				SET BGthumb = NULL
-				WHERE BGID = %d",
-				mysql_real_escape_string($BGID));
-			}
-			mysql_query($query, $this->connection_ID);
-		}
-		public function changeOneBildgruppe($BGID, $Bildgruppe) {
-			$query = sprintf("UPDATE Bildgruppe
-				SET CID = %d,
-				BGname = '%s'
-				WHERE BGID = %d", 
-				mysql_real_escape_string($Bildgruppe['CID']), 
-				mysql_real_escape_string($Bildgruppe['BGname']), 
-				mysql_real_escape_string($BGID));
-			mysql_query($query, $this->connection_ID);
-		}
-		public function addOneBildgruppe($Bildgruppe) {
-			$query = sprintf("INSERT INTO Bildgruppe
-				VALUES(NULL, %d, '%s', NULL)",
-				mysql_real_escape_string($Bildgruppe['CID']), 
-				mysql_real_escape_string($Bildgruppe['BGname']));
-			mysql_query($query, $this->connection_ID);
-		}
-		
-		public function addOneBild($Bild) {
-			$query = sprintf("INSERT INTO Bild
-				VALUES(NULL, %d, '%s', '%s')",
-				mysql_real_escape_string($Bild['BGID']),
-				mysql_real_escape_string($Bild['Btitle']),
-				mysql_real_escape_string($Bild['Bdescription']));
-			mysql_query($query, $this->connection_ID);
-			return mysql_insert_id();
-		}
-		public function delOneBild($BID) {
-			$query = sprintf("DELETE FROM Bild
-				WHERE BID = %d",
-				mysql_real_escape_string($BID));
-			mysql_query($query, $this->connection_ID);
-		}
-		
 		public function changeOneBeitrag($SID, $Beitrag) {
 			$query = sprintf("UPDATE Beitrag
 				SET CID = %d,
@@ -382,12 +322,16 @@
 			mysql_query($query, $this->connection_ID);
 		}
 		public function delOneBeitrag($SID) {
-			$query = sprintf("DELETE FROM Beitrag
+			$query[0] = sprintf("DELETE FROM Dateizuordnung
+				WHERE SID = %d",
+				mysql_real_escape_string($SID));
+			$query[1] = sprintf("DELETE FROM Beitrag
 				WHERE SID = %d
 				AND SID != 1
 				AND SID != 404", 
 				mysql_real_escape_string($SID));
-			mysql_query($query, $this->connection_ID);
+			mysql_query($query[0], $this->connection_ID);
+			mysql_query($query[1], $this->connection_ID);
 		}
 		public function movetoHIDDENfromOneKategorie($CID) {
 			$query = sprintf("UPDATE Beitrag

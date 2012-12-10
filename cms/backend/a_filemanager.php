@@ -55,5 +55,21 @@
 			$result = mysql_query($query);
 			return $result;
 		}
+		
+		public function getAllsProperties() {
+			$query = "SELECT COUNT(Dateizuordnung.FID) AS Fcount, Datei.FID, Fname, Ftype
+  				FROM Dateizuordnung RIGHT JOIN Datei
+  				ON Datei.FID = Dateizuordnung.FID
+  				GROUP BY Datei.FID
+  				ORDER BY FID DESC";
+			$result = mysql_query($query, $this->DBconnection);
+			$i = 0;
+			$returnarray = array();
+			while($row = mysql_fetch_assoc($result)){
+				$returnarray[$i] = $row;
+				$i++;
+			}
+			return $returnarray;
+		}
 	}
 ?>
