@@ -1,4 +1,4 @@
-CREATE TABLE Rolle (
+﻿CREATE TABLE Rolle (
 	RID INT NOT NULL AUTO_INCREMENT,
 	Rtopic CHAR(40),
 	Rshort CHAR(20),
@@ -51,7 +51,8 @@ CREATE TABLE Konfiguration(
 
 CREATE TABLE Datei (
   FID INT NOT NULL AUTO_INCREMENT,
-  Fname CHAR(60),
+  Fname CHAR(20),
+  Ftitle CHAR(60),
   Ftype CHAR(20),
   PRIMARY KEY(FID)
 );
@@ -99,10 +100,10 @@ INSERT INTO Benutzer VALUES(1, 'Administrator', '8a974b0407e3f2f3bd9e1aa995563a7
 INSERT INTO Benutzer VALUES(2, 'Anonymous', 'd7a851cca17e12678069be57985832cc', TRUE);
 
 			
-INSERT INTO Kategorie VALUES(1, NULL, 'Footer', NULL, 'index');
-INSERT INTO Kategorie VALUES(2, NULL, 'Versteckt', NULL, 'index');
-INSERT INTO Kategorie VALUES(3, NULL, 'Entwurf', NULL, 'index');
-INSERT INTO Kategorie VALUES(4, NULL, 'Startseite', NULL, 'index');
+INSERT INTO Kategorie VALUES(1, NULL, 'Footer', NULL);
+INSERT INTO Kategorie VALUES(2, NULL, 'Versteckt', NULL);
+INSERT INTO Kategorie VALUES(3, NULL, 'Entwurf', NULL);
+INSERT INTO Kategorie VALUES(4, NULL, 'Startseite', NULL);
 
 
 INSERT INTO Rolle VALUES(1, 'Am System anmelden', 'anmelden');
@@ -128,7 +129,7 @@ INSERT INTO Berechtigung VALUES(NULL, 2, 5, FALSE);
 INSERT INTO Berechtigung VALUES(NULL, 2, 6, FALSE);
 
 
-INSERT INTO Konfiguration VALUES(1, 'style', 'konservativ');
+INSERT INTO Konfiguration VALUES(1, 'style', 'noteMe');
 INSERT INTO Konfiguration VALUES(2, 'title', 'myCMS.xml');
 INSERT INTO Konfiguration VALUES(3, 'nosnippet', 'Hier wurde noch kein Beitrag ver&#246;ffentlicht');
 INSERT INTO Konfiguration VALUES(4, 'version', '0.1.0');
