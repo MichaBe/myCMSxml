@@ -47,6 +47,13 @@ was ihm gefällt, und wo noch was fehlt. Ich bin offen für neues, solange das S
 ### Update vom 16.7.2012 ###
 Das Backend ist komplett fertiggestellt. In den ToDo-Listen stehen nun noch die Komponenten, 
 die Verbesserungen benötigen.
+### Update vom 11.7.2013 ###
+So, fast ein Jahr ist das letzte Update jetzt her, und hier nun zum aktuellen Status:
+* Das ganze hat nach wie vor den Status eine "sandbox", in der ich Ausprobieren kann, was ich will
+* FTP wird vorerst nicht implementiert, da ich damit noch einige Probleme hatte, und mich noch anderem widmen will
+* Die Möglichkeit, Notizen zu schreiben wird wahrscheinlich als nächstes Implementiert.
+* Die Arbeit an einem neuen Style wird bald begonnen. Ideen sind bereits vorhanden, diese gilt es jetzt umzusetzen.
+* Vielleicht bekommt auch der "Managementbereich" mal ein neues Design, steht aber nicht ganz oben auf der ToDo-Liste...
 
 # Zukunft #
 Hier noch ein kleiner Überblick, was auf meiner derzeitigen ToDo-Liste steht:

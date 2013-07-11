@@ -111,7 +111,7 @@ INSERT INTO Rolle VALUES(2, 'Beitr&#228;ge verwalten', 'beitraege');
 INSERT INTO Rolle VALUES(3, 'Kategorien verwalten', 'kategorien');
 INSERT INTO Rolle VALUES(4, 'Benutzer und Berechtigungen verwalten', 'benutzer');
 INSERT INTO Rolle VALUES(5, 'Allgemeine Konfiguration &#228;ndern', 'konfiguration');
-INSERT INTO Rolle VALUES(6, 'Notizen', 'dateien');
+INSERT INTO Rolle VALUES(6, 'Notizen schreiben', 'notizen');
 
 
 INSERT INTO Berechtigung VALUES(NULL, 1, 1, TRUE);
