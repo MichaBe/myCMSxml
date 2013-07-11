@@ -33,22 +33,27 @@
 			<div class="inhalt">
 				<h2>Verwalten Sie hier die Dateien</h2>
 				<?php
-					$allProperties = $myFileManager->geAllsProperties();
+					echo '<a href="Fmask.php" id="important_green">Neue Datei hochladen</a>';
+					
+					$allProperties = $myFileManager->getAllsProperties();
 					echo '<table><tr>';
 					echo '<th>Titel</th>';
 					echo '<th>Typ</th>';
-					echo '<th>Verwendet<th>';
+					echo '<th>Verwendet</th>';
 					echo '<th>Link</th>';
-					echo '<th colspan="2">Datei &#288;ndern</th></tr>';
+					echo '<th colspan="2">Datei &#228;ndern</th></tr>';
 					
 					for($i = 0; $i < count($allProperties); $i++) {
 						echo '<tr>';
-						echo '<td>'.$allProperties[$i]['Fname'].'</td>';
+						echo '<td>'.$allProperties[$i]['Ftitle'].'</td>';
 						echo '<td>'.$allProperties[$i]['Ftype'].'</td>';
 						echo '<td>'.$allProperties[$i]['Fcount'].'</td>';
-						echo '<td><a href="http://'.$_SERVER['HTTP_HOST'].'/cms/'..'"'
+						echo '<td><a href="http://'.$_SERVER['HTTP_HOST'].'/cms/'.$allProperties[$i]['Fname'].'">hier kopieren</a></td>';
+						echo '<td id="important_green"><a href="Fmask.php?FID='.$allProperties[$i]['FID'].'">&#228;ndern</a></td>';
+						echo '<td id="important_red"><a href="delete.php?FID='.$allProperties[$i]['FID'].'">l&#246;schen</td>';
 						echo '</tr>';
 					}
+					echo '</table>';
 				?>
 			</div>
 			<?php include('../../backend/formanagement/getfooter.php'); ?>

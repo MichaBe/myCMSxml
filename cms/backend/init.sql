@@ -96,7 +96,7 @@ ALTER TABLE Dateizuordnung
     REFERENCES Beitrag(SID);
 
 
-INSERT INTO Benutzer VALUES(1, 'Administrator', '8a974b0407e3f2f3bd9e1aa995563a7c', TRUE);
+INSERT INTO Benutzer VALUES(1, 'Administrator', '39f88a96c493e2d0b1797ba55d97bf77', TRUE);
 INSERT INTO Benutzer VALUES(2, 'Anonymous', 'd7a851cca17e12678069be57985832cc', TRUE);
 
 			
